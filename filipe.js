@@ -22,14 +22,6 @@ const reflections = {
   overallFeeling: 6,
 }
 
-const bootcamperTable = {
-  id: 'SERIAL PRIMARY KEY',
-  fullName: 'Filipe Proenca',
-  bootcamperId: 300,
-  frequency: 2,
-  createdAt: '10/04/2021',
-}
-
 const reflections = {
   bootcamperId: 300,
   createdAt: '10/04/2021',
@@ -46,14 +38,6 @@ const reflections = {
   overallFeeling: 6,
 }
 
-const bootcamperTable = {
-  id: 'SERIAL PRIMARY KEY',
-  fullName: 'Filipe Proenca',
-  bootcamperId: 300,
-  frequency: 2,
-  createdAt: '11/04/2021',
-}
-
 const reflections = {
   bootcamperId: 300,
   createdAt: '11/04/2021',
@@ -68,14 +52,6 @@ const reflections = {
   gratefulFor: 'self improvement',
   areaOfImprovement: 'Better understand react',
   overallFeeling: 5,
-}
-
-const bootcamperTable = {
-  id: 'SERIAL PRIMARY KEY',
-  fullName: 'Filipe Proenca',
-  bootcamperId: 300,
-  frequency: 2,
-  createdAt: '12/04/2021',
 }
 
 const reflections = {
