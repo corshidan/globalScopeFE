@@ -8,7 +8,7 @@ const bootcamperTable = {
 const reflections = [
   {
     bootcamperId: "1234",
-    createdAt: "30/07/21",
+    createdAt: "16/08/21",
     reflection:
       "Today was really interesting, researching node-postgres via the docs, and then using this to create a server that can make requests to a database. I can see the benefit of looking through the docs thoroughly, but I think the skill will be searching the docs efficiently to find the key parts of the package that will actually be of use, as we ended up spending too much time reading the docs and didn’t complete many tasks in time.",
     isAccessible: true,
@@ -21,7 +21,7 @@ const reflections = [
     confidenceRating: 3,
     gratefulFor: "My pair for being supportive",
     areaOfImprovement: "finish off the express-postgress workshop",
-    overallFeeling: 6,
+    overallFeeling: 5,
   },
   {
     bootcamperId: "1234",
@@ -39,5 +39,22 @@ const reflections = [
     gratefulFor: "Code club after school",
     areaOfImprovement: "Re-do express workshops",
     overallFeeling: 3,
+  },
+  {
+    bootcamperId: "1234",
+    createdAt: "02/08/21",
+    reflection:
+      "Today was very rushed. My internet went down in the middle of fat-arrow functions. The retro was good! Writing the 10 second intro was hard! I met my mentor today which was great! I have spent far too long after work trying to make a function that takes an array as a parameter. As such I am writing my reflection at 1.40am, which is daft.",
+    isAccessible: false,
+    topicsPicked: [
+      { topic: "Default parameters", rating: 4},
+      { topic: "Fat-arrow functions", rating: 2},
+      { topic: "Call back functions", rating: 4},
+      { topic: "Methods", rating: 3},
+    ],
+    confidenceRating: 4,
+    gratefulFor: "My mentor",
+    areaOfImprovement: "Attend after school session tomorrow. Get help with writing function that takes array as parameter!!!!!",
+    overallFeeling: 5,
   },
 ];
