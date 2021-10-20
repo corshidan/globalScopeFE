@@ -70,7 +70,7 @@ const reflections = [
       { topic: "Order by asc/desc", rating: 3},
     ],
     confidenceRating: 5,
-    gratefulFor: "My mentor",
+    gratefulFor: "Time out for climbing",
     areaOfImprovement: "Install postgresql, Install NodeJS",
     overallFeeling: 4,
   },
