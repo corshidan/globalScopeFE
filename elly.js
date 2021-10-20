@@ -57,4 +57,21 @@ const reflections = [
     areaOfImprovement: "Attend after school session tomorrow. Get help with writing function that takes array as parameter!!!!!",
     overallFeeling: 5,
   },
+  {
+    bootcamperId: "1234",
+    createdAt: "10/08/21",
+    reflection:
+      "It’s been very easy to get lost when navigating several different tables or linking the same table to itself. Using ALIAS is also confusing as the variables can be declared after they are used!",
+    isAccessible: false,
+    topicsPicked: [
+      { topic: "SQL tables", rating: 4},
+      { topic: "Select from tables", rating: 4},
+      { topic: "Joins in SQL", rating: 3},
+      { topic: "Order by asc/desc", rating: 3},
+    ],
+    confidenceRating: 5,
+    gratefulFor: "My mentor",
+    areaOfImprovement: "Install postgresql, Install NodeJS",
+    overallFeeling: 4,
+  },
 ];
