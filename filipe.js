@@ -1,4 +1,5 @@
 const bootcamperTable = {
+  id: 'SERIAL PRIMARY KEY',
   fullName: 'Filipe Proenca',
   bootcamperId: 300,
   frequency: 2,
@@ -22,6 +23,7 @@ const reflections = {
 }
 
 const bootcamperTable = {
+  id: 'SERIAL PRIMARY KEY',
   fullName: 'Filipe Proenca',
   bootcamperId: 300,
   frequency: 2,
@@ -45,6 +47,7 @@ const reflections = {
 }
 
 const bootcamperTable = {
+  id: 'SERIAL PRIMARY KEY',
   fullName: 'Filipe Proenca',
   bootcamperId: 300,
   frequency: 2,
@@ -68,6 +71,7 @@ const reflections = {
 }
 
 const bootcamperTable = {
+  id: 'SERIAL PRIMARY KEY',
   fullName: 'Filipe Proenca',
   bootcamperId: 300,
   frequency: 2,
