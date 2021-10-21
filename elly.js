@@ -50,7 +50,7 @@ const reflections = [
       { topic: "Default parameters", rating: 4},
       { topic: "Fat-arrow functions", rating: 2},
       { topic: "Call back functions", rating: 4},
-      { topic: "Methods", rating: 3},
+      { topic: "Array Methods", rating: 3},
     ],
     confidenceRating: 4,
     gratefulFor: "My mentor",
