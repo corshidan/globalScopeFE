@@ -27,4 +27,5 @@ const reflections = [
 // const test2 = reflections[0].topicsPicked[0];
 // const test3 = JSON.parse(test);
 // console.log(test, typeof test, typeof test2);
-console.log(reflections);
+// console.log(reflections);
+//Nothing to see here
