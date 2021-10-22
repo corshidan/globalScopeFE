@@ -1,31 +1,54 @@
-import "./Dashboard.css"
+import "./Dashboard.css";
 
 export default function Dashboard() {
   return (
     <section className="blog-box">
-      <div className="blog-box-add">
-        <a href="/bloginputpage">
-          <h1>Add to Blog</h1>
-          <img src="" alt="blog"></img>
-        </a>
+      <div class="container">
+        <div class="testimonial-card1">
+          <div class="text"></div>
+          <div class="footer">
+            <div class="image"></div>
+            <a href="/bloginputpage">
+              <h3 class="person">Add to your blog</h3>
+            </a>
+          </div>
+        </div>
       </div>
-      <div className="blog-box-recap">
-        <a href="/blogrecappage">
-          <h1>Blog Recap</h1>
-          <img src="" alt="recap"></img>
-        </a>
+
+      <div class="container">
+        <div class="testimonial-card2">
+          <div class="text"></div>
+          <div class="footer">
+            <div class="image"></div>
+            <a href="/blogrecappage">
+              <h3 class="person">Blog Recap</h3>
+            </a>
+          </div>
+        </div>
       </div>
-      <div className="blog-box-stats">
-        <a href="/statspage">
-          <h1>See your stats</h1>
-          <img src="" alt="stats"></img>
-        </a>
+
+      <div class="container">
+        <div class="testimonial-card3">
+          <div class="text"></div>
+          <div class="footer">
+            <div class="image"></div>
+            <a href="/statspage">
+              <h3 class="person">See your stats</h3>
+            </a>
+          </div>
+        </div>
       </div>
-      <div className="blog-box-list">
-        <a href="/list">
-          <h1>To do list</h1>
-          <img src="" alt="list"></img>
-        </a>
+
+      <div class="container">
+        <div class="testimonial-card4">
+          <div class="text"></div>
+          <div class="footer">
+            <div class="image"></div>
+            <a href="/listpage">
+              <h3 class="person">To do list</h3>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

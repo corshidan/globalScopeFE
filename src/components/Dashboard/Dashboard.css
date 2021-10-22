@@ -1,52 +1,89 @@
-.blog-box {
+* {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+    font-weight: 100;
+    color: #777;
     display: flex;
-    justify-content: center;
-}
+    justify-content: space-evenly;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    /* max-width: 900px; */
+    background-color: #69b578;
+  }
 
-.blog-box-add{
+  .container  {
+    background: rgb(237, 239, 240);
     display: flex;
-    flex-direction: space-around;
-    height: 200px;
-    width: 200px;
-    background-color: aqua;
-    margin: 10;
-    padding: 20;
     align-items: center;
     justify-content: center;
-}
-
-.blog-box-recap{
+    border-radius: 10px;
+  }
+  
+  .testimonial-card1 {
+    min-height: 450px;
+    width: 350px;
+    background: no-repeat center/cover url(../../mentalhealthbro.png);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     display: flex;
-    flex-direction: space-around;
-    height: 200px;
-    width: 200px;
-    background-color:blueviolet;
-    margin: 10;
-    padding: 20;
-    align-items: center;
-    justify-content: center;
-}
-
-.blog-box-stats{
+    flex-flow: column;
+    justify-content: space-between;
+  }
+  .testimonial-card2 {
+    min-height: 450px;
+    width: 350px;
+    background: no-repeat center/cover url(../../Bookmarks-bro.png);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     display: flex;
-    flex-direction: space-around;
-    height: 200px;
-    width: 200px;
-    background-color:cornflowerblue;
-    margin: 10;
-    padding: 20;
-    align-items: center;
-    justify-content: center;
-}
-
-.blog-box-list{
+    flex-flow: column;
+    justify-content: space-between;
+  }
+  .testimonial-card3 {
+    min-height: 450px;
+    width: 350px;
+    background: no-repeat center/cover url(../../Data\ report-bro.png);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     display: flex;
-    flex-direction: space-around;
-    height: 200px;
-    width: 200px;
-    background-color:darksalmon;
-    margin: 10;
-    padding: 20;
-    align-items: center;
-    justify-content: center;
-}
+    flex-flow: column;
+    justify-content: space-between;
+  }
+  .testimonial-card4 {
+    min-height: 450px;
+    width: 350px;
+    background: no-repeat center/cover url(../../Checklist-bro.png);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+  }
+
+  .text {
+    padding: 2.2em;
+    line-height: 1.7em;
+    position: relative;
+    font-size: 18px;
+  }
+  
+  .footer {
+    background: linear-gradient(40deg, #59c3c3, #05ffa3);
+    height: 80px;
+    border-radius: 0 0 10px 10px;
+    position: relative;
+  }
+
+  .person {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    font-size: 1rem;
+    font-weight: 600;
+  }
