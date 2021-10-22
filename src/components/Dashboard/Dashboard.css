@@ -1,0 +1,52 @@
+.blog-box {
+    display: flex;
+    justify-content: center;
+}
+
+.blog-box-add{
+    display: flex;
+    flex-direction: space-around;
+    height: 200px;
+    width: 200px;
+    background-color: aqua;
+    margin: 10;
+    padding: 20;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-box-recap{
+    display: flex;
+    flex-direction: space-around;
+    height: 200px;
+    width: 200px;
+    background-color:blueviolet;
+    margin: 10;
+    padding: 20;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-box-stats{
+    display: flex;
+    flex-direction: space-around;
+    height: 200px;
+    width: 200px;
+    background-color:cornflowerblue;
+    margin: 10;
+    padding: 20;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-box-list{
+    display: flex;
+    flex-direction: space-around;
+    height: 200px;
+    width: 200px;
+    background-color:darksalmon;
+    margin: 10;
+    padding: 20;
+    align-items: center;
+    justify-content: center;
+}
