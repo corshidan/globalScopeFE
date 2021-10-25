@@ -1,5 +1,7 @@
 .sidebar {
+	position: fixed;
 	display: flex;
+	height: 100%;
 	flex-direction: column;
 	white-space: nowrap;
 	background-color: #4e527f;
