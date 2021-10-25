@@ -12,8 +12,8 @@ export default function LoginPage() {
 			className={`${'flex items-center justify-center h-screen '}${css.back}`}
 			style={{ backgroundImage: 'url(/images/background.jpg)' }}
 		>
-			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto bg-opacity-90">
-				<h2 className="text-2xl my-4 ">Login</h2>
+			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto bg-opacity-95">
+				<h2 className="text-3xl my-4 text-purple-500 font-medium ">Login</h2>
 				<div className="w-full p-2 justify-start flex flex-col">
 					<div className=" flex flex-row">
 						<span className=" rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
@@ -34,12 +34,12 @@ export default function LoginPage() {
 						<input
 							type="password"
 							className="h-10 border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-full pl-1"
-							placeholder="Password"
 							required
+							placeholder="Password"
 						/>
 					</div>
 
-					<span className="text-blue-400 text-xs ">
+					<span className="text-purple-400 text-xs ">
 						<Link to="/dashboard" className="">
 							Forgot your password?
 						</Link>
@@ -47,7 +47,7 @@ export default function LoginPage() {
 
 					<button
 						value="button"
-						className="px-4 py-2 rounded bg-blue-400 text-white hover:bg-blue-700 my-4 w-full"
+						className="px-4 py-2 rounded bg-purple-500 text-white hover:bg-purple-700 my-4 w-full"
 						id="whoobe-ibemp"
 					>
 						<Link to="/dashboard" className="">
@@ -57,7 +57,7 @@ export default function LoginPage() {
 					<p className="text-gray-400 text-xs m-3">
 						Need an account?{' '}
 						<Link to="/register" className="">
-							<span className="text-blue-400 text-xs">Register</span>{' '}
+							<span className="text-purple-400 text-xs">Register</span>{' '}
 						</Link>
 					</p>
 				</div>
