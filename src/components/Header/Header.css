@@ -1,0 +1,13 @@
+header {
+  width: 100vw;
+  height: 5vw;
+  background-color: #60638c;
+  position: fixed;
+  z-index: -1;
+}
+
+.quote {
+  text-align: end;
+  justify-self: center;
+  color: white;
+}
