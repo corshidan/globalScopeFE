@@ -1,10 +1,9 @@
 import './BlogInputPage.css';
-import Sidebar from '../Sidebar';
+import Layout from '../Layout';
 
 export default function BlogInputPage() {
 	return (
-		<div>
-			<Sidebar />
+		<Layout>
 			<section>
 				<p>
 					What have you covered since last time? Rate your confidence for each from 1-5:
@@ -45,6 +44,6 @@ export default function BlogInputPage() {
 				<p>Space for thoughts:</p>
 				<input type="text" placeholder="Add to blog" />
 			</section>
-		</div>
+		</Layout>
 	);
 }
