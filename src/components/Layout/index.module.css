@@ -1,0 +1,11 @@
+.layoutComponent {
+	padding: 20px;
+	height: 100%;
+	display: flex;
+}
+.layoutComponent > div:nth-child(2) {
+	width: 100%;
+}
+.layoutComponent > div {
+	border: 1px solid black;
+}

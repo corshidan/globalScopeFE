@@ -1,0 +1,8 @@
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	white-space: nowrap;
+	background-color: #4e527f;
+	color: #fff;
+	padding: 2em;
+}
