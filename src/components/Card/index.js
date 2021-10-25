@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 export default function Card({ image, title, buttonLabel, path }) {
   return (
-    <div className='lg:container lg:mx-auto items-center  inline-flex'>
-      <div className='bg-white shadow-md border border-gray-200 rounded-lg  mb-5 w-6/12'>
+    <div className='justify-center items-center'>
+      <div className='bg-white shadow-md border border-gray-200 rounded-lg  mb-5 w-3/5'>
         <img className='rounded-t-lg' src={image} alt='' />
 
         <div className='p-5'>
