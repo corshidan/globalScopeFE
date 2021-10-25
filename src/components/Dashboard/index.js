@@ -3,10 +3,12 @@ import React from 'react'
 import Layout from '../Layout'
 import Card from '../Card'
 
+//flex 
+
 export default function Dashboard() {
   return (
     <Layout>
-      <div className='flex justify-between h-full items-center z-10'>
+      <div className='grid grid-cols-2 p-40'>
         <Card
           image='/images/addToBlogImage.png'
           title='Add to Blog'

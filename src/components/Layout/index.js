@@ -5,10 +5,12 @@ import Header from '../Header'
 export default function Layout({ children }) {
   return (
     <>
-      <Header />
       <div className={css.layoutComponent}>
         <Sidebar />
+        <div>
+        <Header />
         <div className={css.right}>{children}</div>
+        </div>
       </div>
     </>
   )

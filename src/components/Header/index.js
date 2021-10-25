@@ -1,4 +1,6 @@
 import './Header.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar, faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 export default function Header() {
   const current = new Date()
@@ -10,7 +12,7 @@ export default function Header() {
     <>
       <header className='header'>
         <br />
-
+        <FontAwesomeIcon className="w-6" size="xs" icon={faStar} />
         <p className='quote'>
           "Only compare yourself if you know you’re better than the other
           person"
@@ -20,3 +22,5 @@ export default function Header() {
     </>
   )
 }
+
+{/* <i class="fas fa-star"></i> */}
