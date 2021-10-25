@@ -1,10 +1,11 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Dashboard from '../Dashboard';
 import BlogInputPage from '../BlogInputPage';
 import BlogRecapPage from '../BlogRecapPage';
 import LoginPage from '../LoginPage';
+import RegisterPage from '../RegisterPage';
 
 function App() {
 	return (
@@ -19,8 +20,11 @@ function App() {
 				<Route path="/blogrecappage">
 					<BlogRecapPage />
 				</Route>
+				<Route path="/register">
+					<RegisterPage />
+				</Route>
 				<Route path="/">
-					<LoginPage />;
+					<LoginPage />
 				</Route>
 			</Switch>
 		</Router>
