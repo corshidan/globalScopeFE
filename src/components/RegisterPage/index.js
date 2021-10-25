@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faIdBadge, faSignature, faAt } from '@fortawesome/free-solid-svg-icons';
+import css from './index.module.css';
 export default function RegisterPage() {
 	return (
-		<div className="flex items-center justify-center h-screen">
+		<div className={`${'flex items-center justify-center h-screen '}${css.back}`}>
 			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto">
 				<h2 className="text-2xl my-4">Create a new account</h2>
 				<div id="whoobe-h90kl" className="w-full p-2 justify-start flex flex-col">
@@ -94,9 +95,12 @@ export default function RegisterPage() {
 							<p>Create a new account</p>
 						</Link>
 					</button>
-					<Link to="/" className="">
-						<p className="text-blue-400 text-xs">Already have an account?</p>
-					</Link>
+
+					<p className="text-blue-400 text-xs ">
+						<Link to="/" className="">
+							Already have an account?
+						</Link>
+					</p>
 				</div>
 			</form>
 		</div>
