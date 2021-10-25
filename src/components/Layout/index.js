@@ -5,7 +5,7 @@ export default function Layout({ children }) {
 	return (
 		<div className={css.layoutComponent}>
 			<Sidebar />
-			<div>{children}</div>
+			<div className={css.right}>{children}</div>
 		</div>
 	);
 }

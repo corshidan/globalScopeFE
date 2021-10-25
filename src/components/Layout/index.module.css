@@ -2,8 +2,10 @@
 	height: 100%;
 	display: flex;
 }
-.layoutComponent > div:nth-child(2) {
-	width: 100%;
-}
 .layoutComponent > div {
+	border-top: 1px solid black;
+}
+.right {
+	width: 90vw;
+	padding-left: 12vw;
 }
