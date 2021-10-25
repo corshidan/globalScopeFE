@@ -11,3 +11,8 @@ header {
   justify-self: center;
   color: white;
 }
+
+.date {
+  padding-left: 12%;
+  color: white;
+}
