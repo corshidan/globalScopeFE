@@ -5,8 +5,11 @@ import { faCalendarAlt, faIdBadge, faSignature, faAt } from '@fortawesome/free-s
 import css from './index.module.css';
 export default function RegisterPage() {
 	return (
-		<div className={`${'flex items-center justify-center h-screen '}${css.back}`}>
-			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto">
+		<div
+			className={`${'flex items-center justify-center h-screen  '}${css.back}`}
+			style={{ backgroundImage: 'url(/images/background.jpg)' }}
+		>
+			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto bg-opacity-90">
 				<h2 className="text-2xl my-4">Create a new account</h2>
 				<div id="whoobe-h90kl" className="w-full p-2 justify-start flex flex-col">
 					<div className="my-2 flex flex-row">
@@ -96,7 +99,7 @@ export default function RegisterPage() {
 						</Link>
 					</button>
 
-					<p className="text-blue-400 text-xs ">
+					<p className="text-blue-400 text-xs m-3">
 						<Link to="/" className="">
 							Already have an account?
 						</Link>

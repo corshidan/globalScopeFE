@@ -8,9 +8,12 @@ export default function LoginPage() {
 
 	// </div>
 	return (
-		<div className={`${'flex items-center justify-center h-screen '}${css.back}`}>
-			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto bg-gray-100">
-				<h2 className="text-2xl my-4">Login</h2>
+		<div
+			className={`${'flex items-center justify-center h-screen '}${css.back}`}
+			style={{ backgroundImage: 'url(/images/background.jpg)' }}
+		>
+			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto bg-opacity-90">
+				<h2 className="text-2xl my-4 ">Login</h2>
 				<div className="w-full p-2 justify-start flex flex-col">
 					<div className=" flex flex-row">
 						<span className=" rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
@@ -51,7 +54,7 @@ export default function LoginPage() {
 							Login
 						</Link>
 					</button>
-					<p className="text-gray-400 text-xs">
+					<p className="text-gray-400 text-xs m-3">
 						Need an account?{' '}
 						<Link to="/register" className="">
 							<span className="text-blue-400 text-xs">Register</span>{' '}
