@@ -23,6 +23,16 @@ export default function BlogRecapPage() {
   return (
     <Layout>
       <form className='border-2'>
+        <label for='start'>What day do you want to review?</label>
+
+        <input
+          type='date'
+          id='start'
+          name='reflection-date'
+          value='2021-07-22'
+          min='2021-01-01'
+          max='2021-12-31'
+        />
         <div className='flex flex-col border-4'>
           <label htmlFor='topics-section'>
             Topics you have covered on Week 4 day 2
@@ -61,6 +71,10 @@ export default function BlogRecapPage() {
           <div className='flex flex-col border-4'>
             <label htmlFor='add-thoughts'>Any other thoughts?:</label>
             <p className='reflection'>{reflections[0].reflection}</p>
+          </div>
+          <div className='flex flex-col border-4'>
+            <label htmlFor='feeling-score'>How you were feeling?</label>
+            <h1>💩</h1>
           </div>
         </div>
       </form>
