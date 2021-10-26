@@ -1,14 +1,13 @@
 .sidebar {
-	/* position: fixed; */
-	display: flex;
-	height: 100%;
-	/* min-width: 10vw; */
+	position: fixed;
+	height: 100vh;
+	width: 13%;
 	flex-direction: column;
 	align-items: center;
-	white-space: nowrap;
+	/* white-space: nowrap; */
 	background-color: #401485;
 	color: #fff;
-	padding: 2em 0 0 0;
+	padding: 0.4em 0 0 0.3em;
 }
 .navigation li {
 	margin-bottom: 0.4em;
@@ -17,5 +16,36 @@
 	font-weight: 100;
 	color: rgb(221, 221, 221);
 	padding: 0 0.9em 0 0.5em;
-	margin-left: 1.5em;
+	margin-left: 1em;
+}
+.navigation {
+	display: flex;
+	flex-direction: column;
+}
+@media (max-width: 1200px) {
+	li span {
+		display: none;
+	}
+	li p {
+		height: 30px;
+	}
+}
+.sidebar section {
+	margin: 0 0.5em 0.8em;
+}
+section img {
+	width: 200px;
+}
+@media (max-width: 570px) {
+	section p {
+		display: none;
+	}
+}
+@media (min-width: 570px) {
+	section img {
+		display: none;
+	}
+	.sidebar {
+		padding: 2em 0 0 0;
+	}
 }

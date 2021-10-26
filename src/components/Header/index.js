@@ -9,7 +9,7 @@ export default function Header() {
 	return (
 		<header className=" flex justify-between items-center h-15 shadow-md pr-5">
 			<div className="w-1/2 pl-5 relative">
-				<FontAwesomeIcon size="2xl" icon={faStar} style={{ fontSize: '51px' }} />
+				<FontAwesomeIcon size="lg" icon={faStar} style={{ fontSize: '51px' }} />
 				<span className="text-white absolute left-10 top-4 pl-1">6</span>
 			</div>
 			<div>

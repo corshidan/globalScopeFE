@@ -6,15 +6,15 @@ import css from './sidebar.module.css';
 export default function Sidebar() {
 	const location = useLocation();
 	const sideBarTitle =
-		'flex  flex-col justify-center items-center mb-7 font-bold break-all text-center text-xl';
+		'flex  text-xs flex-col justify-center items-center mb-7 font-bold md:text-base lg:text-xl';
 	const listStyle = 'rounded-l-full hover:bg-green-400 hover:text-white duration-300 ';
-	console.log(location);
 	return (
 		<div className={css.sidebar}>
-			<div className={sideBarTitle}>
+			<section id="dashboardTitle" className={sideBarTitle}>
 				<p>Bootcamper</p>
 				<p>Dashboard</p>
-			</div>
+				<img src="/images/32.png" alt="" />
+			</section>
 
 			<ul className={css.navigation}>
 				<li
