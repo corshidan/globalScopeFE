@@ -79,41 +79,42 @@ export default function BlogInputPage() {
 					</div>
 				</div>
 
-				<div className="flex flex-col border-4">
-					<label for="confidence-range">
-						How confident do you feel about what you've learned since your last
-						reflection?
-					</label>
-					<p>1 2 3 4 5</p>
-					<input id="confidence-range" type="range" min="0" max="5" step="1" />
-				</div>
+        <div className="flex flex-col border-4">
+          <label for="confidence-range">
+            How confident do you feel about what you've learned since your last
+            reflection?
+          </label>
+          <p>1 2 3 4 5</p>
+          <input className=" range range-accent" id="confidence-range" type="range" min="0" max="5" step="1" />
+        </div>
 
-				<div className="flex flex-col border-4">
-					<label for="improvements">
-						What could have gone better / What areas would you like to improve?
-					</label>
-					<textarea
-						className="border-2"
-						id="improvements"
-						name="improvements"
-						placeholder="Enter your thoughts here..."
-						rows="6"
-						cols="50"
-					></textarea>
-				</div>
+        <div className="flex flex-col border-4">
+          <label for="improvements">
+            What could have gone better / What areas would you like to improve?
+          </label>
+          <textarea
+		  className="textarea h-24 textarea-bordered textarea-accent"
+            id="improvements"
+            name="improvements"
+            placeholder="Enter your thoughts here..."
+            rows="6"
+            cols="50"
+          ></textarea>
+        </div>
 
-				<div className="flex flex-col border-4">
-					<label for="add-thoughts">Any other thoughts?:</label>
-					<textarea
-						className="border-2"
-						id="add-thoughts"
-						name="add-thoughts"
-						placeholder="I've run out of peanut butter..."
-						rows="6"
-						cols="50"
-					/>
-				</div>
-			</form>
-		</Layout>
-	);
+        <div className="flex flex-col border-4">
+          <label for="add-thoughts">Any other thoughts?:</label>
+          <textarea
+		  	className="textarea h-24 textarea-bordered textarea-accent"
+            id="add-thoughts"
+            name="add-thoughts"
+            placeholder="I've run out of peanut butter..."
+            rows="6"
+            cols="50"
+          />
+        </div>
+        <button className="btn btn-sm btn-accent">Post</button>
+      </form>
+    </Layout>
+  );
 }
