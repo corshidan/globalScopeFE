@@ -1,4 +1,5 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,116 +11,191 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import css from './index.module.css';
 export default function RegisterPage() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
+
+	const onSubmit = (data) => {
+		console.log(data);
+	};
 	return (
 		<div
 			className={`${'flex items-center justify-center h-screen  '}${css.back}`}
 			style={{ backgroundImage: 'url(/images/background.jpg)' }}
 		>
-			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-2/5 m-auto bg-opacity-95">
+			<form
+				className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-2/5 m-auto bg-opacity-95"
+				onSubmit={handleSubmit(onSubmit)}
+			>
 				<h2 className="text-3xl my-4 text-purple-500 font-medium leading-6">
 					Create a new account
 				</h2>
 				<div id="whoobe-h90kl" className="w-full p-2 justify-start flex flex-col">
-					<div className="my-2 flex flex-row">
-						<span className="rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
-							<FontAwesomeIcon icon={faSignature} />
-						</span>
-						<input
-							className="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1"
-							pattern="[A-Za-z]"
-							required
-							placeholder="First name"
-						/>
-
-						<input
-							className="border border-gray-200 rounded-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1 ml-1"
-							required
-							placeholder="Last name"
-						/>
+					<div className="my-2 flex ">
+						<div className="flex flex-col w-1/2">
+							<div className="flex">
+								{' '}
+								<span className="rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
+									<FontAwesomeIcon icon={faSignature} />
+								</span>
+								{/* First name input */}
+								<input
+									className="border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1"
+									placeholder="First name"
+									name="firstName"
+									{...register('firstName', {
+										required: 'First name is required',
+									})}
+								/>
+							</div>
+							{errors.firstName && (
+								<p className="text-red-400 text-sm">{errors.firstName.message}</p>
+							)}
+						</div>
+						{/* Last name input */}
+						<div className="flex flex-col w-1/2 h-10 ml-2">
+							<div className="flex">
+								<span className="rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
+									<FontAwesomeIcon icon={faSignature} />
+								</span>
+								<input
+									className="border border-gray-300 rounded-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1 ml-1"
+									placeholder="Last name"
+									name="lastName"
+									{...register('lastName', { required: 'Last name is required' })}
+								/>
+							</div>
+							{errors.lastName && (
+								<p className="text-red-400 text-sm">{errors.lastName.message}</p>
+							)}
+						</div>
 					</div>
 
-					<div className="my-3 flex flex-row">
-						<span
-							className="z-highest rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0"
-							mode="render"
-						>
+					<div className="mt-3 flex flex-row">
+						<span className="z-highest rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
 							<FontAwesomeIcon icon={faAt} />
 						</span>
+						{/* E-mail input */}
 						<input
-							className="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1"
+							className="border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1"
 							type="email"
-							required
 							placeholder="Email"
+							name="email"
+							{...register('email', { required: 'E-mail is required' })}
 						/>
 					</div>
+					{errors.email && <p className="text-red-400 text-sm">{errors.email.message}</p>}
 
-					<div className="mt-3 mb-4 flex flex-row">
+					<div className="mt-3  flex flex-row">
 						<span className="rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
 							<FontAwesomeIcon icon={faCalendarAlt} />
 						</span>
+						{/* Reflection frequency input */}
 						<input
-							className="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1 pr-1"
+							className="border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1 pr-1"
 							type="number"
 							min="0"
 							max="5"
-							required
 							placeholder="Reflection Frequency"
+							name="frequency"
+							{...register('frequency', {
+								required: 'Reflection frequency is required',
+								valueAsNumber: true,
+								minLength: {
+									value: 1,
+									message: 'Reflection Frequency must be at least 1',
+								},
+							})}
 						/>
 					</div>
-					<p className="text-gray-400 text-center mb-1">
-						Bootcamper ID and bootcamp start date
-					</p>
+					{errors.frequency && (
+						<p className="text-red-400 text-sm">{errors.frequency.message}</p>
+					)}
+					<p className="text-gray-400  mt-2">Bootcamper ID and bootcamp start date</p>
 					<div className="mb-3 flex flex-row">
-						<span
-							id="whoobe-4occ6"
-							className=" rounded-l-lg w-14 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0"
-						>
-							<FontAwesomeIcon icon={faIdBadge} />
-						</span>
-						<input
-							type="text"
-							className="h-10 border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-1/2 pl-1 mr-1"
-							placeholder="ID"
-							required
-						/>
-						<span
-							id="whoobe-4occ6"
-							className=" rounded-l-lg w-14 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0 ml-2"
-						>
-							<FontAwesomeIcon icon={faCalendarWeek} />
-						</span>
-						<input
-							type="date"
-							className="h-10 border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-3/4 pl-4"
-							placeholder="Start Date"
-							defaultValue={today}
-							required
-						/>
+						<div className="flex flex-col ">
+							<div className="flex">
+								<span className=" rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
+									<FontAwesomeIcon icon={faIdBadge} />
+								</span>
+								{/* Bootcamper ID input */}
+								<input
+									type="text"
+									className="h-10 border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-300  pl-1 mr-1"
+									placeholder="ID"
+									name="bootcamperId"
+									{...register('bootcamperId', {
+										required: 'Bootcamper ID is required',
+									})}
+								/>
+							</div>
+							{errors.bootcamperId && (
+								<p className="text-red-400 text-sm">
+									{errors.bootcamperId.message}
+								</p>
+							)}
+						</div>
+
+						<div className="flex w-1/3">
+							<div className="flex">
+								<span className=" rounded-l-lg w-14 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0 ml-2">
+									<FontAwesomeIcon icon={faCalendarWeek} />
+								</span>
+								{/* Start date input */}
+								<input
+									type="date"
+									className="h-10 border border-gray-300 rounded-r-lg w-full outline-none focus:ring-1 ring-blue-300 pl-4"
+									placeholder="Start Date"
+									defaultValue={today}
+									name="startDate"
+									{...register('startDate', {
+										required: 'Start date is required',
+										// valueAsDate: true,
+									})}
+								/>
+							</div>
+							{errors.startDate && (
+								<p className="text-red-400 text-sm">{errors.startDate.message}</p>
+							)}
+						</div>
 					</div>
 
-					<div className="my-3 flex flex-row">
+					<div className="mt-3 flex flex-row">
 						<span className=" rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
 							<FontAwesomeIcon icon={faIdBadge} />
 						</span>
+						{/* Password input */}
 						<input
 							type="password"
-							className="h-10 border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-full pl-1"
+							className="h-10 border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-full pl-1"
 							placeholder="Password"
-							required
+							name="password"
+							{...register('password', {
+								required: 'Password required!',
+								minLength: {
+									value: 6,
+									message: 'Password must be at least 6 characters',
+								},
+							})}
 						/>
 					</div>
+					{errors.password && (
+						<p className="text-red-400 text-sm">{errors.password.message}</p>
+					)}
 					<button
 						type="submit"
 						className="px-4 py-2 rounded bg-purple-500 text-white hover:bg-purple-700 my-4 w-full"
 					>
-						<Link to="/dashboard" className="">
-							Sign Up
-						</Link>
+						{/* <Link to="/dashboard" className=""> */}
+						Sign Up
+						{/* </Link> */}
 					</button>
 
-					<p className="text-purple-400 text-xs m-3">
+					<p className="text-purple-400 text-sm m-3">
 						<Link to="/" className="">
 							Already have an account?
 						</Link>

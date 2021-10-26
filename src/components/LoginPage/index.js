@@ -1,53 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey, faAt } from '@fortawesome/free-solid-svg-icons';
 import css from './index.module.css';
 
-const initialState = { email: '', password: '' };
 export default function LoginPage() {
-	const [formValues, setFormValues] = useState(initialState);
-	const [formErrors, setFormErrors] = useState({});
-	const [isSubmit, setIsSubmit] = useState(false);
-	function handleChange(e) {
-		const { name, value } = e.target;
-		setFormValues({ ...formValues, [name]: value });
-	}
-	function handleSubmit(e) {
-		e.preventDefault();
-		setFormErrors(validate(formValues));
-		setIsSubmit(true);
-	}
-	useEffect(() => {
-		console.log(formErrors);
-		if (Object.keys(formErrors).length === 0 && isSubmit) {
-			// console.log(formValues);
-		}
-	}, [formErrors, isSubmit]);
-	function validate(values) {
-		const errors = {};
-		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-		if (!values.email) {
-			errors.email = 'Email is required';
-		} else if (!regex.test(values.email)) {
-			errors.email = 'Email is not valid';
-		}
-		if (!values.password) {
-			errors.password = 'Password is required';
-		} else if (values.password.length < 6) {
-			errors.password = 'Password is too short ';
-		}
-		return errors;
-	}
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+	const onSubmit = (data) => {
+		console.log(data);
+	};
 	return (
 		<div
 			className={`${'flex flex-col items-center justify-center h-screen '}${css.back}`}
 			style={{ backgroundImage: 'url(/images/background.jpg)' }}
 		>
-			{/* <p className="text-white">{JSON.stringify(formValues, undefined, 2)}</p> */}
 			<form
 				className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/3 m-auto bg-opacity-95"
-				onSubmit={handleSubmit}
+				onSubmit={handleSubmit(onSubmit)}
 			>
 				<h2 className="text-3xl my-4 text-purple-500 font-medium ">Login</h2>
 				<div className="w-full p-2 justify-start flex flex-col">
@@ -55,33 +28,46 @@ export default function LoginPage() {
 						<span className=" rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
 							<FontAwesomeIcon icon={faAt} />
 						</span>
+
+						{/* E-mail input */}
 						<input
 							className="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-2"
 							type="email"
 							name="email"
-							value={formValues.email}
-							onChange={handleChange}
 							placeholder="E-mail"
+							{...register('email', { required: true })}
 						/>
 					</div>
-					<p className="text-red-400 text-xs">{formErrors.email}</p>
+					{/* Display e-mail input error message */}
+					{errors.email && <p className="text-red-400 text-sm">Invalid email address</p>}
 
 					<div className="mt-4 flex flex-row">
 						<span className="rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
 							<FontAwesomeIcon icon={faKey} />
 						</span>
+
+						{/* Password input */}
 						<input
 							type="password"
 							name="password"
 							className="h-10 border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-full pl-2"
-							value={formValues.password}
-							onChange={handleChange}
 							placeholder="Password"
+							{...register('password', {
+								required: 'Password required',
+								minLength: {
+									value: 6,
+									message: 'Password must be at least 6 characters',
+								},
+							})}
 						/>
 					</div>
-					<p className="text-red-400 text-xs">{formErrors.password}</p>
 
-					<span className="text-purple-400 text-xs mt-4">
+					{/* Display password input error message */}
+					{errors.password && (
+						<p className="text-red-400 text-sm">{errors.password.message}</p>
+					)}
+
+					<span className="text-purple-400 text-sm mt-4">
 						<Link to="/dashboard" className="">
 							Forgot your password?
 						</Link>
@@ -95,10 +81,10 @@ export default function LoginPage() {
 						Login
 					</button>
 					{/* </Link> */}
-					<p className="text-gray-400 text-xs m-3">
+					<p className="text-gray-400 text-sm m-3">
 						Need an account?{' '}
 						<Link to="/register" className="">
-							<span className="text-purple-400 text-xs">Register</span>{' '}
+							<span className="text-purple-400 text-sm">Register</span>{' '}
 						</Link>
 					</p>
 				</div>
