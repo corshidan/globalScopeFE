@@ -40,15 +40,13 @@ export default function BlogRecapPage() {
             Topics you have covered on Week 4 day 2, and your confidence rating
             out of 5:
           </label>
-          <div className="flex">
-            <ul className="topics textarea h-32 textarea-bordered textarea-accent">
+          <div className="">
+            <ul className="flex textarea h-15 textarea-bordered textarea-accent justify-between">
               {reflections[0].topics.map((topic) => {
                 return (
-                  <div className="comment">
                     <li>
                       {topic.topic} - {topic.rating}
                     </li>
-                  </div>
                 );
               })}
             </ul>
