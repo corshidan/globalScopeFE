@@ -9,11 +9,10 @@ export default function Sidebar() {
         <p>Bootcamper</p>
         <p>Dashboard</p>
       </div>
-      <ul>
-        <Link to='/dashboard'>Dashboard</Link>
-        <Link to='/bloginputpage'>Blog Input Page</Link>
-        <Link to='/blogrecappage'>Blog Recap Page</Link>
-      </ul>
+
+      <Link to='/dashboard'>Dashboard</Link>
+      <Link to='/bloginputpage'>Blog Input Page</Link>
+      <Link to='/blogrecappage'>Blog Recap Page</Link>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Card({ image, title, buttonLabel, path }) {
   return (
     <div className=' flex justify-center items-center '>
-      <div className='flex flex-col items-center bg-white shadow-md border border-gray-200 rounded-lg   w-9/12 pb-2 hover:bg-green-400'>
+      <div className='flex flex-col items-center bg-white shadow-md border border-gray-200 rounded-lg   w-9/12 pb-2 hover:bg-green-400 shadow-2xl shadow-inner'>
         <img className='rounded-t-lg w-full' src={image} alt='' />
 
         <div className='flex flex-col items-center w-full'>
