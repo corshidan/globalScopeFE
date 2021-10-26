@@ -8,13 +8,13 @@ export default function Header() {
 
 	return (
 		<>
-			<header className="header">
+			<header className="header h-20 bg-purple-600 pr-5">
 				<br />
 				<FontAwesomeIcon className="w-6" size="xs" icon={faStar} />
-				<p className="quote">
+				<p className="quote text-right text-white italic">
 					"Only compare yourself if you know you’re better than the other person"
 				</p>
-				<p className="date"> {date}</p>
+				<p className="date text-right text-white"> {date}</p>
 			</header>
 		</>
 	);

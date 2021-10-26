@@ -5,7 +5,7 @@ import Header from '../Header'
 export default function Layout({ children }) {
   return (
     <>
-      <div className={css.layoutComponent}>
+      <div className="h-full flex">
         <Sidebar />
         <div>
         <Header />
