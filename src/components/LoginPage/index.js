@@ -23,7 +23,7 @@ export default function LoginPage() {
 		if (Object.keys(formErrors).length === 0 && isSubmit) {
 			// console.log(formValues);
 		}
-	}, [formErrors]);
+	}, [formErrors, isSubmit]);
 	function validate(values) {
 		const errors = {};
 		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
