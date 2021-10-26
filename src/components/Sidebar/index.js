@@ -6,12 +6,12 @@ import css from './sidebar.module.css';
 const styles =
 	'flex  flex-col justify-center items-center mb-7 font-bold break-all text-center text-xl';
 export default function Sidebar() {
-	return (
-		<div className={css.sidebar}>
-			<div className={styles}>
-				<p>Bootcamper</p>
-				<p>Dashboard</p>
-			</div>
+  return (
+    <div className={css.sidebar}>
+      <div className={styles}>
+        <p>Bootcamper</p>
+        <p>Dashboard</p>
+      </div>
 
 			<ul className={css.navigation}>
 				<li className="rounded-l-full hover:bg-green-400 hover:text-white duration-300">
