@@ -33,7 +33,9 @@ export default function BlogRecapPage() {
             min="2021-01-01"
             max="2021-12-31"
           />
-          <button className="btn btn-sm btn-accent mb-5">Submit</button>
+          <button className="btn btn-sm btn-accent shadow-md bg-green-300 mb-5">
+            Submit
+          </button>
         </div>
         <div className="flex flex-col border-4">
           <label htmlFor="topics-section">
@@ -44,9 +46,9 @@ export default function BlogRecapPage() {
             <ul className="flex textarea h-15 textarea-bordered textarea-accent justify-between">
               {reflections[0].topics.map((topic) => {
                 return (
-                    <li>
-                      {topic.topic} - {topic.rating}
-                    </li>
+                  <li>
+                    {topic.topic} - {topic.rating}
+                  </li>
                 );
               })}
             </ul>
