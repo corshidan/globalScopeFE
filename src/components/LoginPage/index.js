@@ -21,7 +21,7 @@ export default function LoginPage() {
 	useEffect(() => {
 		console.log(formErrors);
 		if (Object.keys(formErrors).length === 0 && isSubmit) {
-			console.log(formValues);
+			// console.log(formValues);
 		}
 	}, [formErrors]);
 	function validate(values) {
@@ -44,7 +44,7 @@ export default function LoginPage() {
 			className={`${'flex flex-col items-center justify-center h-screen '}${css.back}`}
 			style={{ backgroundImage: 'url(/images/background.jpg)' }}
 		>
-			<p className="text-white">{JSON.stringify(formValues, undefined, 2)}</p>
+			{/* <p className="text-white">{JSON.stringify(formValues, undefined, 2)}</p> */}
 			<form
 				className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/3 m-auto bg-opacity-95"
 				onSubmit={handleSubmit}
