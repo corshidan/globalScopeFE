@@ -1,18 +1,18 @@
 header {
-  width: 100%;
-  height: 5vw;
-  background-color: #60638c;
-  padding-right: 20px;
+	/* width: 100%; */
+	height: 5vw;
+	background-color: #60638c;
+	padding-right: 20px;
 }
 
 .quote {
-  text-align: end;
-  justify-self: center;
-  color: white;
-  font-style: italic;
+	text-align: end;
+	justify-self: center;
+	color: white;
+	font-style: italic;
 }
 
 .date {
-  text-align: end;
-  color: white;
+	text-align: end;
+	color: white;
 }

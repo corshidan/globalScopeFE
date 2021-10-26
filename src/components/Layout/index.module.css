@@ -1,11 +1,11 @@
 .layoutComponent {
-	height: 70vmax;
+	height: 100%;
 	display: flex;
 }
 .layoutComponent > div {
-	border-top: 1px solid black;
+	/* border-top: 1px solid black; */
 }
 .right {
-	width: 90vw;
-	padding-left: 12vw;
+	/* width: 90vw; */
+	/* padding-left: 12vw; */
 }
