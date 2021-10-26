@@ -12,7 +12,6 @@ import css from './index.module.css';
 export default function RegisterPage() {
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
-	console.log(today);
 	return (
 		<div
 			className={`${'flex items-center justify-center h-screen  '}${css.back}`}
@@ -41,7 +40,7 @@ export default function RegisterPage() {
 						/>
 					</div>
 
-					<div class="my-3 flex flex-row">
+					<div className="my-3 flex flex-row">
 						<span
 							className="z-highest rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0"
 							mode="render"

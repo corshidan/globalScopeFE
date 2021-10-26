@@ -5,19 +5,19 @@ export default function BlogInputPage() {
 		<Layout>
 			<form className="border-2">
 				<div className="flex flex-col border-4">
-					<label for="topics-section">
+					<label htmlFor="topics-section">
 						What topics have you covered since you were last here? Rate your confidence
 						for each from 1-5:
 					</label>
 					<div className="flex">
-						<label for="topicOne"></label>
+						<label htmlFor="topicOne"></label>
 						<input
 							id="topicOne"
 							name="topicOne"
 							list="topics"
 							placeholder="The first topic was..."
 						/>
-						<label for="ratingTopicOne"></label>
+						<label htmlFor="ratingTopicOne"></label>
 						<input
 							type="number"
 							id="ratingTopicOne"
@@ -30,9 +30,9 @@ export default function BlogInputPage() {
 						<option value="JS"></option>
 					</datalist>
 					<div className="flex">
-						<label for="topicTwo"></label>
+						<label htmlFor="topicTwo"></label>
 						<input id="topicTwo" name="topicTwo" list="topics" placeholder="And..." />
-						<label for="ratingTopicTwo"></label>
+						<label htmlFor="ratingTopicTwo"></label>
 						<input
 							type="number"
 							id="ratingTopicTwo"
@@ -43,14 +43,14 @@ export default function BlogInputPage() {
 					</div>
 
 					<div className="flex">
-						<label for="topicThree"></label>
+						<label htmlFor="topicThree"></label>
 						<input
 							id="topicThree"
 							name="topicThree"
 							list="topics"
 							placeholder="Also..."
 						/>
-						<label for="ratingTopicThree"></label>
+						<label htmlFor="ratingTopicThree"></label>
 						<input
 							type="number"
 							id="ratingTopicThree"
@@ -61,14 +61,14 @@ export default function BlogInputPage() {
 					</div>
 
 					<div className="flex">
-						<label for="topicFour"></label>
+						<label htmlFor="topicFour"></label>
 						<input
 							id="topicFour"
 							name="topicFour"
 							list="topics"
 							placeholder="Wait, I nearly forgot..."
 						/>
-						<label for="ratingTopicFour"></label>
+						<label htmlFor="ratingTopicFour"></label>
 						<input
 							type="number"
 							id="ratingTopicFour"
@@ -79,42 +79,49 @@ export default function BlogInputPage() {
 					</div>
 				</div>
 
-        <div className="flex flex-col border-4">
-          <label for="confidence-range">
-            How confident do you feel about what you've learned since your last
-            reflection?
-          </label>
-          <p>1 2 3 4 5</p>
-          <input className=" range range-accent" id="confidence-range" type="range" min="0" max="5" step="1" />
-        </div>
+				<div className="flex flex-col border-4">
+					<label htmlFor="confidence-range">
+						How confident do you feel about what you've learned since your last
+						reflection?
+					</label>
+					<p>1 2 3 4 5</p>
+					<input
+						className=" range range-accent"
+						id="confidence-range"
+						type="range"
+						min="0"
+						max="5"
+						step="1"
+					/>
+				</div>
 
-        <div className="flex flex-col border-4">
-          <label for="improvements">
-            What could have gone better / What areas would you like to improve?
-          </label>
-          <textarea
-		  className="textarea h-24 textarea-bordered textarea-accent"
-            id="improvements"
-            name="improvements"
-            placeholder="Enter your thoughts here..."
-            rows="6"
-            cols="50"
-          ></textarea>
-        </div>
+				<div className="flex flex-col border-4">
+					<label htmlFor="improvements">
+						What could have gone better / What areas would you like to improve?
+					</label>
+					<textarea
+						className="textarea h-24 textarea-bordered textarea-accent"
+						id="improvements"
+						name="improvements"
+						placeholder="Enter your thoughts here..."
+						rows="6"
+						cols="50"
+					></textarea>
+				</div>
 
-        <div className="flex flex-col border-4">
-          <label for="add-thoughts">Any other thoughts?:</label>
-          <textarea
-		  	className="textarea h-24 textarea-bordered textarea-accent"
-            id="add-thoughts"
-            name="add-thoughts"
-            placeholder="I've run out of peanut butter..."
-            rows="6"
-            cols="50"
-          />
-        </div>
-        <button className="btn btn-sm btn-accent">Post</button>
-      </form>
-    </Layout>
-  );
+				<div className="flex flex-col border-4">
+					<label htmlFor="add-thoughts">Any other thoughts?:</label>
+					<textarea
+						className="textarea h-24 textarea-bordered textarea-accent"
+						id="add-thoughts"
+						name="add-thoughts"
+						placeholder="I've run out of peanut butter..."
+						rows="6"
+						cols="50"
+					/>
+				</div>
+				<button className="btn btn-sm btn-accent">Post</button>
+			</form>
+		</Layout>
+	);
 }

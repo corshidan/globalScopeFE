@@ -12,7 +12,7 @@ export default function LoginPage() {
 			className={`${'flex items-center justify-center h-screen '}${css.back}`}
 			style={{ backgroundImage: 'url(/images/background.jpg)' }}
 		>
-			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto bg-opacity-95">
+			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/3 m-auto bg-opacity-95">
 				<h2 className="text-3xl my-4 text-purple-500 font-medium ">Login</h2>
 				<div className="w-full p-2 justify-start flex flex-col">
 					<div className=" flex flex-row">
@@ -20,7 +20,7 @@ export default function LoginPage() {
 							<FontAwesomeIcon icon={faAt} />
 						</span>
 						<input
-							className="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1"
+							className="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-2"
 							type="email"
 							required
 							placeholder="E-mail"
@@ -33,7 +33,7 @@ export default function LoginPage() {
 						</span>
 						<input
 							type="password"
-							className="h-10 border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-full pl-1"
+							className="h-10 border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-full pl-2"
 							required
 							placeholder="Password"
 						/>
