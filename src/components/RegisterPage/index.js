@@ -18,7 +18,7 @@ export default function RegisterPage() {
 			className={`${'flex items-center justify-center h-screen  '}${css.back}`}
 			style={{ backgroundImage: 'url(/images/background.jpg)' }}
 		>
-			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/5 m-auto bg-opacity-95">
+			<form className="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-2/5 m-auto bg-opacity-95">
 				<h2 className="text-3xl my-4 text-purple-500 font-medium leading-6">
 					Create a new account
 				</h2>
