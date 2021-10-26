@@ -13,10 +13,10 @@ export default function Header() {
 				<span className="text-white absolute left-10 top-4 pl-1">6</span>
 			</div>
 			<div>
-				<p className="text-right text-purple-600 italic">
+				<p className="text-right text-purple-900 italic">
 					"Only compare yourself if you know you’re better than the other person"
 				</p>
-				<p className="text-right text-purple-600"> {date}</p>
+				<p className="text-right text-purple-900"> {date}</p>
 			</div>
 		</header>
 	);
