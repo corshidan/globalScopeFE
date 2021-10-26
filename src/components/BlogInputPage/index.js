@@ -91,7 +91,7 @@ export default function BlogInputPage() {
             reflection?
           </label>
           <p>1 2 3 4 5</p>
-          <input id="confidence-range" type="range" min="0" max="5" step="1" />
+          <input className=" range range-accent" id="confidence-range" type="range" min="0" max="5" step="1" />
         </div>
 
         <div className="flex flex-col border-4">
@@ -99,7 +99,7 @@ export default function BlogInputPage() {
             What could have gone better / What areas would you like to improve?
           </label>
           <textarea
-		  className="border-2"
+		  className="textarea h-24 textarea-bordered textarea-accent"
             id="improvements"
             name="improvements"
             placeholder="Enter your thoughts here..."
@@ -111,7 +111,7 @@ export default function BlogInputPage() {
         <div className="flex flex-col border-4">
           <label for="add-thoughts">Any other thoughts?:</label>
           <textarea
-		  	className="border-2"
+		  	className="textarea h-24 textarea-bordered textarea-accent"
             id="add-thoughts"
             name="add-thoughts"
             placeholder="I've run out of peanut butter..."
@@ -119,6 +119,7 @@ export default function BlogInputPage() {
             cols="50"
           />
         </div>
+        <button className="btn btn-sm btn-accent">Post</button>
       </form>
     </Layout>
   );
