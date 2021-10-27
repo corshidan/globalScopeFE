@@ -3,11 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBinoculars, faBrain, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import css from './sidebar.module.css';
+
 export default function Sidebar() {
 	const location = useLocation();
 	const sideBarTitle =
 		'flex  text-xs flex-col justify-center items-center mb-7 font-bold md:text-base lg:text-xl';
 	const listStyle = 'rounded-l-full hover:bg-green-400 hover:text-white duration-300 ';
+
 	return (
 		<div className={css.sidebar}>
 			<section id="dashboardTitle" className={sideBarTitle}>
