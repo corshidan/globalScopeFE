@@ -7,11 +7,11 @@ export default function BlogInputPage() {
 		<Layout>
 			<form className=" flex flex-col p-3 h-full container pt-5">
 				<div className="flex flex-col border-2 p-2 mb-2">
-					<label htmlFor="topics-section" className="m-2">
+					<label htmlFor="topics-section" className="mb-2">
 						What topics have you covered since you were last here? Rate your confidence
 						for each from 1-5:
 					</label>
-					<div className="flex justify-center items-center">
+					<div className="flex justify-center items-center mb-2">
 						<div className="flex">
 							<label htmlFor="topicOne"></label>
 							<input
@@ -97,20 +97,20 @@ export default function BlogInputPage() {
 				</datalist>
 
 				<div className="flex flex-col border-2 p-2 mb-2">
-					<label htmlFor="confidence-range" className="m-2">
+					<label htmlFor="confidence-range" className="mb-2">
 						How confident do you feel about what you've learned since your last
 						reflection?
 					</label>
-					<div className="w-1/4">
+					<div className="w-1/4 ">
 						<input
-							className=" range range-neutral m-2"
+							className=" range range-accent"
 							id="confidence-range"
 							type="range"
 							min="1"
 							max="5"
 							step="1"
 						/>
-						<div className="flex text-sm text-gray-600 m-2 pl-3 ">
+						<div className="flex text-sm text-gray-600 mb-2 pl-3 ">
 							<span className="w-8 text-left">1</span>
 							<span className="w-8 text-justify">2</span>
 							<span className="w-8 text-justify">3</span>
@@ -121,11 +121,11 @@ export default function BlogInputPage() {
 				</div>
 
 				<div className="flex flex-col border-2 p-2 mb-2">
-					<label htmlFor="improvements" className="m-2">
+					<label htmlFor="improvements" className="mb-2">
 						What could have gone better / What areas would you like to improve?
 					</label>
 					<textarea
-						className="textarea h-24 textarea-bordered textarea-primary m-2"
+						className="textarea h-24 textarea-bordered textarea-primary mb-2"
 						id="improvements"
 						name="improvements"
 						placeholder="Enter your thoughts here..."
@@ -135,19 +135,28 @@ export default function BlogInputPage() {
 				</div>
 
 				<div className="flex flex-col border-2 p-2 ">
-					<label htmlFor="add-thoughts" className="m-2">
+					<label htmlFor="add-thoughts" className="mb-2">
 						Any other thoughts?:
 					</label>
 					<textarea
-						className="textarea h-24 textarea-bordered textarea-primary m-2"
+						className="textarea h-24 textarea-bordered textarea-primary mb-2"
 						id="add-thoughts"
 						name="add-thoughts"
 						placeholder="I've run out of peanut butter..."
 						rows="6"
 						cols="50"
 					/>
+          
 				</div>
-				<button className="btn btn-sm btn-glass float-right m-4">Post</button>
+        <div class="p-6 card bordered">
+  <div class="form-control">
+    <label class="cursor-pointer label">
+      <span class="label-text">Accessible</span> 
+      <input type="checkbox"  class="toggle toggle-primary"/>
+    </label>
+  </div>
+</div>
+				<button className="btn btn-sm btn-accent m-4">Post</button>
 			</form>
 		</Layout>
 	);
