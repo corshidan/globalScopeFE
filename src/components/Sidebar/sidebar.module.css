@@ -20,22 +20,31 @@
 }
 .navigation {
 	display: flex;
+	padding-left: 1em;
 	flex-direction: column;
 }
-@media (max-width: 1200px) {
+.sidebar section {
+	margin: 0 0.5em 0.8em;
+}
+.navigation {
+	padding: 0;
+}
+section img {
+	width: 200px;
+}
+
+@media (max-width: 1315px) {
 	li span {
 		display: none;
 	}
 	li p {
 		height: 30px;
 	}
+	.sidebar {
+		padding: 2em 0 0 0;
+	}
 }
-.sidebar section {
-	margin: 0 0.5em 0.8em;
-}
-section img {
-	width: 200px;
-}
+
 @media (max-width: 570px) {
 	section p {
 		display: none;
@@ -44,8 +53,5 @@ section img {
 @media (min-width: 570px) {
 	section img {
 		display: none;
-	}
-	.sidebar {
-		padding: 2em 0 0 0;
 	}
 }
