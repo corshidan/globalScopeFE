@@ -49,6 +49,12 @@ section img {
 	section p {
 		display: none;
 	}
+	.sidebar {
+		padding: 0;
+	}
+	.navigation li {
+		margin: 0;
+	}
 }
 @media (min-width: 570px) {
 	section img {
