@@ -18,7 +18,7 @@ export default function Header() {
         <FontAwesomeIcon size="lg" icon={faStar} style={{ fontSize: "51px" }} />
         <span className="text-white absolute left-10 top-4 pl-1">6</span>
       </div>
-	  {user.firstname ? <h1>Welcome {`${user.firstname}'s`}!</h1> : <h1>Welcome Bootcamper!</h1>}
+	  {user.firstname ? <h1>Welcome {`${user.firstname}`}!</h1> : <h1>Welcome Bootcamper!</h1>}
       <div>
         <p className="text-right text-purple-900 italic">
           "Only compare yourself if you know you’re better than the other
