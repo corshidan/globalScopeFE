@@ -26,22 +26,23 @@ export default function BlogRecapPage() {
   return (
     <Layout>
       <div
-        className={`${'flex flex-col items-center justify-center h-screen bg-contain bg-no-repeat bg-top pr-4 pl-4 pt-10 '}${
+        className={`${'flex flex-col items-center justify-center h-screen bg-contain bg-no-repeat bg-top pr-4 pl-4 pt-10   '}${
           css.photo
         }`}
         style={{ backgroundImage: 'url(/images/recapBlogImage.png)' }}
       >
         <form className='justify-center items-center bg-white px-2 flex flex-col  bg-green-500 shadow-lg  opacity-95  h-full rounded-3xl '>
-          <div className='border-2 bg-white  p-3 pt-10 pb-4 rounded-2xl shadow-inner  '>
+          <div className='border-2 bg-white  p-3 pt-10 pb-4 rounded-2xl shadow-inner capitalize '>
             <label htmlFor='start'>What day do you want to review? </label>
             <input
+              className='border-2 border-green-400 '
               type='date'
-              id='start'
+              id='input'
               name='reflection-date'
               min='2021-01-01'
               max='2021-12-31'
             />
-            <button className='btn btn-sm btn-accent shadow-md bg-green-400 mb-5 bg-opacity-100  '>
+            <button className='btn btn-sm btn-accent shadow-xl bg-green-400 mb-5 bg-opacity-100  ml-5  '>
               Search
             </button>
             <br />
