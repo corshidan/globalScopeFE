@@ -1,8 +1,10 @@
 import React from 'react';
 import Layout from '../Layout';
 import Card from '../Card';
+// import { useUser } from '../App/App.js';
 
 export default function Dashboard() {
+	// const user = useUser();
 	return (
 		<Layout>
 			{/* <div className="grid grid-cols-2 p-10"> */}

@@ -1,4 +1,5 @@
 import Layout from '../Layout';
+// import { useUser } from '../App/App.js';
 
 const reflections = [
 	{
@@ -20,6 +21,7 @@ const reflections = [
 ];
 
 export default function BlogRecapPage() {
+	// const user = useUser();
 	return (
 		<Layout>
 			<form className="border-2">

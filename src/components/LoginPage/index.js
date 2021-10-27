@@ -1,17 +1,33 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey, faAt } from '@fortawesome/free-solid-svg-icons';
 import css from './index.module.css';
 
-export default function LoginPage() {
+export default function LoginPage({ handleAuth }) {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+	const history = useHistory();
+	const url = 'http://localhost:5000/login';
 	const onSubmit = (data) => {
-		console.log(data);
+		console.log(JSON.stringify(data));
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				// console.log('this is the response!', response);
+				handleAuth(response.payload[0]);
+				history.replace('/dashboard');
+			})
+			.catch((err) => console.log(err));
 	};
 	return (
 		<div

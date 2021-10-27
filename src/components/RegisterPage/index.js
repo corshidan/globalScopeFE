@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faCalendarAlt,
@@ -18,9 +18,20 @@ export default function RegisterPage() {
 	} = useForm();
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
-
+	const history = useHistory();
+	const url = 'https://global-scope.herokuapp.com/bootcampers';
 	const onSubmit = (data) => {
-		console.log(data);
+		console.log(JSON.stringify(data));
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then((res) => res.json())
+			.then((data) => history.replace('/'))
+			.catch((err) => console.log(err));
 	};
 	return (
 		<div
@@ -46,8 +57,8 @@ export default function RegisterPage() {
 								<input
 									className="border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1"
 									placeholder="First name"
-									name="firstName"
-									{...register('firstName', {
+									name="firstname"
+									{...register('firstname', {
 										required: 'First name is required',
 									})}
 								/>
@@ -65,8 +76,8 @@ export default function RegisterPage() {
 								<input
 									className="border border-gray-300 rounded-lg outline-none focus:ring-1 ring-blue-400 w-full pl-1 ml-1"
 									placeholder="Last name"
-									name="lastName"
-									{...register('lastName', { required: 'Last name is required' })}
+									name="lastname"
+									{...register('lastname', { required: 'Last name is required' })}
 								/>
 							</div>
 							{errors.lastName && (
@@ -127,8 +138,8 @@ export default function RegisterPage() {
 									type="text"
 									className="h-10 border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-300  pl-1 mr-1"
 									placeholder="ID"
-									name="bootcamperId"
-									{...register('bootcamperId', {
+									name="bootcamperid"
+									{...register('bootcamperid', {
 										required: 'Bootcamper ID is required',
 									})}
 								/>
@@ -151,8 +162,8 @@ export default function RegisterPage() {
 									className="h-10 border border-gray-300 rounded-r-lg w-full outline-none focus:ring-1 ring-blue-300 pl-4"
 									placeholder="Start Date"
 									defaultValue={today}
-									name="startDate"
-									{...register('startDate', {
+									name="startdate"
+									{...register('startdate', {
 										required: 'Start date is required',
 										// valueAsDate: true,
 									})}

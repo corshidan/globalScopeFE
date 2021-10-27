@@ -9,7 +9,7 @@ export default function Sidebar() {
 	const sideBarTitle =
 		'flex  text-xs flex-col justify-center items-center mb-7 font-bold md:text-base lg:text-xl';
 	const listStyle = 'rounded-l-full hover:bg-green-400 hover:text-white duration-300 ';
-
+	console.log(location);
 	return (
 		<div className={css.sidebar}>
 			<section id="dashboardTitle" className={sideBarTitle}>
