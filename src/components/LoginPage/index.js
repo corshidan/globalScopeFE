@@ -11,7 +11,7 @@ export default function LoginPage({ handleAuth }) {
 		formState: { errors },
 	} = useForm();
 	const history = useHistory();
-	const url = 'http://localhost:5000/login';
+	const url = 'https://global-scope.herokuapp.com/login';
 	const onSubmit = (data) => {
 		console.log(JSON.stringify(data));
 		fetch(url, {
