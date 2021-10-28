@@ -1,6 +1,9 @@
 import Layout from '../Layout';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
 import { useForm } from 'react-hook-form';
 // import { useHistory } from 'react-router-dom';
+
 export default function BlogInputPage() {
 	const topicInputStyle = 'w-2/3 mr-1 border pl-2 bg-gray-100 rounded';
 	const topicRatingStyle = 'w-1/6 border bg-gray-100 rounded pr-1';
@@ -31,6 +34,7 @@ export default function BlogInputPage() {
 		console.log(newReflection);
 	};
 	return (
+		<Box>
 		<Layout>
 			<form
 				className=" flex flex-col p-3 h-full container pt-5"
@@ -219,30 +223,21 @@ export default function BlogInputPage() {
 						How confident do you feel about what you've learned since your last
 						reflection?
 					</label>
-					<div className="w-1/4 ">
-						<input
-							className=" range range-accent"
-							id="confidence-range"
-							type="range"
-							min="1"
-							max="5"
-							step="1"
-							defaultValue="3"
-							name="confidence"
-							{...register('confidence', {
-								required: true,
-							})}
-						/>
-						<div className="flex text-sm text-gray-600 mb-2 pl-3 ">
-							<span className="w-8 text-left">1</span>
-							<span className="w-8 text-justify">2</span>
-							<span className="w-8 text-justify">3</span>
-							<span className="w-8 text-justify">4</span>
-							<span className="w-8 text-right">5</span>
-						</div>
-					</div>
-				</div>
+
+				
+				<Slider
+					sx={{ width: 400 }}
+        			aria-label="Confidence"
+					color="success"
+        			defaultValue={3}
+        			valueLabelDisplay="auto"
+        			step={1}
+        			marks
+        			min={1}
+        			max={5} />
+</div>
 				{/* Improvements input */}
+
 				<div className="flex flex-col border-2 p-2 mb-2">
 					<label htmlFor="improvements" className="mb-2">
 						What could have gone better / What areas would you like to improve?
@@ -295,5 +290,6 @@ export default function BlogInputPage() {
 				<button className="btn btn-sm btn-accent m-4">Post</button>
 			</form>
 		</Layout>
+		</Box>
 	);
 }
