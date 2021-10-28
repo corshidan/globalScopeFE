@@ -36,7 +36,6 @@ function App() {
 
 export function useUser() {
 	const test = useContext(UserContext);
-	console.log('useuser test', test);
 	return test;
 }
 export default App;
