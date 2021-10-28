@@ -32,10 +32,10 @@ export default function BlogRecapPage() {
 				style={{ backgroundImage: 'url(/images/recapBlogImage.png)' }}
 			>
 				<form className="justify-center items-center  px-4  flex flex-col  pb-3 shadow-lg  opacity-95  h-full rounded-3xl ">
-					<div className={`${"bg-white px-6 py-10 my-6 rounded-2xl border-4 border-green-200 shadow-inner h-full m-2"} ${css.capital}`}>
+					<div className={`${"bg-white px-6 py-4 my-6 rounded-2xl border-4 border-green-200 shadow-inner h-full m-2"} ${css.capital}`}>
 						<label className="mr-3" htmlFor="start">What day do you want to review? </label>
 						<input
-							className="rounded text-center border-2 border-green-400 "
+							className="rounded text-center border border-green-400 shadow-lg focus:ring-1 ring-blue-400 "
 							type="date"
 							defaultValue={today}
 							id="input"
@@ -43,7 +43,7 @@ export default function BlogRecapPage() {
 							min="2021-01-01"
 							max="2021-12-31"
 						/>
-						<button className="btn btn-sm btn-accent shadow-xl bg-green-400 mb-5 bg-opacity-100  ml-5  ">
+						<button className="btn btn-sm btn-accent shadow-xl bg-green-400 mb-5 ml-5 ">
 							Look up
 						</button>
 						<br />
