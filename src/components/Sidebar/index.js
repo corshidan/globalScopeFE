@@ -3,17 +3,20 @@ import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBinoculars, faBrain, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import css from './sidebar.module.css';
+import { useUser } from '../App/App.js';
+
 
 export default function Sidebar() {
+	const user = useUser();
 	const location = useLocation();
 	const sideBarTitle =
-		'flex  text-xs flex-col justify-center items-center mb-7 font-bold md:text-base lg:text-xl';
-	const listStyle = 'rounded-l-full hover:bg-green-400 hover:text-white duration-300 ';
-	console.log(location);
+		'flex  text-xs flex-col justify-center items-center mb-7 font-bold text-white md:text-base lg:text-xl';
+	const listStyle = 'rounded-l-full text-white hover:bg-green-400 duration-300 ';
+
 	return (
 		<div className={css.sidebar}>
 			<section id="dashboardTitle" className={sideBarTitle}>
-				<p>Bootcamper</p>
+				{user.firstname ? <p>{`${user.firstname}'s`}</p> : <p>Bootcamper's</p>}
 				<p>Dashboard</p>
 				<img src="/images/32.png" alt="" />
 			</section>
@@ -21,7 +24,7 @@ export default function Sidebar() {
 			<ul className={css.navigation}>
 				<li
 					className={`${listStyle}${
-						location.pathname === '/dashboard' ? 'bg-green-400' : ''
+						location.pathname === '/dashboard' ? 'bg-white text-purple-800' : ''
 					}`}
 				>
 					<Link to="/dashboard">
@@ -33,25 +36,25 @@ export default function Sidebar() {
 				</li>
 				<li
 					className={`${listStyle}${
-						location.pathname === '/bloginputpage' ? 'bg-green-400' : ''
+						location.pathname === '/bloginputpage' ? 'bg-white text-purple-800' : ''
 					}`}
 				>
 					<Link to="/bloginputpage">
 						<p>
 							<FontAwesomeIcon size="sm" icon={faBrain} />
-							<span className="ml-2">Add Reflection</span>
+							<span className="ml-2">Add To Blog</span>
 						</p>
 					</Link>
 				</li>
 				<li
 					className={`${listStyle}${
-						location.pathname === '/blogrecappage' ? 'bg-green-400' : ''
+						location.pathname === '/blogrecappage' ? 'bg-white text-purple-800' : ''
 					}`}
 				>
 					<Link to="/blogrecappage">
 						<p>
 							<FontAwesomeIcon size="sm" icon={faBinoculars} />
-							<span className="ml-2">Review Reflections</span>
+							<span className="ml-2">Blog Recap</span>
 						</p>
 					</Link>
 				</li>

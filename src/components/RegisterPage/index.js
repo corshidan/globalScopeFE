@@ -63,8 +63,8 @@ export default function RegisterPage() {
 									})}
 								/>
 							</div>
-							{errors.firstName && (
-								<p className="text-red-400 text-sm">{errors.firstName.message}</p>
+							{errors.firstname && (
+								<p className="text-red-400 text-sm">{errors.firstname.message}</p>
 							)}
 						</div>
 						{/* Last name input */}
@@ -80,8 +80,8 @@ export default function RegisterPage() {
 									{...register('lastname', { required: 'Last name is required' })}
 								/>
 							</div>
-							{errors.lastName && (
-								<p className="text-red-400 text-sm">{errors.lastName.message}</p>
+							{errors.lastname && (
+								<p className="text-red-400 text-sm">{errors.lastname.message}</p>
 							)}
 						</div>
 					</div>

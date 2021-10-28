@@ -21,11 +21,20 @@ export default function LoginPage({ handleAuth }) {
 			},
 			body: JSON.stringify(data),
 		})
-			.then((res) => res.json())
+			.then((res) => {
+				console.log(res.ok);
+				if (!res.ok) {
+					history.replace('/');
+					return;
+				} else {
+					return res.json();
+				}
+			})
 			.then((response) => {
-				// console.log('this is the response!', response);
-				handleAuth(response.payload[0]);
-				history.replace('/dashboard');
+				if (response) {
+					handleAuth(response.payload[0]);
+					history.replace('/dashboard');
+				}
 			})
 			.catch((err) => console.log(err));
 	};
