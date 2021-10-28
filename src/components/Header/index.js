@@ -1,7 +1,5 @@
-import "./Header.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "../App/App.js";
+import css from "./index.module.css";
 
 export default function Header() {
   const user = useUser();
@@ -13,18 +11,31 @@ export default function Header() {
   }/${current.getFullYear()}`;
 
   return (
-    <header className=" flex justify-between items-center h-15 shadow-md pr-5">
-      <div className="w-1/2 pl-5 relative">
-        <FontAwesomeIcon size="lg" icon={faStar} style={{ fontSize: "51px" }} />
-        <span className="text-white absolute left-10 top-4 pl-1">6</span>
-      </div>
-	  {user.firstname ? <h1>Welcome {`${user.firstname}`}!</h1> : <h1>Welcome Bootcamper!</h1>}
+    <header className=" flex justify-between items-center shadow-md p-3">
       <div>
-        <p className="text-right text-purple-900 italic">
+        {user.firstname ? (
+          <h1>
+            Welcome {`${user.firstname}`}!
+          </h1>
+        ) : (
+          <h1>Welcome Bootcamper!</h1>
+        )}
+        <p className="whitespace-nowrap text-xs">It's {date}</p>
+      </div>
+      <div className={css.streak}>
+        <p>
+          Number of reflections completed:
+          <span>
+            <img className="h-10" src="/images/star.png" alt="star"></img>
+            <span className="">6</span>
+          </span>
+        </p>
+      </div>
+      <div>
+        <p className="text-right text-purple-900 italic whitespace-nowrap">
           "Only compare yourself if you know you’re better than the other
           person"
         </p>
-        <p className="text-right text-purple-900"> {date}</p>
       </div>
     </header>
   );
