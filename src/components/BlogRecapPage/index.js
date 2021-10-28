@@ -1,6 +1,6 @@
 import Layout from '../Layout';
 // import { useUser } from '../App/App.js';
-// import css from './index.module.css';
+import css from './index.module.css';
 
 const reflections = [
 	{
@@ -23,19 +23,21 @@ const reflections = [
 
 export default function BlogRecapPage() {
 	// const user = useUser();
+	const date = new Date();
+	const today = date.toISOString().slice(0, 10);
 	return (
 		<Layout>
 			<div
-				className="flex flex-col items-center justify-center h-screen bg-contain mb-3 bg-no-repeat bg-top pr-4 pl-4 pt-10 "
+				className="flex flex-col items-center justify-center bg-contain mb-3 bg-no-repeat bg-top pr-4 pl-4 pt-3 "
 				style={{ backgroundImage: 'url(/images/recapBlogImage.png)' }}
 			>
 				<form className="justify-center items-center  px-4  flex flex-col  pb-3 shadow-lg  opacity-95  h-full rounded-3xl ">
-					<div className="bg-white px-6 py-10 my-6 rounded-2xl  border-4 border-green-200  shadow-inner capitalize h-full m-2">
-						<label htmlFor="start">What day do you want to review? </label>
+					<div className={`${"bg-white px-6 py-10 my-6 rounded-2xl border-4 border-green-200 shadow-inner h-full m-2"} ${css.capital}`}>
+						<label className="mr-3" htmlFor="start">What day do you want to review? </label>
 						<input
-							className="border-2 border-green-400 "
+							className="rounded text-center border-2 border-green-400 "
 							type="date"
-							value="2021-10-25"
+							defaultValue={today}
 							id="input"
 							name="reflection-date"
 							min="2021-01-01"
@@ -49,11 +51,11 @@ export default function BlogRecapPage() {
 							Topics you have covered on Week 4 day 2, and your confidence rating out
 							of 5:
 						</label>
-						<ul className="flex textarea h-20 textarea-bordered textarea-accent justify-around font-bold mt-4 mb-4 ">
+						<ul className="flex textarea h-20 textarea-bordered textarea-accent justify-around font-bold mt-2 mb-4 ">
 							{reflections[0].topics.map((topic, i) => {
 								return (
 									<li key={i}>
-										{topic.topic} - {topic.rating}
+										{topic.topic} - <span className="text-lg">{topic.rating}</span>
 									</li>
 								);
 							})}
@@ -62,14 +64,14 @@ export default function BlogRecapPage() {
 							How confident did you feel about what you've learned since your last
 							reflection?
 						</label>
-						<p className=" textarea h-5 font-bold textarea-accent mt-4 mb-4  ">4/5</p>
+						<p className=" textarea h-5 font-bold textarea-accent mt-2 mb-4  ">4/5</p>
 						<label htmlFor="improvements">What you needed to work on...</label>
-						<p className="improvement textarea h-20 textarea-bordered textarea-accent font-bold mt-4 mb-4  ">
+						<p className="improvement textarea h-20 textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
 							{reflections[0].improvements}
 						</p>
 
 						<label htmlFor="add-thoughts">Other thoughts...</label>
-						<p className="reflection textarea h-20 textarea-bordered textarea-accent font-bold mt-4 mb-4  ">
+						<p className="reflection textarea textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
 							{reflections[0].reflection}
 						</p>
 						<label htmlFor="feeling-score">How you were feeling?</label>
