@@ -53,7 +53,7 @@ export default function LoginPage({ handleAuth }) {
       className={`${'flex flex-col items-center justify-center h-screen '}${
         css.back
       }`}
-      style={{ backgroundImage: 'url(/images/Untitled1.jpg)' }}
+      style={{ backgroundImage: 'url(/images/backgroundBro.jpg)' }}
     >
       <form
         className='justify-center  w-full shadow rounded-lg bg-white flex flex-col md:w-1/2 lg:w-1/3 m-auto bg-opacity-95'
