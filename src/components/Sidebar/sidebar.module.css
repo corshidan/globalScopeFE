@@ -2,8 +2,10 @@
 	position: fixed;
 	height: 100vh;
 	width: 13%;
+	display: flex;
 	flex-direction: column;
-	align-items: center;
+	/* justify-content: space-between; */
+	/* align-items: space-between; */
 	/* white-space: nowrap; */
 	background-color: #401485;
 	/* color: #fff; */
@@ -34,6 +36,9 @@ section img {
 	width: 200px;
 }
 
+.bottomList {
+	cursor: pointer;
+}
 @media (max-width: 1315px) {
 	li span {
 		display: none;
