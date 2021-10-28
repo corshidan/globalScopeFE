@@ -3,25 +3,6 @@ import Layout from '../Layout';
 import { useState } from 'react';
 import css from './index.module.css';
 
-// const reflections = [
-// 	{
-// 		bootcamperid: 10,
-// 		reflection:
-// 			'Really enjoyed the day, the vibe is good, high morale, we definitely need to work a bit more on the design of the project.    It feels like there is so much more to work on , maybe a bit overwhelming but slowly and with perseverance we keep going forward',
-// 		accessible: true,
-// 		topics: [
-// 			{ topic: 'primitive types', rating: 4 },
-// 			{ topic: 'complex types', rating: 2 },
-// 			{ topic: 'pass by reference', rating: 3 },
-// 			{ topic: 'cognitive load', rating: 5 },
-// 		],
-// 		confidence: 4,
-// 		grateful: 'how awesome this course is',
-// 		improvements: 'complex types, computational thinking',
-// 		overallFeeling: 5,
-// 	},
-// ];
-
 export default function BlogRecapPage() {
 	// const user = useUser();
 	const date = new Date();

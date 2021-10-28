@@ -1,0 +1,18 @@
+.streak {
+
+}
+
+.streak span {
+  position: absolute;
+  /* top:50%; */
+}
+
+.streak span span {
+	position:relative;
+	top:50%;
+	right:50%;
+  }
+
+.streak img {
+  display: inline-block;
+}
