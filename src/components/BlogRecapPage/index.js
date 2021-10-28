@@ -26,7 +26,7 @@ export default function BlogRecapPage() {
 	// const user = useUser();
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
-	let face = `/images/emojis/${reflections[0].overallFeeling}.png` || "3.png";
+	let face = `/images/emojis/${reflections[0].overallFeeling}.png` || "/images/emojis/3.png";
 
 	return (
 		<Layout>
