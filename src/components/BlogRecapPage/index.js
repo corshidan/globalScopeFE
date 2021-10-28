@@ -6,16 +6,19 @@ import css from './index.module.css';
 export default function BlogRecapPage() {
 	// const user = useUser();
 	const date = new Date();
-	const [reflections, setReflections] = useState(null);
-	const [reflectionDate, setReflectionDate] = useState(null);
 	const today = date.toISOString().slice(0, 10);
+	const [reflections, setReflections] = useState(null);
+	const [reflectionDate, setReflectionDate] = useState(today);
 	// let face = `/images/emojis/${reflections[0].overallFeeling}.png` || '/images/emojis/3.png';
 	const getReflection = (date, id, e) => {
 		e.preventDefault();
 		console.log(date, id);
 		fetch(`https://global-scope.herokuapp.com/reflections?date=${date}&id=${id}`)
 			.then((res) => res.json())
-			.then((response) => setReflections([...response.payload]));
+			.then((response) => {
+				if (!response.payload) return;
+				setReflections([...response.payload]);
+			});
 	};
 	return (
 		<Layout>
