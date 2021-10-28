@@ -26,8 +26,7 @@ export default function BlogRecapPage() {
 	// const user = useUser();
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
-	let face;
-	reflections[0].overallFeeling === 1 ? face="/images/cryingFace.png" : reflections[0].overallFeeling === 2 ? face="/images/confusedFace.png" : reflections[0].overallFeeling === 3 ? face="/images/neutralFace.png" : reflections[0].overallFeeling === 4 ? face="/images/thinkingFace.png" : reflections[0].overallFeeling === 5 ? face="/images/grinningFace.png" : face="/images/starStruckFace.png";
+	let face = `/images/emojis/${reflections[0].overallFeeling}.png` || "3.png";
 
 	return (
 		<Layout>
