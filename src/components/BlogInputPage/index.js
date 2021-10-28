@@ -1,9 +1,14 @@
 import Layout from '../Layout';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+import * as React from 'react';
+
 
 export default function BlogInputPage() {
 	const topicInputStyle = 'w-2/3 mr-1 border pl-2 bg-gray-100 rounded';
 	const topicRatingStyle = 'w-1/6 border bg-gray-100 rounded pr-1';
 	return (
+		<Box>
 		<Layout>
 			<form className=" flex flex-col p-3 h-full container pt-5">
 				<div className="flex flex-col border-2 p-2 mb-2">
@@ -101,24 +106,17 @@ export default function BlogInputPage() {
 						How confident do you feel about what you've learned since your last
 						reflection?
 					</label>
-					<div className="w-1/4">
-						<input
-							className=" range range-neutral m-2"
-							id="confidence-range"
-							type="range"
-							min="1"
-							max="5"
-							step="1"
-						/>
-						<div className="flex text-sm text-gray-600 m-2 pl-3 ">
-							<span className="w-8 text-left">1</span>
-							<span className="w-8 text-justify">2</span>
-							<span className="w-8 text-justify">3</span>
-							<span className="w-8 text-justify">4</span>
-							<span className="w-8 text-right">5</span>
-						</div>
-					</div>
 				</div>
+				<Slider
+					sx={{ width: 400 }}
+        			aria-label="Confidence"
+					color="success"
+        			defaultValue={3}
+        			valueLabelDisplay="auto"
+        			step={1}
+        			marks
+        			min={1}
+        			max={5} />
 
 				<div className="flex flex-col border-2 p-2 mb-2">
 					<label htmlFor="improvements" className="m-2">
@@ -150,5 +148,6 @@ export default function BlogInputPage() {
 				<button className="btn btn-sm btn-glass float-right m-4">Post</button>
 			</form>
 		</Layout>
+		</Box>
 	);
 }
