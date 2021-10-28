@@ -21,10 +21,14 @@ const reflections = [
 	},
 ];
 
+
 export default function BlogRecapPage() {
 	// const user = useUser();
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
+	let face;
+	reflections[0].overallFeeling === 1 ? face="/images/cryingFace.png" : reflections[0].overallFeeling === 2 ? face="/images/confusedFace.png" : reflections[0].overallFeeling === 3 ? face="/images/neutralFace.png" : reflections[0].overallFeeling === 4 ? face="/images/thinkingFace.png" : reflections[0].overallFeeling === 5 ? face="/images/grinningFace.png" : face="/images/starStruckFace.png";
+
 	return (
 		<Layout>
 			<div
@@ -69,13 +73,18 @@ export default function BlogRecapPage() {
 						<p className="improvement textarea h-20 textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
 							{reflections[0].improvements}
 						</p>
-
 						<label htmlFor="add-thoughts">Other thoughts...</label>
 						<p className="reflection textarea textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
 							{reflections[0].reflection}
 						</p>
-						<label htmlFor="feeling-score">How you were feeling?</label>
-						<h1>💩</h1>
+						<label htmlFor="feeling-score">How you were feeling:</label>
+						<p className="reflection textarea textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
+						<img src={face} alt="emoji face"/>
+						</p>
+						<label htmlFor="feeling-score">What you were grateful for:</label>
+						<p className="reflection textarea textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
+							{reflections[0].grateful}
+						</p>
 					</div>
 				</form>
 			</div>
