@@ -1,19 +1,23 @@
 import Layout from '../Layout';
 import Slider from '@mui/material/Slider';
 import { useForm } from 'react-hook-form';
-// import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useUser } from '../App/App.js';
+import { useHistory } from 'react-router-dom';
 
 export default function BlogInputPage() {
+	const user = useUser();
 	const topicInputStyle = 'w-2/3 mr-1 border pl-2 bg-gray-100 rounded';
 	const topicRatingStyle = 'w-1/6 border bg-gray-100 rounded pr-1';
+	const emojiStyle = 'w-1/12 h-1/12';
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const user = { bootcamperid: 2 };
-	// const history = useHistory();
-	// const url = 'https://global-scope.herokuapp.com/reflections';
+	const [overallFeeling, setOverallFeeling] = useState(null);
+	const history = useHistory();
+	const url = 'https://global-scope.herokuapp.com/reflections';
 	const onSubmit = (data) => {
 		const newReflection = {
 			bootcamperid: user.bootcamperid,
@@ -28,9 +32,21 @@ export default function BlogInputPage() {
 			confidence: data.confidence,
 			grateful: data.grateful,
 			improvements: data.improvements,
-			overallfeeling: data.overallfeeling,
+			overallfeeling: overallFeeling ? overallFeeling : 4,
 		};
-		console.log(newReflection);
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(newReflection),
+		})
+			.then((res) => res.json())
+			.then((_) => history.replace('/dashboard'))
+			.catch((err) => console.log(err));
+	};
+	const handleEmoji = (digit) => {
+		setOverallFeeling(digit);
 	};
 	return (
 		<Layout>
@@ -237,6 +253,8 @@ export default function BlogInputPage() {
 								marks
 								min={1}
 								max={5}
+								name="confidence"
+								{...register('confidence')}
 							/>
 						</div>
 
@@ -247,7 +265,16 @@ export default function BlogInputPage() {
 								In 3 words, what are you grateful for today?
 							</label>
 
-							<input className="input input-primary mb-2" />
+							<input
+								name="grateful"
+								className="input input-primary mb-2"
+								{...register('grateful', {
+									required: 'Grateful words are required',
+								})}
+							/>
+							{errors.grateful && (
+								<p className="text-red-400 text-sm">{errors.grateful.message}</p>
+							)}
 						</div>
 						{/* Improvements input */}
 
@@ -293,49 +320,72 @@ export default function BlogInputPage() {
 								<p className="text-red-400 text-sm">{errors.reflection.message}</p>
 							)}
 						</div>
+						{/* Accessible toggle */}
 
-						<div className="form-control flex flex-col border-2 p-2 mt-2">
-							<label className="cursor-pointer label">
-								<span className="label-text">Accessible</span>
-								<input type="checkbox" className="toggle toggle-primary" />
-							</label>
+						<div className="flex justify-between border-2 p-2 mt-2">
+							<label className="">Accessible</label>
+							<input
+								name="accessible"
+								type="checkbox"
+								className="toggle toggle-primary"
+								{...register('accessible')}
+							/>
 						</div>
+						{/* Overall Feeling input / Emojis */}
 
 						<div className="flex flex-col border-2 p-2 my-2">
-							<label htmlFor="mood" className="mb-2">
+							<label htmlFor="mood" className="mb-8">
 								How are you feeling?
 							</label>
 							<div className="flex justify-around items-center w-full">
 								<img
-									className="w-1/12 h-1/12"
+									className={`${emojiStyle}${
+										overallFeeling === 1 ? ' animate-bounce ' : ''
+									}`}
 									alt="crying face emoji"
 									src={`/images/emojis/1.png`}
-								></img>
+									onClick={() => handleEmoji(1)}
+								/>
 								<img
-									className="w-1/12 h-1/12 "
+									className={`${emojiStyle}${
+										overallFeeling === 2 ? ' animate-bounce' : ''
+									}`}
 									alt="sad face emoji"
 									src={`/images/emojis/2.png`}
-								></img>
+									onClick={() => handleEmoji(2)}
+								/>
 								<img
-									className="w-1/12 h-1/12 animate-bounce"
+									className={`${emojiStyle}${
+										overallFeeling === 3 ? ' animate-bounce' : ''
+									}`}
 									alt="neutral face emoji"
 									src={`/images/emojis/3.png`}
-								></img>
+									onClick={() => handleEmoji(3)}
+								/>
 								<img
-									className="w-1/12 h-1/12 "
+									className={`${emojiStyle}${
+										overallFeeling === 4 ? ' animate-bounce' : ''
+									}`}
 									alt="thinking face emoji"
 									src={`/images/emojis/4.png`}
-								></img>
+									onClick={() => handleEmoji(4)}
+								/>
 								<img
-									className="w-1/12 h-1/12"
+									className={`${emojiStyle}${
+										overallFeeling === 5 ? ' animate-bounce' : ''
+									}`}
 									alt="smiley face emoji"
 									src={`/images/emojis/5.png`}
-								></img>
+									onClick={() => handleEmoji(5)}
+								/>
 								<img
-									className="w-1/12 h-1/12"
+									className={`${emojiStyle}${
+										overallFeeling === 6 ? ' animate-bounce' : ''
+									}`}
 									alt="star struck emoji"
 									src={`/images/emojis/6.png`}
-								></img>
+									onClick={() => handleEmoji(6)}
+								/>
 							</div>
 						</div>
 						<button className="btn btn-sm btn-accent m-4">Post</button>
