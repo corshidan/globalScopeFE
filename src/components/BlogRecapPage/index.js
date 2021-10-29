@@ -1,10 +1,10 @@
 import Layout from '../Layout';
-// import { useUser } from '../App/App.js';
+import { useUser } from '../App/App.js';
 import { useState } from 'react';
 import css from './index.module.css';
 
 export default function BlogRecapPage() {
-	// const user = useUser();
+	const user = useUser();
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
 	const [reflections, setReflections] = useState(null);
@@ -47,7 +47,7 @@ export default function BlogRecapPage() {
 						/>
 						<button
 							className="btn btn-sm btn-accent shadow-xl bg-green-400 mb-5 ml-5 "
-							onClick={(e) => getReflection(reflectionDate, '1', e)}
+							onClick={(e) => getReflection(reflectionDate, user.bootcamperid, e)}
 						>
 							Look up
 						</button>
