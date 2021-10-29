@@ -9,7 +9,7 @@ export default function BlogInputPage() {
 	const user = useUser();
 	const topicInputStyle = 'w-2/3 mr-1 border pl-2 bg-gray-100 rounded';
 	const topicRatingStyle = 'w-1/6 border bg-gray-100 rounded pr-1';
-	const emojiStyle = 'w-1/12 h-1/12';
+	const emojiStyle = 'w-1/12 h-1/12 hover:animate-bounce';
 	const {
 		register,
 		handleSubmit,
@@ -340,7 +340,7 @@ export default function BlogInputPage() {
 							<div className="flex justify-around items-center w-full">
 								<img
 									className={`${emojiStyle}${
-										overallFeeling === 1 ? ' animate-bounce ' : ''
+										overallFeeling === 1 ? ' transition duration-5000 transform scale-110 ' : ''
 									}`}
 									alt="crying face emoji"
 									src={`/images/emojis/1.png`}
