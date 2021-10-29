@@ -14,11 +14,11 @@ export default function Header() {
     <header className=" flex justify-between items-center shadow-md p-3">
       <div>
         {user.firstname ? (
-          <h1>
+          <h1 className="font-extrabold">
             Welcome {`${user.firstname}`}!
           </h1>
         ) : (
-          <h1>Welcome Bootcamper!</h1>
+          <h1 className="font-extrabold">Welcome Bootcamper!</h1>
         )}
         <p className="whitespace-nowrap text-xs">It's {date}</p>
       </div>
