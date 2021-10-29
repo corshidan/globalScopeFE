@@ -23,10 +23,10 @@ export default function BlogRecapPage() {
 	return (
 		<Layout>
 			<div
-				className="flex flex-col items-center justify-center bg-contain mb-3 bg-no-repeat bg-top pr-4 pl-4 pt-3 "
+				className="flex flex-col bg-contain mb-3 w-full h-full bg-no-repeat bg-top pr-4 pl-4 pt-3 "
 				style={{ backgroundImage: 'url(/images/recapBlogImage.png)' }}
 			>
-				<form className="justify-center items-center  px-4  flex flex-col  pb-3 shadow-lg  opacity-95  h-full rounded-3xl ">
+				<form className="justify-center items-center  px-4  flex flex-col  pb-3  opacity-95  w-full  rounded-3xl ">
 					<div
 						className={`${'bg-white px-6 py-4 my-6 rounded-2xl border-4 border-green-200 shadow-inner h-full m-2'} ${
 							css.capital
@@ -47,7 +47,7 @@ export default function BlogRecapPage() {
 						/>
 						<button
 							className="btn btn-sm btn-accent shadow-xl bg-green-400 mb-5 ml-5 "
-							onClick={(e) => getReflection(reflectionDate, '3', e)}
+							onClick={(e) => getReflection(reflectionDate, '1', e)}
 						>
 							Look up
 						</button>
