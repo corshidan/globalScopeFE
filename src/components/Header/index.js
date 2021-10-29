@@ -14,11 +14,11 @@ export default function Header() {
     <header className=" flex justify-between items-center shadow-md p-3">
       <div>
         {user.firstname ? (
-          <h1>
+          <h1 className="font-extrabold">
             Welcome {`${user.firstname}`}!
           </h1>
         ) : (
-          <h1>Welcome Bootcamper!</h1>
+          <h1 className="font-extrabold">Welcome Bootcamper!</h1>
         )}
         <p className="whitespace-nowrap text-xs">It's {date}</p>
       </div>
@@ -32,7 +32,7 @@ export default function Header() {
         </p>
       </div>
       <div>
-        <p className="text-right text-purple-900 italic whitespace-nowrap">
+        <p className={`${css.quote} text-right text-sm text-purple-900 italic whitespace-nowrap`}>
           "Only compare yourself if you know you’re better than the other
           person"
         </p>
