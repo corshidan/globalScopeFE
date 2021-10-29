@@ -32,7 +32,7 @@ export default function Header() {
         </p>
       </div>
       <div>
-        <p className="text-right text-purple-900 italic whitespace-nowrap">
+        <p className={`${css.quote} text-right text-sm text-purple-900 italic whitespace-nowrap`}>
           "Only compare yourself if you know you’re better than the other
           person"
         </p>

@@ -13,7 +13,7 @@ export default function Card({ image, title, buttonLabel, path }) {
           </h5>
 
           <Link
-            className="text-gray-100 bg-green-400  hover:text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-center inline-flex items-center shadow-md duration-300"
+            className="text-gray-100 bg-green-400 btn-accent hover:text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-center inline-flex items-center shadow-md duration-300"
             to={path}
           >
             {buttonLabel}
