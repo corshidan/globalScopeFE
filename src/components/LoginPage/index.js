@@ -59,6 +59,7 @@ export default function LoginPage({ handleAuth }) {
 					isOpen={loginError.state}
 					closeAlert={toggleError}
 					message={loginError.message}
+					severity="error"
 				/>
 				<div className="flex flex-col px-6">
 					<h2 className="text-3xl my-4 text-purple-500 font-medium self-center">Login</h2>

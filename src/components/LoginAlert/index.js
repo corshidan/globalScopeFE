@@ -4,12 +4,12 @@ import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function LoginAlert({ isOpen, closeAlert, message }) {
+export default function LoginAlert({ isOpen, closeAlert, message, severity }) {
 	return (
 		<Box sx={{ width: '100%' }}>
 			<Collapse in={isOpen}>
 				<Alert
-					severity="error"
+					severity={severity}
 					action={
 						<IconButton
 							aria-label="close"
