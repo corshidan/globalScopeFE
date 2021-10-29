@@ -340,7 +340,7 @@ export default function BlogInputPage() {
 							<div className="flex justify-around items-center w-full">
 								<img
 									className={`${emojiStyle}${
-										overallFeeling === 1 ? ' transition duration-5000 transform scale-110 ' : ''
+										overallFeeling === 1 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
 									}`}
 									alt="crying face emoji"
 									src={`/images/emojis/1.png`}
@@ -348,7 +348,7 @@ export default function BlogInputPage() {
 								/>
 								<img
 									className={`${emojiStyle}${
-										overallFeeling === 2 ? ' animate-bounce' : ''
+										overallFeeling === 2 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
 									}`}
 									alt="sad face emoji"
 									src={`/images/emojis/2.png`}
@@ -356,7 +356,7 @@ export default function BlogInputPage() {
 								/>
 								<img
 									className={`${emojiStyle}${
-										overallFeeling === 3 ? ' animate-bounce' : ''
+										overallFeeling === 3 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
 									}`}
 									alt="neutral face emoji"
 									src={`/images/emojis/3.png`}
@@ -364,7 +364,7 @@ export default function BlogInputPage() {
 								/>
 								<img
 									className={`${emojiStyle}${
-										overallFeeling === 4 ? ' animate-bounce' : ''
+										overallFeeling === 4 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
 									}`}
 									alt="thinking face emoji"
 									src={`/images/emojis/4.png`}
@@ -372,7 +372,7 @@ export default function BlogInputPage() {
 								/>
 								<img
 									className={`${emojiStyle}${
-										overallFeeling === 5 ? ' animate-bounce' : ''
+										overallFeeling === 5 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
 									}`}
 									alt="smiley face emoji"
 									src={`/images/emojis/5.png`}
@@ -380,7 +380,7 @@ export default function BlogInputPage() {
 								/>
 								<img
 									className={`${emojiStyle}${
-										overallFeeling === 6 ? ' animate-bounce' : ''
+										overallFeeling === 6 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
 									}`}
 									alt="star struck emoji"
 									src={`/images/emojis/6.png`}
