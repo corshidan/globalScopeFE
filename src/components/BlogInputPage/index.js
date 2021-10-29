@@ -34,13 +34,18 @@ export default function BlogInputPage() {
   }
   return (
     <Layout>
-      <div
-        className='flex flex-col items-center justify-center bg-contain mb-3 bg-no-repeat bg-top pr-4 pl-4 pt-3 '
-        style={{ backgroundImage: 'url(/images/addToBlogImage.png)' }}
-      >
+      <div className='flex flex-col items-center justify-center bg-contain mb-3 bg-no-repeat bg-top pr-4 pl-4 pt-3 '>
+        {/* <img
+          className='opacity-50'
+          src={`/images/addToBlogImage.png`}
+          alt='emoji face'
+        /> */}
         <form
-          className=' flex flex-col p-3 container pt-5'
+          className={
+            ' flex flex-col p-3 container pt-5 bg-contain bg-no-repeat bg-center '
+          }
           onSubmit={handleSubmit(onSubmit)}
+          style={{ backgroundImage: 'url(/images/addToBlogImage.png' }}
         >
           <div className='flex flex-col border-2 p-2 mb-2'>
             {/* Topics covered */}
