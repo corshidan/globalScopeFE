@@ -9,10 +9,19 @@ export default function BlogRecapPage() {
 	const today = date.toISOString().slice(0, 10);
 	const [reflections, setReflections] = useState(null);
 	const [reflectionDate, setReflectionDate] = useState(today);
-	// let face = `/images/emojis/${reflections[0].overallFeeling}.png` || '/images/emojis/3.png';
+	const [bootcampDate, setBootcampDate] = useState(null);
+
+	//function to find which week/day of the bootcamp, the reflection was taken
+	const findDate = () => {
+		const date1 = new Date(user.startdate);
+		const date2 = new Date(reflectionDate);
+		const diffTime = Math.abs(date2 - date1);
+		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+		const dateOfBootcamp = `Week ${Math.ceil(diffDays / 7)} day ${(diffTime % 7) + 1}`;
+		setBootcampDate(dateOfBootcamp);
+	};
 	const getReflection = (date, id, e) => {
 		e.preventDefault();
-		console.log(date, id);
 		fetch(`https://global-scope.herokuapp.com/reflections?date=${date}&id=${id}`)
 			.then((res) => res.json())
 			.then((response) => {
@@ -47,15 +56,17 @@ export default function BlogRecapPage() {
 						/>
 						<button
 							className="btn btn-sm btn-accent shadow-xl bg-green-400 mb-5 ml-5 "
-							onClick={(e) => getReflection(reflectionDate, user.bootcamperid, e)}
+							onClick={(e) => {
+								findDate();
+								getReflection(reflectionDate, user.bootcamperid, e);
+							}}
 						>
 							Look up
 						</button>
-						<br />
 						{reflections ? (
 							<div>
 								<label htmlFor="topics-section">
-									Topics you have covered on Week 4 day 2, and your confidence
+									Topics you have covered on {bootcampDate}, and your confidence
 									rating out of 5:
 								</label>
 								<ul className="flex textarea h-20 textarea-bordered textarea-accent justify-around font-bold mt-2 mb-4 ">
