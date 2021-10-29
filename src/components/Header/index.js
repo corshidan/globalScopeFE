@@ -28,13 +28,8 @@ export default function Header() {
 				<p className="whitespace-nowrap text-xs">It's {date}</p>
 			</div>
 			<div className={css.streak}>
-				<p>
-					Number of reflections completed:
-					<span>
-						<img className="h-10" src="/images/star.png" alt="star"></img>
-						<span className="">6</span>
-					</span>
-				</p>
+				<p>Number of reflections completed:</p>
+				<span className={css.test}>6</span>
 			</div>
 			<div>
 				<p

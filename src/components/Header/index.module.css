@@ -1,18 +1,28 @@
-.streak span {
-  position: absolute;
-  /* top:50%; */
+.streak {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-
-.streak span span {
-	position:relative;
-	top:50%;
-	right:50%;
-  }
-
-.streak img {
-  display: inline-block;
-}
-
 .quote {
-  font-family: "Lucida Handwriting";
+	font-family: 'Lucida Handwriting';
+}
+.test {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: 50px;
+	background-color: yellow;
+	clip-path: polygon(
+		50% 0%,
+		61% 35%,
+		98% 35%,
+		68% 57%,
+		79% 91%,
+		50% 70%,
+		21% 91%,
+		32% 57%,
+		2% 35%,
+		39% 35%
+	);
 }
