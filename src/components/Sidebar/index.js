@@ -93,7 +93,7 @@ export default function Sidebar() {
 						<Link to="/cloud">
 							<p>
 								<FontAwesomeIcon size="sm" icon={faCloud} />
-								<span className="ml-2">Soon...</span>
+								<span className="ml-2">Word Cloud</span>
 							</p>
 						</Link>
 					</li>
