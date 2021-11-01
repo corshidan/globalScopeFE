@@ -34,7 +34,7 @@ export default function Dashboard() {
 						image="/images/toDoListImage.png"
 						title="To do List"
 						buttonLabel="Add"
-						path=""
+						path="/cloud"
 					/>
 				</div>
 			</div>
