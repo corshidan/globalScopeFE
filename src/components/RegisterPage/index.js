@@ -153,25 +153,31 @@ export default function RegisterPage() {
 							)}
 						</div>
 
-						<div className="flex ">
-							<div className="flex">
-								<span className=" rounded-l-lg w-14 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0 ml-2">
-									<FontAwesomeIcon icon={faCalendarWeek} />
-								</span>
-								{/* Start date input */}
-								<input
-									type="date"
-									className="h-10 border border-gray-300 rounded-r-lg w-2/3 xl:w-full outline-none focus:ring-1 ring-blue-300 pl-2"
-									placeholder="Start Date"
-									defaultValue={today}
-									name="startdate"
-									{...register('startdate', {
-										required: 'Start date is required',
-									})}
-								/>
-							</div>
-						</div>
-					</div>
+            <div className='flex'>
+              <div className='flex'>
+                <span className=' rounded-l-lg w-14 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0 ml-2'>
+                  <FontAwesomeIcon icon={faCalendarWeek} />
+                </span>
+                {/* Start date input */}
+                <input
+                  type='date'
+                  className='h-10 border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-300 pl-4'
+                  placeholder='Start Date'
+                  defaultValue={today}
+                  name='startdate'
+                  {...register('startdate', {
+                    required: 'Start date is required',
+                    // valueAsDate: true,
+                  })}
+                />
+              </div>
+              {errors.startDate && (
+                <p className='text-red-400 text-sm'>
+                  {errors.startDate.message}
+                </p>
+              )}
+            </div>
+          </div>
 
 					<div className="mt-3 flex flex-row">
 						<span className=" rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">
