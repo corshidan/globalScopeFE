@@ -87,7 +87,7 @@ export default function BlogRecapPage() {
 									4/5
 								</p>
 								<label htmlFor="improvements">What you needed to work on...</label>
-								<p className="improvement textarea h-20 textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
+								<p className="improvement textarea textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
 									{reflections[0].improvements}
 								</p>
 								<label htmlFor="add-thoughts">Other thoughts...</label>
