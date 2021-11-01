@@ -7,6 +7,8 @@ import {
 	faChartLine,
 	faCogs,
 	faSignOutAlt,
+	faChartPie,
+	faCloud,
 } from '@fortawesome/free-solid-svg-icons';
 import css from './sidebar.module.css';
 import { useUser } from '../App/App.js';
@@ -30,6 +32,7 @@ export default function Sidebar() {
 			</section>
 			<div className="flex flex-col justify-between h-full pb-10">
 				<ul className={css.navigation}>
+					{/* Dashboard */}
 					<li
 						className={`${listStyle}${
 							location.pathname === '/dashboard' ? 'bg-white text-purple-800' : ''
@@ -42,6 +45,7 @@ export default function Sidebar() {
 							</p>
 						</Link>
 					</li>
+					{/* Blog Input */}
 					<li
 						className={`${listStyle}${
 							location.pathname === '/bloginputpage' ? 'bg-white text-purple-800' : ''
@@ -54,6 +58,7 @@ export default function Sidebar() {
 							</p>
 						</Link>
 					</li>
+					{/* Blog Recap */}
 					<li
 						className={`${listStyle}${
 							location.pathname === '/blogrecappage' ? 'bg-white text-purple-800' : ''
@@ -66,19 +71,46 @@ export default function Sidebar() {
 							</p>
 						</Link>
 					</li>
+					{/* Statistics  */}
+					<li
+						className={`${listStyle}${
+							location.pathname === '/statistics' ? 'bg-white text-purple-800' : ''
+						}`}
+					>
+						<Link to="/statistics">
+							<p>
+								<FontAwesomeIcon size="sm" icon={faChartPie} />
+								<span className="ml-2">Stats</span>
+							</p>
+						</Link>
+					</li>
+					{/* Word Cloud */}
+					<li
+						className={`${listStyle}${
+							location.pathname === '/cloud' ? 'bg-white text-purple-800' : ''
+						}`}
+					>
+						<Link to="/cloud">
+							<p>
+								<FontAwesomeIcon size="sm" icon={faCloud} />
+								<span className="ml-2">Soon...</span>
+							</p>
+						</Link>
+					</li>
 				</ul>
+				{/* Bottom links */}
 				<ul className={css.navigation}>
 					<li
 						className={`${listStyle}${
 							location.pathname === '/settings' ? 'bg-white text-purple-800' : ''
 						}`}
 					>
-						{/* <Link to="/blogrecappage"> */}
+						{/* <Link to="/Settings"> */}
 						<p onClick={logout} className={css.bottomList}>
 							<FontAwesomeIcon size="sm" icon={faCogs} />
 							<span className="ml-2">Settings</span>
 						</p>
-						{/* </Link> */}
+						{/* </Link to=/Login> */}
 					</li>
 					<li className={`${listStyle}`}>
 						<p onClick={logout} className={css.bottomList}>

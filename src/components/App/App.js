@@ -6,6 +6,8 @@ import BlogInputPage from '../BlogInputPage';
 import BlogRecapPage from '../BlogRecapPage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
+import StatisticsPage from '../StatisticsPage';
+import WordCloudPage from '../WordCloudPage';
 const UserContext = createContext();
 function App() {
 	const [user, setUser] = useState({});
@@ -24,6 +26,12 @@ function App() {
 					</Route>
 					<Route path="/register">
 						<RegisterPage />
+					</Route>
+					<Route path="/statistics">
+						<StatisticsPage />
+					</Route>
+					<Route path="/cloud">
+						<WordCloudPage />
 					</Route>
 					<Route path="/">
 						<LoginPage handleAuth={setUser} />

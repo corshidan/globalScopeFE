@@ -20,7 +20,7 @@ export default function Dashboard() {
 						image="/images/seeYourStatsImage.png"
 						title="See your Stats"
 						buttonLabel="Stats"
-						path=""
+						path="/statistics"
 					/>
 				</div>
 				<div className="flex justify-around w-1/2">
