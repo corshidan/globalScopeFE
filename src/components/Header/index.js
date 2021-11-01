@@ -4,8 +4,10 @@ import css from './index.module.css';
 
 export default function Header() {
 	const [quote, setQuote] = useState('');
+	const [numberOfReflections, setNumberOfReflections] = useState(null);
 	const user = useUser();
 	const current = new Date();
+
 	let options = { weekday: 'long' };
 	let weekDay = new Intl.DateTimeFormat('en-US', options).format(current);
 	const date = `${weekDay} ${current.getDate()}/${
@@ -16,10 +18,14 @@ export default function Header() {
 			.then((res) => res.json())
 			.then((data) => setQuote(data.payload))
 			.catch((err) => console.log(err));
-	}, []);
+		fetch(`https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`)
+			.then((res) => res.json())
+			.then((data) => setNumberOfReflections(data.payload.length))
+			.catch((err) => console.log(err));
+	}, [user.bootcamperid]);
 	return (
 		<header className=" flex justify-between items-center shadow-md p-3">
-			<div>
+			<div className="w-1/3 pl-3">
 				{user.firstname ? (
 					<h1 className="font-extrabold">Welcome {`${user.firstname}`}!</h1>
 				) : (
@@ -27,11 +33,11 @@ export default function Header() {
 				)}
 				<p className="text-xs">It's {date}</p>
 			</div>
-			<div className={css.streak}>
-				<p>Number of reflections completed:</p>
-				<span className={css.test}>6</span>
+			<div className="flex  justify-center items-center w-1/3">
+				<p className="pr-2">Reflections completed</p>
+				<span className={css.test}>{numberOfReflections}</span>
 			</div>
-			<div>
+			<div className="w-1/3">
 				<p className={`${css.quote} text-right text-sm text-purple-900 italic `}>
 					{/* "Only compare yourself if you know you’re better than the other person" */}
 					{quote}
