@@ -27,7 +27,6 @@ const extractWords = (array) => {
 	words.forEach((word) => {
 		wordsObj[word] ? (wordsObj[word] += 1) : (wordsObj[word] = 1);
 	});
-	console.log(wordsObj);
 	return Object.keys(wordsObj).map((item) => {
 		return { text: item, value: wordsObj[item] };
 	});
