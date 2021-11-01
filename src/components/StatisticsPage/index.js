@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../Layout'
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
-import { Pie } from 'react-chartjs-2'
+import { Line, Bar } from 'react-chartjs-2'
 
 export default function StatisticsPage() {
   // const findDate = () => {
@@ -17,75 +17,107 @@ export default function StatisticsPage() {
   // }
   return (
     <Layout>
-      <div className='flex justify-center mt-10'>
+      {/* <div
+        className='flex flex-col bg-contain mb-3 w-full h-full bg-no-repeat bg-top pr-4 pl-4 pt-3 opacity-40 '
+        style={{ backgroundImage: 'url(/images/seeYourStatsImage.png)' }}
+      > */}
+      <div className='flex justify-center pt-6 pb-10 '>
         <ChakraProvider>
           <CircularProgress value={85} size='125px' color='green.400'>
             <CircularProgressLabel>33%</CircularProgressLabel>
           </CircularProgress>
         </ChakraProvider>
       </div>
-      <div>
-        <Pie
-          data={{
-            labels: [
-              'Crying',
-              'Sad',
-              'Neutral',
-              'Confused',
-              'Happy',
-              'Star Struck',
-            ],
-            datasets: [
-              {
-                label: '# of votes',
-                data: [10, 12, 15, 4, 2],
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)',
-                ],
-                borderWidth: 3,
-              },
-              // {
-              //   label: 'Quantity',
-              //   data: [47, 52, 67, 58, 9, 50],
-              //   backgroundColor: 'orange',
-              //   borderColor: 'red',
-              // },
-            ],
-          }}
-          height={400}
-          width={600}
-          options={{
-            maintainAspectRatio: false,
-            scales: {
-              yAxes: [
+      <div className='p-10 grid grid-cols-2 gap-10  '>
+        <div className=''>
+          <Line
+            data={{
+              labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
+              datasets: [
                 {
-                  ticks: {
-                    beginAtZero: true,
-                  },
+                  label: '# of votes',
+                  // fill: true,
+                  data: [10, 12, 15, 4, 2, 1],
+                  backgroundColor: ['green'],
+                  borderColor: ['rgba(153, 102, 255, 1)'],
+                  borderWidth: 3,
                 },
+                // {
+                //   label: 'Quantity',
+                //   data: [47, 52, 67, 58, 9, 50],
+                //   backgroundColor: 'orange',
+                //   borderColor: 'red',
+                // },
               ],
-            },
-            legend: {
-              labels: {
-                fontSize: 25,
+            }}
+            height={400}
+            width={600}
+            options={{
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                  },
+                ],
               },
-            },
-          }}
-        />
+              legend: {
+                labels: {
+                  fontSize: 25,
+                },
+              },
+            }}
+          />
+        </div>
+        <div className=''>
+          <Bar
+            data={{
+              labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
+              datasets: [
+                {
+                  label: '# of votes',
+                  data: [10, 12, 15, 4, 2, 1],
+                  backgroundColor: ['rgba(153, 102, 255, 1)'],
+                  borderColor: ['rgba(153, 102, 255, 1)'],
+                  borderWidth: 3,
+                  // fill: true,
+                },
+                // {
+                //   label: 'Quantity',
+                //   data: [47, 52, 67, 58, 9, 50],
+                //   backgroundColor: 'orange',
+                //   borderColor: 'red',
+                // },
+              ],
+            }}
+            height={400}
+            width={600}
+            options={{
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                      // type: 'linear',
+                      // display: false,
+                      offset: true,
+                    },
+                  },
+                ],
+              },
+              legend: {
+                labels: {
+                  fontSize: 25,
+                },
+              },
+            }}
+          />
+        </div>
       </div>
+      {/* </div> */}
     </Layout>
   )
 }
