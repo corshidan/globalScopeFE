@@ -323,7 +323,7 @@ export default function BlogInputPage() {
 						{/* Accessible toggle */}
 
 						<div className="flex justify-between border-2 p-2 mt-2">
-							<label className="">Accessible</label>
+							<label className="">Private ?</label>
 							<input
 								name="accessible"
 								type="checkbox"
