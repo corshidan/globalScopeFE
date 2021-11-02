@@ -26,7 +26,7 @@ export default function StatisticsPage() {
         className='flex flex-col bg-contain mb-3 w-full h-full bg-no-repeat bg-top pr-4 pl-4 pt-3 bg-gray-200'
         // style={{ backgroundImage: 'url(/images/seeYourStatsImage.png)' }}
       >
-        <div className='flex justify-center pt-6 pb-10 bg-gray-300 w-1/4 rounded-b-xl  mx-auto mt-4 '>
+        <div className='flex justify-center pt-6 pb-10 bg-gray-300 w-2/12 rounded-b-xl  mx-auto mt-4 shadow-inner '>
           <ChakraProvider>
             <CircularProgress value={findDate()} size='125px' color='#401485'>
               <CircularProgressLabel> {value}%</CircularProgressLabel>
@@ -34,7 +34,7 @@ export default function StatisticsPage() {
           </ChakraProvider>
         </div>
         <div className='p-10 grid grid-cols-2 gap-10 z-10  '>
-          <div className=' bg-gray-300 rounded-l-xl'>
+          <div className=' bg-gray-300 rounded-l-xl  drop-shadow-2xl  shadow-inner'>
             <PolarArea
               data={{
                 labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
@@ -44,12 +44,12 @@ export default function StatisticsPage() {
                     fill: true,
                     data: [10, 12, 15, 4, 2, 1],
                     backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(255, 99, 132, 0.5)',
+                      'rgba(54, 162, 235, 0.5)',
+                      'rgba(255, 206, 86, 0.5)',
+                      'rgba(75, 192, 192, 0.5)',
+                      'rgba(153, 102, 255, 0.5)',
+                      'rgba(255, 159, 64, 0.5)',
                     ],
 
                     borderWidth: 3,
@@ -83,7 +83,7 @@ export default function StatisticsPage() {
               }}
             />
           </div>
-          <div className=' bg-gray-300 rounded-r-xl z-10 '>
+          <div className=' bg-gray-300 rounded-r-xl z-10 shadow-inner'>
             <Bar
               data={{
                 labels: ['1', '2', '3', '4', '5'],
@@ -92,12 +92,12 @@ export default function StatisticsPage() {
                     label: 'Confidence level',
                     data: [10, 12, 15, 4, 2, 1],
                     backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(255, 99, 132, 0.5)',
+                      'rgba(54, 162, 235, 0.5)',
+                      'rgba(255, 206, 86, 0.5)',
+                      'rgba(75, 192, 192, 0.5)',
+                      'rgba(153, 102, 255, 0.5)',
+                      'rgba(255, 159, 64, 0.5)',
                     ],
                     borderColor: ['white'],
                     borderWidth: 3,
