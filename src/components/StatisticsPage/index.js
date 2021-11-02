@@ -3,18 +3,23 @@ import Layout from '../Layout'
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Line, Bar } from 'react-chartjs-2'
+import { useUser } from '../App/App.js'
 
 export default function StatisticsPage() {
-  // const findDate = () => {
-  //   const date1 = new Date(user.startdate)
-  //   const date2 = new Date(reflectionDate)
-  //   const diffTime = Math.abs(date2 - date1)
-  //   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-  //   const dateOfBootcamp = `Week ${Math.ceil(diffDays / 7)} day ${
-  //     (diffTime % 7) + 1
-  //   }`
-  //   setBootcampDate(dateOfBootcamp)
-  // }
+  const user = useUser()
+
+  const findDate = () => {
+    const date1 = new Date(user.startdate)
+    const date2 = new Date()
+    const diffTime = Math.abs(date2 - date1)
+    console.log(diffTime)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    console.log(diffDays)
+    const progressBar = Math.floor((diffDays / 112) * 100)
+    console.log(progressBar)
+    return progressBar
+  }
+  let value = findDate()
   return (
     <Layout>
       {/* <div
@@ -23,8 +28,8 @@ export default function StatisticsPage() {
       > */}
       <div className='flex justify-center pt-6 pb-10 '>
         <ChakraProvider>
-          <CircularProgress value={85} size='125px' color='green.400'>
-            <CircularProgressLabel>33%</CircularProgressLabel>
+          <CircularProgress value={findDate()} size='125px' color='green.400'>
+            <CircularProgressLabel> {value}%</CircularProgressLabel>
           </CircularProgress>
         </ChakraProvider>
       </div>
