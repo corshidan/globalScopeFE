@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Emoji({ emojiNo, alt, handleClick, feeling }) {
 	const style = `w-1/12 hover:animate-bounce duration:300 ${
-		emojiNo === feeling ? '' : ' filter grayscale'
+		feeling === null ? '' : emojiNo === feeling ? '' : ' filter grayscale'
 	}`;
 	return (
 		<img
