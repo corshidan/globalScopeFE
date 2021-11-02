@@ -1,6 +1,7 @@
 import Layout from '../Layout';
 import Slider from '@mui/material/Slider';
 import { useForm } from 'react-hook-form';
+import EmojiInput from '../EmojiInput';
 import { useState } from 'react';
 import { useUser } from '../App/App.js';
 import { useHistory } from 'react-router-dom';
@@ -9,7 +10,6 @@ export default function BlogInputPage() {
 	const user = useUser();
 	const topicInputStyle = 'w-2/3 mr-1 border pl-2 bg-gray-100 rounded';
 	const topicRatingStyle = 'w-1/6 border bg-gray-100 rounded pr-1';
-	const emojiStyle = 'w-1/12 h-1/12 hover:animate-bounce';
 	const {
 		register,
 		handleSubmit,
@@ -47,6 +47,7 @@ export default function BlogInputPage() {
 	};
 	const handleEmoji = (digit) => {
 		setOverallFeeling(digit);
+		console.log(overallFeeling);
 	};
 	return (
 		<Layout>
@@ -338,54 +339,7 @@ export default function BlogInputPage() {
 								How are you feeling?
 							</label>
 							<div className="flex justify-around items-center w-full">
-								<img
-									className={`${emojiStyle}${
-										overallFeeling === 1 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
-									}`}
-									alt="crying face emoji"
-									src={`/images/emojis/1.png`}
-									onClick={() => handleEmoji(1)}
-								/>
-								<img
-									className={`${emojiStyle}${
-										overallFeeling === 2 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
-									}`}
-									alt="sad face emoji"
-									src={`/images/emojis/2.png`}
-									onClick={() => handleEmoji(2)}
-								/>
-								<img
-									className={`${emojiStyle}${
-										overallFeeling === 3 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
-									}`}
-									alt="neutral face emoji"
-									src={`/images/emojis/3.png`}
-									onClick={() => handleEmoji(3)}
-								/>
-								<img
-									className={`${emojiStyle}${
-										overallFeeling === 4 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
-									}`}
-									alt="thinking face emoji"
-									src={`/images/emojis/4.png`}
-									onClick={() => handleEmoji(4)}
-								/>
-								<img
-									className={`${emojiStyle}${
-										overallFeeling === 5 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
-									}`}
-									alt="smiley face emoji"
-									src={`/images/emojis/5.png`}
-									onClick={() => handleEmoji(5)}
-								/>
-								<img
-									className={`${emojiStyle}${
-										overallFeeling === 6 ? 'duration-500 ease-in-out transform -translate-y-1 scale-110 border-2 rounded-full border-green-400' : ''
-									}`}
-									alt="star struck emoji"
-									src={`/images/emojis/6.png`}
-									onClick={() => handleEmoji(6)}
-								/>
+								<EmojiInput feeling={overallFeeling} emojiClick={handleEmoji} />
 							</div>
 						</div>
 						<button className="btn btn-sm btn-accent m-4">Post</button>

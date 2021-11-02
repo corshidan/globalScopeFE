@@ -92,7 +92,7 @@ export default function Sidebar() {
 					>
 						<Link to="/cloud">
 							<p>
-								<FontAwesomeIcon size="sm" icon={faCloud} />
+								<FontAwesomeIcon size="xs" icon={faCloud} />
 								<span className="ml-2">Word Cloud</span>
 							</p>
 						</Link>
@@ -107,7 +107,7 @@ export default function Sidebar() {
 					>
 						{/* <Link to="/Settings"> */}
 						<p onClick={logout} className={css.bottomList}>
-							<FontAwesomeIcon size="sm" icon={faCogs} />
+							<FontAwesomeIcon size="xs" icon={faCogs} />
 							<span className="ml-2">Settings</span>
 						</p>
 						{/* </Link to=/Login> */}

@@ -1,18 +1,17 @@
 .layoutComponent {
 	display: flex;
-	/* justify-content: flex-end;6 */
 }
-
 .right {
-	/* margin-left: 20%; */
 	width: 87%;
 	display: flex;
 	flex-direction: column;
-	/* padding-bottom: 2em; */
 	height: 100vh;
 }
 .left {
 	width: 13%;
+}
+.children {
+	height: 100%;
 }
 @media (min-width: 1600px) {
 	.left {
