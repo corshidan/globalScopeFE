@@ -58,6 +58,16 @@ export default function StatisticsPage() {
             height={400}
             width={600}
             options={{
+              animations: {
+                tension: {
+                  duration: 1000,
+                  easing: 'linear',
+                  from: 1,
+                  to: 0,
+                  loop: true,
+                },
+              },
+
               maintainAspectRatio: false,
               scales: {
                 yAxes: [
