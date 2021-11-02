@@ -22,15 +22,32 @@ export default function StatisticsPage() {
   let value = findDate()
   return (
     <Layout>
-      <div className='flex justify-center pt-6 pb-10 bg-gray-300 w-2/12 rounded-b-xl  mx-auto mt-4 shadow-inner '>
-        <ChakraProvider>
-          <CircularProgress value={findDate()} size='125px' color='#401485'>
-            <CircularProgressLabel> {value}%</CircularProgressLabel>
-          </CircularProgress>
-        </ChakraProvider>
+      <div className='grid grid-cols-3'>
+        <div className='flex justify-center self-center items-center pt-6 pb-10 bg-gray-100 w-2/4 rounded-b-xl  mx-auto mt-4 shadow-inner '>
+          <ChakraProvider>
+            <CircularProgress value={findDate()} size='125px' color='#401485'>
+              <CircularProgressLabel> {value}%</CircularProgressLabel>
+            </CircularProgress>
+          </ChakraProvider>
+        </div>
+        <div className='flex justify-center items-center pt-6 pb-10 bg-gray-100 w-2/4 rounded-b-xl  mx-auto mt-4 shadow-inner '>
+          <ChakraProvider>
+            <CircularProgress value={100} size='125px' color='green'>
+              <CircularProgressLabel> 5</CircularProgressLabel>
+            </CircularProgress>
+          </ChakraProvider>
+        </div>
+        <div className=' flex justify-center  pt-6 pb-10 bg-gray-100 w-2/4 rounded-b-xl  mx-auto mt-4 shadow-inner '>
+          <ChakraProvider>
+            <CircularProgress value={25} size='125px' color='red'>
+              <CircularProgressLabel> 1.8%</CircularProgressLabel>
+            </CircularProgress>
+          </ChakraProvider>
+        </div>
       </div>
-      <div className='p-10 grid grid-cols-2 gap-10 z-10  '>
-        <div className=' bg-gray-300 rounded-l-xl  drop-shadow-2xl  shadow-inner'>
+
+      <div className='p-10 grid grid-cols-2 gap-10   '>
+        <div className=' bg-gray-100 rounded-l-xl  drop-shadow-2xl  shadow-inner'>
           <PolarArea
             data={{
               labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
@@ -79,7 +96,7 @@ export default function StatisticsPage() {
             }}
           />
         </div>
-        <div className=' bg-gray-300 rounded-r-xl z-10 shadow-inner'>
+        <div className=' bg-gray-100 rounded-r-xl z-10 shadow-inner'>
           <Bar
             data={{
               labels: ['1', '2', '3', '4', '5'],
