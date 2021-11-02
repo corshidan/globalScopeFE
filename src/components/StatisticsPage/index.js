@@ -1,4 +1,3 @@
-
 import React from 'react'
 import Layout from '../Layout'
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
@@ -13,11 +12,11 @@ export default function StatisticsPage() {
     const date1 = new Date(user.startdate)
     const date2 = new Date()
     const diffTime = Math.abs(date2 - date1)
-    console.log(diffTime)
+    // console.log(diffTime)
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-    console.log(diffDays)
+    // console.log(diffDays)
     const progressBar = Math.floor((diffDays / 112) * 100)
-    console.log(progressBar)
+    // console.log(progressBar)
     return progressBar
   }
   let value = findDate()
@@ -29,7 +28,7 @@ export default function StatisticsPage() {
       > */}
       <div className='flex justify-center pt-6 pb-10 '>
         <ChakraProvider>
-          <CircularProgress value={findDate()} size='125px' color='green.400'>
+          <CircularProgress value={findDate()} size='125px' color='#401485'>
             <CircularProgressLabel> {value}%</CircularProgressLabel>
           </CircularProgress>
         </ChakraProvider>
@@ -41,11 +40,11 @@ export default function StatisticsPage() {
               labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
               datasets: [
                 {
-                  label: '# of votes',
-                  // fill: true,
+                  label: 'Overall mood',
+                  fill: true,
                   data: [10, 12, 15, 4, 2, 1],
-                  backgroundColor: ['green'],
-                  borderColor: ['rgba(153, 102, 255, 1)'],
+                  backgroundColor: ['#92E3A9'],
+                  borderColor: ['#401485'],
                   borderWidth: 3,
                 },
                 // {
@@ -80,15 +79,15 @@ export default function StatisticsPage() {
         <div className=''>
           <Bar
             data={{
-              labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
+              labels: ['1', '2', '3', '4', '5'],
               datasets: [
                 {
-                  label: '# of votes',
+                  label: 'Confidence level',
                   data: [10, 12, 15, 4, 2, 1],
-                  backgroundColor: ['rgba(153, 102, 255, 1)'],
-                  borderColor: ['rgba(153, 102, 255, 1)'],
+                  backgroundColor: ['#92E3A9'],
+                  borderColor: ['#401485'],
                   borderWidth: 3,
-                  // fill: true,
+                  fill: true,
                 },
                 // {
                 //   label: 'Quantity',
