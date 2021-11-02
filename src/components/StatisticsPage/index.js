@@ -2,44 +2,52 @@ import React from 'react'
 import Layout from '../Layout'
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
-import { Line, Bar } from 'react-chartjs-2'
+import { PolarArea, Bar } from 'react-chartjs-2'
+import { useUser } from '../App/App.js'
 
 export default function StatisticsPage() {
-  // const findDate = () => {
-  //   const date1 = new Date(user.startdate)
-  //   const date2 = new Date(reflectionDate)
-  //   const diffTime = Math.abs(date2 - date1)
-  //   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-  //   const dateOfBootcamp = `Week ${Math.ceil(diffDays / 7)} day ${
-  //     (diffTime % 7) + 1
-  //   }`
-  //   setBootcampDate(dateOfBootcamp)
-  // }
+  const user = useUser()
+
+  const findDate = () => {
+    const date1 = new Date(user.startdate)
+    const date2 = new Date()
+    const diffTime = Math.abs(date2 - date1)
+    // console.log(diffTime)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    // console.log(diffDays)
+    const progressBar = Math.floor((diffDays / 112) * 100)
+    // console.log(progressBar)
+    return progressBar
+  }
+  let value = findDate()
   return (
     <Layout>
-      {/* <div
-        className='flex flex-col bg-contain mb-3 w-full h-full bg-no-repeat bg-top pr-4 pl-4 pt-3 opacity-40 '
-        style={{ backgroundImage: 'url(/images/seeYourStatsImage.png)' }}
-      > */}
-      <div className='flex justify-center pt-6 pb-10 '>
+      <div className='flex justify-center pt-6 pb-10 bg-gray-300 w-2/12 rounded-b-xl  mx-auto mt-4 shadow-inner '>
         <ChakraProvider>
-          <CircularProgress value={85} size='125px' color='green.400'>
-            <CircularProgressLabel>33%</CircularProgressLabel>
+          <CircularProgress value={findDate()} size='125px' color='#401485'>
+            <CircularProgressLabel> {value}%</CircularProgressLabel>
           </CircularProgress>
         </ChakraProvider>
       </div>
-      <div className='p-10 grid grid-cols-2 gap-10  '>
-        <div className=''>
-          <Line
+      <div className='p-10 grid grid-cols-2 gap-10 z-10  '>
+        <div className=' bg-gray-300 rounded-l-xl  drop-shadow-2xl  shadow-inner'>
+          <PolarArea
             data={{
               labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
               datasets: [
                 {
-                  label: '# of votes',
-                  // fill: true,
+                  label: 'Overall mood',
+                  fill: true,
                   data: [10, 12, 15, 4, 2, 1],
-                  backgroundColor: ['green'],
-                  borderColor: ['rgba(153, 102, 255, 1)'],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                  ],
+
                   borderWidth: 3,
                 },
                 // {
@@ -65,24 +73,31 @@ export default function StatisticsPage() {
               },
               legend: {
                 labels: {
-                  fontSize: 25,
+                  fontSize: 50,
                 },
               },
             }}
           />
         </div>
-        <div className=''>
+        <div className=' bg-gray-300 rounded-r-xl z-10 shadow-inner'>
           <Bar
             data={{
-              labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
+              labels: ['1', '2', '3', '4', '5'],
               datasets: [
                 {
-                  label: '# of votes',
+                  label: 'Confidence level',
                   data: [10, 12, 15, 4, 2, 1],
-                  backgroundColor: ['rgba(153, 102, 255, 1)'],
-                  borderColor: ['rgba(153, 102, 255, 1)'],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                  ],
+                  borderColor: ['white'],
                   borderWidth: 3,
-                  // fill: true,
+                  fill: true,
                 },
                 // {
                 //   label: 'Quantity',
@@ -110,14 +125,13 @@ export default function StatisticsPage() {
               },
               legend: {
                 labels: {
-                  fontSize: 25,
+                  fontSize: 50,
                 },
               },
             }}
           />
         </div>
       </div>
-      {/* </div> */}
     </Layout>
   )
 }
