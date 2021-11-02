@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import css from "./index.module.css";
 
 import React from "react";
-import DayPicker from "react-day-picker";
-// import DayPickerInput from 'react-day-picker/DayPickerInput';
+// import DayPicker from "react-day-picker";
+import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
 export default function BlogRecapPage() {
@@ -18,28 +18,31 @@ export default function BlogRecapPage() {
   const [highlightedDays, setHighlightedDays] = useState([]);
 
   function handleDateChange(e) {
-	  const date = e.toISOString().slice(0,10)
-	setReflectionDate(date)
-// 	if (!highlightedDays.includes(date)) {
-// 		updateHighlightedDays(date);
-// 	}
+    let date = e.toISOString().slice(0, 10);
+    setReflectionDate(date);
   }
 
-//   function updateHighlightedDays(date) {
+  useEffect(() => {
+    fetch(`https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const dates = data.payload.map((reflection) => {
+          return new Date(reflection.created);
+        });
+        setHighlightedDays(dates);
+      })
+      .catch((err) => console.log(err));
+  }, [user.bootcamperid]);
 
-//   }
-
-useEffect(() => {
-	fetch(`https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`) 
-	.then(res => res.json())
-	.then(data => {
-		const dates = data.payload.map((reflection) => {
-			return new Date(reflection.created)
-		})
-		setHighlightedDays(dates);
-	})
-	.catch(err => console.log(err))
-},[user.bootcamperid])
+  const modifiers = {
+    highlightedDays: highlightedDays,
+  };
+  const modifiersStyles = {
+    highlightedDays: {
+      color: 'white',
+      backgroundColor: '#8B5CF6',
+    },
+  };
 
   //function to find which week/day of the bootcamp, the reflection was taken
   const findDate = () => {
@@ -78,20 +81,16 @@ useEffect(() => {
             <label className="mr-3" htmlFor="start">
               What day do you want to review?{" "}
             </label>
-            {/* <input
-							className="rounded text-center border border-green-400 shadow-lg focus:ring-1 ring-blue-400 "
-							type="date"
-							defaultValue={today}
-							id="input"
-							name="reflection-date"
-							min="2021-01-01"
-							max="2021-12-31"
-							onChange={(e) => setReflectionDate(e.target.value)}
-						/> */}
-            <DayPicker
+            <DayPickerInput
+              value={today}
               initialMonth={new Date()}
-              selectedDays={highlightedDays}
-			  onDayClick={handleDateChange}
+              dayPickerProps={{
+                // selectedDays: highlightedDays,
+                onDayClick: handleDateChange,
+				modifiers: modifiers,
+				modifiersStyles: modifiersStyles,
+				showOutsideDays: true,
+              }}
             />
             <button
               className="btn btn-sm btn-accent shadow-xl bg-green-400 mb-5 ml-5 "
