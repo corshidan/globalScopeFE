@@ -10,9 +10,10 @@ const options = {
 // const size = [800, 550];
 const splitWords = (string) => {
 	return string
-		.split(' ')
-		.filter((word) => word.length > 2)
-		.map((word) => word.toLowerCase().replace(/\W/, ''));
+	.split(' ')
+	.filter((word) => word.length > 2)
+	.filter((word) => word !== "the" && word !== "and")
+	.map((word) => word.toLowerCase().replace(/\W/, ''));
 };
 const extractWords = (array) => {
 	const words = [];
@@ -22,7 +23,8 @@ const extractWords = (array) => {
 			...splitWords(reflection.grateful),
 			...splitWords(reflection.reflection),
 			...splitWords(reflection.improvements)
-		);
+			);
+			
 	});
 	words.forEach((word) => {
 		wordsObj[word] ? (wordsObj[word] += 1) : (wordsObj[word] = 1);
@@ -42,7 +44,7 @@ export default function Wordcloud() {
 			.then((data) => setWords(extractWords(data.payload)))
 			.catch((err) => console.error(err));
 	}, [url]);
-	console.log(window.innerHeight, window.innerWidth);
+	// console.log(window.innerHeight, window.innerWidth);
 	return (
 		<div className="flex justify-center h-full">
 			{words && (
