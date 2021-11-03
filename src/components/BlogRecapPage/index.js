@@ -2,7 +2,7 @@ import Layout from '../Layout';
 import { useUser } from '../App/App.js';
 import { useState, useEffect } from 'react';
 import css from './index.module.css';
-import {getToday} from '../../libs/helperFunctions'
+import { getToday } from '../../libs/helperFunctions';
 
 import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
@@ -117,7 +117,7 @@ export default function BlogRecapPage() {
 									last reflection?
 								</label>
 								<p className=" textarea h-5 font-bold textarea-accent mt-2 mb-4  ">
-									4/5
+									{reflections[0].confidence}/5
 								</p>
 								<label htmlFor="improvements">What you needed to work on...</label>
 								<p className="improvement textarea textarea-bordered textarea-accent font-bold mt-2 mb-4  ">
