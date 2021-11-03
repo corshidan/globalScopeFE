@@ -8,6 +8,7 @@ import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
 import StatisticsPage from '../StatisticsPage';
 import WordCloudPage from '../WordCloudPage';
+import AdminPage from '../AdminPage';
 const UserContext = createContext();
 function App() {
 	const [user, setUser] = useState({});
@@ -32,6 +33,9 @@ function App() {
 					</Route>
 					<Route path="/cloud">
 						<WordCloudPage />
+					</Route>
+					<Route path="/adminpage">
+						<AdminPage />
 					</Route>
 					<Route path="/">
 						<LoginPage handleAuth={setUser} />

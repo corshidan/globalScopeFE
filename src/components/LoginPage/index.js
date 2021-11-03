@@ -37,8 +37,14 @@ export default function LoginPage({ handleAuth }) {
 			})
 			.then((response) => {
 				if (response) {
-					handleAuth(response.payload[0]);
-					history.replace('/dashboard');
+					const user =
+						response.payload[0].email === 'admin@soc.com'
+							? { ...response.payload[0], role: 'admin' }
+							: { ...response.payload[0], role: 'bootcamper' };
+					handleAuth(user);
+					user.role === 'bootcamper'
+						? history.replace('/dashboard')
+						: history.replace('/adminpage');
 				}
 			})
 			.catch((err) => console.log(err));

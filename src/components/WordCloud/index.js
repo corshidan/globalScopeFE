@@ -8,12 +8,12 @@ const options = {
 	fontSizes: [20, 80],
 };
 // const size = [800, 550];
-const excluded = ["the", "and"]
+const excluded = ['the', 'and'];
 const splitWords = (string) => {
 	return string
-	.split(' ')
-	.filter((word) => word.length > 2 && !excluded.includes(word))
-	.map((word) => word.toLowerCase().replace(/\W/, ''));
+		.split(' ')
+		.filter((word) => word.length > 2 && !excluded.includes(word))
+		.map((word) => word.toLowerCase().replace(/\W/, ''));
 };
 const extractWords = (array) => {
 	const words = [];
@@ -23,8 +23,7 @@ const extractWords = (array) => {
 			...splitWords(reflection.grateful),
 			...splitWords(reflection.reflection),
 			...splitWords(reflection.improvements)
-			);
-			
+		);
 	});
 	words.forEach((word) => {
 		wordsObj[word] ? (wordsObj[word] += 1) : (wordsObj[word] = 1);
@@ -37,7 +36,9 @@ const extractWords = (array) => {
 export default function Wordcloud() {
 	const user = useUser();
 	const [words, setWords] = useState(null);
-	const url = `https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`;
+	const url = `https://global-scope.herokuapp.com/reflections/${
+		user.role === 'admin' ? '' : user.bootcamperid
+	}`;
 	useEffect(() => {
 		fetch(url)
 			.then((res) => res.json())
