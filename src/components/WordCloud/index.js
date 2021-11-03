@@ -8,11 +8,11 @@ const options = {
 	fontSizes: [20, 80],
 };
 // const size = [800, 550];
+const excluded = ["the", "and"]
 const splitWords = (string) => {
 	return string
 	.split(' ')
-	.filter((word) => word.length > 2)
-	.filter((word) => word !== "the" && word !== "and")
+	.filter((word) => word.length > 2 && !excluded.includes(word))
 	.map((word) => word.toLowerCase().replace(/\W/, ''));
 };
 const extractWords = (array) => {

@@ -12,28 +12,28 @@ export default function Dashboard() {
         <div className='flex justify-around mb-5 w-1/2'>
           <Card
             image='/images/addToBlogImage.png'
-            title='Add to Blog'
-            buttonLabel='Add'
+            // title='Add to Blog'
+            buttonLabel='Add to Blog'
             path='/bloginputpage'
           />
           <Card
             image='/images/seeYourStatsImage.png'
-            title='See your Stats'
-            buttonLabel='Stats'
+            // title='See your Stats'
+            buttonLabel='See your Stats'
             path='/statistics'
           />
         </div>
         <div className='flex justify-around w-1/2'>
           <Card
             image='/images/recapBlogImage.png'
-            title='Blog Recap'
-            buttonLabel='Recap'
+            // title='Blog Recap'
+            buttonLabel='Blog Recap'
             path='/blogrecappage'
           />
           <Card
-            image='/images/toDoListImage.png'
-            title='Word Cloud'
-            buttonLabel='View'
+            image='/images/lettersBro.png'
+            // title='Word Cloud'
+            buttonLabel='Word Cloud'
             path='/cloud'
           />
         </div>
