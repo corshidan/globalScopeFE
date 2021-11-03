@@ -7,8 +7,8 @@ import { useUser } from '../App/App.js'
 import GaugeChart from 'react-gauge-chart'
 
 export default function StatisticsPage() {
-  const [confidence, setConfidence] = useState()
-  const [feelings, setFeelings] = useState()
+  const [confidence, setConfidence] = useState(1)
+  const [feelings, setFeelings] = useState(1)
   const user = useUser()
   useEffect(() => {
     fetch(`https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`)
@@ -27,7 +27,7 @@ export default function StatisticsPage() {
 
         const emojiReducer = feeling.reduce((a, c) => a + c)
         const averageFeeling = emojiReducer / feeling.length
-
+console.log(averageFeeling)
         setFeelings(averageFeeling)
 
         const reducer = overallConfidence.reduce((a, c) => a + c)
@@ -54,10 +54,13 @@ export default function StatisticsPage() {
   }
   let value = findDate()
   let progressPercentage = findDate() / 100
+  
+  
   return (
     <Layout>
-      <div className='grid grid-cols-3'>
-        <div className='flex flex-col self-center items-center pt-6 pb-10 bg-gray-100 w-2/4 rounded-b-xl  mx-auto mt-4 shadow-inner '>
+    <div className="py-4 px-2">
+      <div className='grid grid-cols-3 px-10 gap-10'>
+        <div className='flex flex-col  items-center mt-5 pt-6 pb-10 bg-gray-100  h-3/5 rounded-b-xl   mt-4 shadow-inner '>
           {/* <ChakraProvider>
             <CircularProgress value={findDate()} size='125px' color='#401485'>
               <CircularProgressLabel> {value}%</CircularProgressLabel>
@@ -77,7 +80,7 @@ export default function StatisticsPage() {
           />
           <p>{value}%</p>
         </div>
-        <div className='flex flex-col justify-center items-center pt-6 pb-10 bg-gray-100 w-2/4 rounded-b-xl  mx-auto mt-4 shadow-inner '>
+        <div className='flex flex-col justify-center items-center pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mx-auto mt-4 shadow-inner '>
           {/* <ChakraProvider>
             <CircularProgress value={100} size='125px' color='green'>
               <CircularProgressLabel> 5</CircularProgressLabel>
@@ -101,7 +104,7 @@ export default function StatisticsPage() {
             alt='emoji face'
           />
         </div>
-        <div className='flex flex-col justify-center items-center pt-6 pb-10 bg-gray-100 w-2/4 rounded-b-xl  mx-auto mt-4 shadow-inner '>
+        <div className='flex flex-col justify-center justify-self-end items-center  pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mt-4 shadow-inner '>
           {/* <ChakraProvider>
             <CircularProgress value={25} size='125px' color='red'>
               <CircularProgressLabel> 1.8%</CircularProgressLabel>
@@ -122,11 +125,11 @@ export default function StatisticsPage() {
               'rgba(20, 220, 20, 0.7)',
             ]}
           />
-          <p>{confidence}</p>
+          <p>{Math.round(confidence)}</p>
         </div>
       </div>
 
-      <div className='p-10 grid grid-cols-2 gap-10   '>
+      <div className='px-10 grid grid-cols-2 gap-10   '>
         <div className=' bg-gray-100 rounded-l-xl  drop-shadow-2xl  shadow-inner'>
           <PolarArea
             data={{
@@ -135,7 +138,7 @@ export default function StatisticsPage() {
                 {
                   label: 'Overall mood',
                   fill: true,
-                  data: [10, 12, 15, 4, 2, 1],
+                  data: [10, 1, 10, 4, 2, 1],
                   backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -178,7 +181,9 @@ export default function StatisticsPage() {
         </div>
         <div className=' bg-gray-100 rounded-r-xl z-10 shadow-inner'>
           <Bar
+          
             data={{
+              
               labels: ['1', '2', '3', '4', '5'],
               datasets: [
                 {
@@ -229,6 +234,7 @@ export default function StatisticsPage() {
           />
         </div>
       </div>
+    </div>
     </Layout>
   )
 }
