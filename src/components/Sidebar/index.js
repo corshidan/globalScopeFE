@@ -14,6 +14,7 @@ import css from './sidebar.module.css'
 import { useUser } from '../App/App.js'
 import lottie from 'lottie-web'
 import { svgIconClasses } from '@mui/material'
+import { Cat } from 'react-kawaii'
 
 export default function Sidebar() {
   const container = useRef(null)
@@ -153,7 +154,11 @@ export default function Sidebar() {
                 : ''
             }`}
           >
-            <div className='container' ref={container}></div>
+            <div className='mb-20 ml-8    '>
+              <Cat size={90} mood='ko' color='white' />
+            </div>
+
+            {/* <div className='  ' ref={container}></div> */}
 
             {/* <Link to="/Settings"> */}
             <p onClick={logout} className={css.bottomList}>
