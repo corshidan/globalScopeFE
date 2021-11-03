@@ -78,7 +78,7 @@ export default function StatisticsPage() {
               hideText={true}
             />
             <p>{value}%</p>
-            <div className=' p-1 mt-20 w-2/3 bg-green-200 border-2  rounded-xl  '>
+            <div className=' p-2 mt-20 w-2/3 bg-green-200 border-2  rounded-xl  '>
               <p className='text-center'>Bootcamp Progress</p>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function StatisticsPage() {
               ]}
             />
             <p>{Math.round(confidence)}</p>
-            <div className=' p-1 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300  '>
+            <div className=' p-2 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300  '>
               <p className='text-center'>Overall Confidence</p>
             </div>
           </div>
