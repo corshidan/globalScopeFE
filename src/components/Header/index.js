@@ -13,16 +13,19 @@ export default function Header() {
 	const date = `${weekDay} ${current.getDate()}/${
 		current.getMonth() + 1
 	}/${current.getFullYear()}`;
+	const url = `https://global-scope.herokuapp.com/reflections/${
+		user.role === 'admin' ? '' : user.bootcamperid
+	}`;
 	useEffect(() => {
 		fetch('https://global-scope.herokuapp.com/quote')
 			.then((res) => res.json())
 			.then((data) => setQuote(data.payload))
 			.catch((err) => console.log(err));
-		fetch(`https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`)
+		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setNumberOfReflections(data.payload.length))
 			.catch((err) => console.log(err));
-	}, [user.bootcamperid]);
+	}, [url]);
 	return (
 		<header className=" flex justify-between items-center shadow-md p-3">
 			<div className="w-1/3 pl-3">

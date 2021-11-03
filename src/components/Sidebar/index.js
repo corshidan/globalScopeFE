@@ -32,58 +32,86 @@ export default function Sidebar() {
 			</section>
 			<div className="flex flex-col justify-between h-full pb-10">
 				<ul className={css.navigation}>
-					{/* Dashboard */}
-					<li
-						className={`${listStyle}${
-							location.pathname === '/dashboard' ? 'bg-white text-purple-800' : ''
-						}`}
-					>
-						<Link to="/dashboard">
-							<p className="">
-								<FontAwesomeIcon size="sm" icon={faChartLine} />
-								<span className="ml-2">Dashboard</span>
-							</p>
-						</Link>
-					</li>
-					{/* Blog Input */}
-					<li
-						className={`${listStyle}${
-							location.pathname === '/bloginputpage' ? 'bg-white text-purple-800' : ''
-						}`}
-					>
-						<Link to="/bloginputpage">
-							<p>
-								<FontAwesomeIcon size="sm" icon={faBrain} />
-								<span className="ml-2">Add To Blog</span>
-							</p>
-						</Link>
-					</li>
-					{/* Blog Recap */}
-					<li
-						className={`${listStyle}${
-							location.pathname === '/blogrecappage' ? 'bg-white text-purple-800' : ''
-						}`}
-					>
-						<Link to="/blogrecappage">
-							<p>
-								<FontAwesomeIcon size="sm" icon={faBinoculars} />
-								<span className="ml-2">Blog Recap</span>
-							</p>
-						</Link>
-					</li>
-					{/* Statistics  */}
-					<li
-						className={`${listStyle}${
-							location.pathname === '/statistics' ? 'bg-white text-purple-800' : ''
-						}`}
-					>
-						<Link to="/statistics">
-							<p>
-								<FontAwesomeIcon size="sm" icon={faChartPie} />
-								<span className="ml-2">Stats</span>
-							</p>
-						</Link>
-					</li>
+					{user.role !== 'admin' && (
+						<>
+							{' '}
+							{/* Dashboard */}
+							<li
+								className={`${listStyle}${
+									location.pathname === '/dashboard'
+										? 'bg-white text-purple-800'
+										: ''
+								}`}
+							>
+								<Link to="/dashboard">
+									<p className="">
+										<FontAwesomeIcon size="sm" icon={faChartLine} />
+										<span className="ml-2">Dashboard</span>
+									</p>
+								</Link>
+							</li>
+							{/* Blog Input */}
+							<li
+								className={`${listStyle}${
+									location.pathname === '/bloginputpage'
+										? 'bg-white text-purple-800'
+										: ''
+								}`}
+							>
+								<Link to="/bloginputpage">
+									<p>
+										<FontAwesomeIcon size="sm" icon={faBrain} />
+										<span className="ml-2">Add To Blog</span>
+									</p>
+								</Link>
+							</li>
+							{/* Blog Recap */}
+							<li
+								className={`${listStyle}${
+									location.pathname === '/blogrecappage'
+										? 'bg-white text-purple-800'
+										: ''
+								}`}
+							>
+								<Link to="/blogrecappage">
+									<p>
+										<FontAwesomeIcon size="sm" icon={faBinoculars} />
+										<span className="ml-2">Blog Recap</span>
+									</p>
+								</Link>
+							</li>
+							{/* Statistics  */}
+							<li
+								className={`${listStyle}${
+									location.pathname === '/statistics'
+										? 'bg-white text-purple-800'
+										: ''
+								}`}
+							>
+								<Link to="/statistics">
+									<p>
+										<FontAwesomeIcon size="sm" icon={faChartPie} />
+										<span className="ml-2">Stats</span>
+									</p>
+								</Link>
+							</li>
+						</>
+					)}
+					{/* Admin page */}
+					{user.role === 'admin' && (
+						<li
+							className={`${listStyle}${
+								location.pathname === '/adminpage' ? 'bg-white text-purple-800' : ''
+							}`}
+						>
+							<Link to="/adminpage">
+								<p>
+									<FontAwesomeIcon size="sm" icon={faChartLine} />
+									<span className="ml-2">Admin Stats</span>
+								</p>
+							</Link>
+						</li>
+					)}
 					{/* Word Cloud */}
 					<li
 						className={`${listStyle}${
