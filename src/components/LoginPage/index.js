@@ -42,7 +42,9 @@ export default function LoginPage({ handleAuth }) {
 							? { ...response.payload[0], role: 'admin' }
 							: { ...response.payload[0], role: 'bootcamper' };
 					handleAuth(user);
-					history.replace('/dashboard');
+					user.role === 'bootcamper'
+						? history.replace('/dashboard')
+						: history.replace('/adminpage');
 				}
 			})
 			.catch((err) => console.log(err));
