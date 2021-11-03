@@ -54,6 +54,9 @@ export default function StatisticsPage() {
   }
   let value = findDate()
   let progressPercentage = findDate() / 100
+  let confidencePercentage = Math.round((Math.round(confidence) * 2 - 1) / 10)
+  console.log(typeof confidence)
+  console.log(confidencePercentage)
   return (
     <Layout>
       <div className='grid grid-cols-3'>
@@ -87,7 +90,7 @@ export default function StatisticsPage() {
             id='gauge-chart2'
             nrOfLevels={6}
             arcWidth={0.3}
-            percent={(Math.round(feelings) * 1.67 - 1) / 10}
+            percent={1}
             colors={['rgba(255, 206, 86, 0.7)', 'rgba(255, 180, 0, 0.9)']}
             style={{ width: '120%' }}
             needleBaseColor={'#401485'}
@@ -109,7 +112,7 @@ export default function StatisticsPage() {
           </ChakraProvider> */}
           <GaugeChart
             id='gauge-chart1'
-            percent={(Math.round(confidence) * 2 - 1) / 10}
+            percent={confidencePercentage}
             nrOfLevels={5}
             arcWidth={0.3}
             style={{ width: '120%' }}
