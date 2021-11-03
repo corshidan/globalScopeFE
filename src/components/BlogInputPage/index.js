@@ -2,9 +2,10 @@ import Layout from '../Layout';
 import Slider from '@mui/material/Slider';
 import { useForm } from 'react-hook-form';
 import EmojiInput from '../EmojiInput';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUser } from '../App/App.js';
 import { useHistory } from 'react-router-dom';
+import { getToday } from '../../libs/helperFunctions'
 
 export default function BlogInputPage() {
 	const user = useUser();
@@ -16,6 +17,7 @@ export default function BlogInputPage() {
 		formState: { errors },
 	} = useForm();
 	const [overallFeeling, setOverallFeeling] = useState(null);
+	const [topicList, setTopicList] = useState([]);
 	const history = useHistory();
 	const url = 'https://global-scope.herokuapp.com/reflections';
 	const onSubmit = (data) => {
@@ -47,8 +49,23 @@ export default function BlogInputPage() {
 	};
 	const handleEmoji = (digit) => {
 		setOverallFeeling(digit);
-		console.log(overallFeeling);
 	};
+
+	useEffect(() => {
+		fetch(`https://global-scope.herokuapp.com/topics?date=${getToday()}`)
+			.then((res) => res.json())
+			.then((data) => {
+				const list = data.payload.reduce((acc, cur) => {
+					if (!acc.includes(cur.topic)) {
+						return [...acc, cur.topic]
+					}
+					return acc
+				},[])
+				setTopicList(list)
+			})
+			.catch((err) => console.log(err));
+	}, []);
+
 	return (
 		<Layout>
 			<div
@@ -235,7 +252,9 @@ export default function BlogInputPage() {
 							</div>
 						</div>
 						<datalist id="topics">
-							<option value="JS"></option>
+							{topicList.map((topic) => {
+								return <option value={topic}></option>
+							})}
 						</datalist>
 						{/* Confidence input */}
 						<div className="flex flex-col border-2 p-2 mb-2">

@@ -2,16 +2,15 @@ import Layout from '../Layout';
 import { useUser } from '../App/App.js';
 import { useState, useEffect } from 'react';
 import css from './index.module.css';
+import {getToday} from '../../libs/helperFunctions'
 
 import React from 'react';
-// import DayPicker from "react-day-picker";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
 export default function BlogRecapPage() {
 	const user = useUser();
-	const date = new Date();
-	const today = date.toISOString().slice(0, 10);
+	const today = getToday();
 	const [reflections, setReflections] = useState(null);
 	const [reflectionDate, setReflectionDate] = useState(today);
 	const [bootcampDate, setBootcampDate] = useState(null);
