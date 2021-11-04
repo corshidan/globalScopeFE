@@ -59,7 +59,7 @@ export default function StatisticsPage() {
     <Layout>
       <div className='py-4 px-2'>
         <div className='grid grid-cols-3 px-10 gap-10'>
-          <div className='flex flex-col  items-center mt-5 pt-6 pb-10 bg-gray-100  w-3/4 h-3/4 rounded-b-xl   mt-4 shadow-inner '>
+          <div className='flex flex-col  items-center mt-5 pt-6 pb-10 bg-gray-100  w-3/4 h-3/4 rounded-b-xl   mt-4 shadow-inner relative '>
             {/* <ChakraProvider>
             <CircularProgress value={findDate()} size='125px' color='#401485'>
               <CircularProgressLabel> {value}%</CircularProgressLabel>
@@ -78,11 +78,11 @@ export default function StatisticsPage() {
               hideText={true}
             />
             <p>{value}%</p>
-            <div className=' p-2 mt-20 w-2/3 bg-green-200 border-2  rounded-xl  '>
-              <p className='text-center'>Bootcamp Progress</p>
+            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl absolute  inset-x-12 -bottom-8  '>
+              <p className='text-center font-medium'>Bootcamp Progress</p>
             </div>
           </div>
-          <div className='flex flex-col justify-center items-center pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mx-auto mt-4 shadow-inner '>
+          <div className='flex flex-col justify-center items-center pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mx-auto mt-4 shadow-inner relative '>
             {/* <ChakraProvider>
             <CircularProgress value={100} size='125px' color='green'>
               <CircularProgressLabel> 5</CircularProgressLabel>
@@ -99,14 +99,14 @@ export default function StatisticsPage() {
               needleColor={'rgba(153, 102, 255, 0.5)'}
               hideText={true}
             />
-
             <img
               className='h-1/5'
               src={`/images/emojis/${Math.round(`${feelings}`)}.png`}
               alt='emoji face'
             />
           </div>
-          <div className='flex flex-col justify-self-end items-center  pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mt-4 shadow-inner '>
+
+          <div className='flex flex-col justify-self-end items-center  pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mt-4 shadow-inner relative '>
             {/* <ChakraProvider>
             <CircularProgress value={25} size='125px' color='red'>
               <CircularProgressLabel> 1.8%</CircularProgressLabel>
@@ -128,8 +128,8 @@ export default function StatisticsPage() {
               ]}
             />
             <p>{Math.round(confidence)}</p>
-            <div className=' p-2 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300  '>
-              <p className='text-center'>Overall Confidence</p>
+            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-12 -bottom-8   '>
+              <p className='text-center font-medium'>Overall Confidence</p>
             </div>
           </div>
         </div>

@@ -36,7 +36,7 @@ export default function Sidebar() {
       renderer: 'svg',
       // loop: true,
     })
-    anim.setSpeed(2)
+    anim.setSpeed(4)
     // anim.destroy()
   }, [])
 
@@ -154,9 +154,9 @@ export default function Sidebar() {
                 : ''
             }`}
           >
-            <div className='mb-20 ml-8    '>
+            {/* <div className='mb-20 ml-8    '>
               <Cat size={90} mood='ko' color='white' />
-            </div>
+            </div> */}
 
             {/* <div className='  ' ref={container}></div> */}
 
