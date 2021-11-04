@@ -100,10 +100,13 @@ export default function StatisticsPage() {
               hideText={true}
             />
             <img
-              className='h-1/5'
+              className='h-1/6 '
               src={`/images/emojis/${Math.round(`${feelings}`)}.png`}
               alt='emoji face'
             />
+            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-12 -bottom-8 shadow-2xl shadow-inner opacity-90    '>
+              <p className='text-center font-medium'>Overall Mood</p>
+            </div>
           </div>
 
           <div className='flex flex-col justify-self-end items-center  pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mt-4 shadow-inner relative '>

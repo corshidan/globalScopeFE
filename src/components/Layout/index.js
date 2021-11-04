@@ -16,7 +16,7 @@ export default function Layout({ children }) {
       renderer: 'svg',
       // loop: true,
     })
-    anim.setSpeed(1.9)
+    anim.setSpeed(2)
     // anim.destroy()
   }, [])
 

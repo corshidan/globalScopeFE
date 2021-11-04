@@ -60,7 +60,7 @@
   width: 100px;
   height: 175px;
 
-  animation: hideAnimation 0s ease-in 5s;
+  animation: hideAnimation 0s ease-in 4s;
   animation-fill-mode: forwards;
   font-style: italic;
 }
