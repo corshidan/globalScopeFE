@@ -27,7 +27,7 @@ export default function Header() {
 			.catch((err) => console.log(err));
 	}, [url]);
 	return (
-		<header className=" flex justify-between items-center shadow-md p-3">
+		<header className= {`${css.header} flex justify-between items-center shadow-md p-3`}>
 			<div className="w-1/3 pl-3">
 				{user.firstname ? (
 					<h1 className="font-extrabold">Welcome {`${user.firstname}`}!</h1>
