@@ -31,7 +31,11 @@ export default function Layout({ children }) {
           </div>
           <div className={css.children}>{children}</div>
         </div>
-        <div className='w-1/12   fixed right-0 bottom-0 ' ref={container}></div>
+        <div className='w-1/12   fixed bottom-0 right-0  ' ref={container}>
+          <div className={css.dog}>
+            <p className={css.dog}>You're my bestfriend</p>
+          </div>
+        </div>
       </div>
     </Box>
   )
