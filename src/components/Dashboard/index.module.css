@@ -1,0 +1,30 @@
+.dog {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    54% 100%,
+    50% 75%,
+    0% 75%
+  );
+  background-image: radial-gradient(
+    rgb(146, 227, 169),
+    rgb(117, 182, 135),
+    rgb(88, 136, 101)
+  );
+  width: 100px;
+  height: 175px;
+
+  animation: hideAnimation 0s ease-in 4s;
+  animation-fill-mode: forwards;
+  font-style: italic;
+}
+
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}
