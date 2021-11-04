@@ -3,9 +3,12 @@
 	justify-content: center;
 	align-items: center;
 }
-.quote {
-	font-family: 'Lucida Handwriting';
-}
+/* .header {
+	font-family: 'Poppins', sans-serif;
+} */
+/* .quote {
+
+} */
 .test {
 	display: flex;
 	justify-content: center;
