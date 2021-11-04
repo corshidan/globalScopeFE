@@ -77,13 +77,25 @@ TablePaginationActions.propTypes = {
 	rowsPerPage: PropTypes.number.isRequired,
 };
 
-export default function BootcamperList({ allReflections, handleBootcamperChange }) {
+export default function BootcamperList({
+	allReflections,
+	handleGraphChange,
+	filterDate,
+	currentBootcamper,
+	changeDate,
+}) {
 	const [bootcampers, setBootcampers] = useState([]);
 	const [page, setPage] = React.useState(0);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
+	const [selectedDate, setSelectedDate] = React.useState(filterDate);
+
 	const calculateAverageFeeling = (id) => {
 		const averageFeeling = allReflections
-			.filter((item) => item.bootcamperid === id)
+			.filter((item) => {
+				return (
+					item.bootcamperid === id && Date.parse(item.created) > Date.parse(selectedDate)
+				);
+			})
 			.map((item) => item.overallfeeling)
 			.reduce((sum, item, index, arr) => {
 				if (index === arr.length - 1) {
@@ -114,7 +126,9 @@ export default function BootcamperList({ allReflections, handleBootcamperChange 
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
 	};
-
+	function handleClick(another) {
+		handleGraphChange(another, selectedDate);
+	}
 	useEffect(() => {
 		fetch('https://global-scope.herokuapp.com/bootcampers?admin=true')
 			.then((res) => res.json())
@@ -142,7 +156,12 @@ export default function BootcamperList({ allReflections, handleBootcamperChange 
 						Last Name
 					</TableCell>
 					<TableCell sx={{ p: 0 }} align="center">
-						<AverageMoodTimePicker />
+						<AverageMoodTimePicker
+							handleGraphChange={handleGraphChange}
+							currentBootcamper={currentBootcamper}
+							changeDate={changeDate}
+							testDate={setSelectedDate}
+						/>
 					</TableCell>
 				</TableRow>
 				<TableBody>
@@ -152,8 +171,10 @@ export default function BootcamperList({ allReflections, handleBootcamperChange 
 					).map((row, i) => (
 						<TableRow
 							key={i}
-							onClick={(e) => handleBootcamperChange(e, row.id)}
-							className="hover:bg-green-100 cursor-pointer"
+							onClick={() => handleClick(row.id)}
+							className={`${'hover:bg-purple-100 cursor-pointer '}${
+								i % 2 !== 0 ? 'bg-gray-100' : ''
+							}`}
 							style={{ height: 25 }}
 						>
 							<TableCell style={{ padding: 0, marginLeft: '5px' }} align="center">
@@ -165,7 +186,18 @@ export default function BootcamperList({ allReflections, handleBootcamperChange 
 							<TableCell sx={{ padding: 0 }} style={{ width: 110 }} align="center">
 								{row.lastname}
 							</TableCell>
-							<TableCell sx={{ padding: 0 }} style={{ width: 130 }} align="center">
+							<TableCell
+								sx={{ padding: 0 }}
+								style={{ width: 130 }}
+								align="center"
+								className={`${
+									row.feel <= 2.6
+										? 'bg-red-200 rounded-full'
+										: row.feel >= 4.2
+										? 'bg-green-200 opacity-80 rounded-full'
+										: ''
+								}`}
+							>
 								{row.feel}
 							</TableCell>
 						</TableRow>

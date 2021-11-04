@@ -22,12 +22,12 @@ const columnNames = [
 export default function AdminPage() {
 	const [cvsData, setCsvData] = useState(null);
 	const [allData, setAllData] = useState([]);
-	// const [bootcamper, setBootcamper] = useState('');
+	const [filterDate, setFilterDate] = useState('2010-01-01');
+	const [bootcamper, setBootcamper] = useState(0);
 	const [selectedBootcamperData, setSelectedBootcamperData] = useState([]);
 
-	const handleBootcamperChange = (e, id) => {
-		e.preventDefault();
-		// setBootcamper(id);
+	const handleBootcamperChange = (id) => {
+		setBootcamper(id);
 		updateDataForGraph(id);
 	};
 	useEffect(() => {
@@ -54,10 +54,17 @@ export default function AdminPage() {
 			})
 			.catch((err) => console.log(err));
 	}, []);
-	const updateDataForGraph = (id) => {
-		const filteredData = allData.filter((reflection) => reflection.bootcamperid === id);
+	const updateDataForGraph = (id = bootcamper, date = filterDate) => {
+		const filteredData = allData.filter((reflection) => {
+			return (
+				reflection.bootcamperid === id && Date.parse(reflection.created) >= Date.parse(date)
+			);
+		});
 		setSelectedBootcamperData(filteredData);
 	};
+	useEffect(() => {
+		updateDataForGraph(bootcamper, filterDate);
+	}, [filterDate, bootcamper]);
 	return (
 		<Layout>
 			<div className=" flex flex-col justify-start p-2">
@@ -76,10 +83,23 @@ export default function AdminPage() {
 							<div className="ml-2">
 								<BootcampersList
 									allReflections={allData}
-									handleBootcamperChange={handleBootcamperChange}
+									handleGraphChange={handleBootcamperChange}
+									filterDate={filterDate}
+									currentBootcamper={bootcamper}
+									changeDate={setFilterDate}
 								/>
 							</div>
-							<p>The id is {JSON.stringify(selectedBootcamperData, null, 2)}</p>
+							<p>
+								{' '}
+								{selectedBootcamperData.map((item) => {
+									return (
+										<p>
+											{item.bootcamperid}-------
+											{item.created}
+										</p>
+									);
+								})}
+							</p>
 						</section>
 					</>
 				)}

@@ -4,21 +4,30 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './index.css';
 
-export default function AverageMoodTimePicker() {
-	const [age, setAge] = React.useState('');
-
+export default function AverageMoodTimePicker({
+	currentBootcamper,
+	handleGraphChange,
+	changeDate,
+	testDate,
+}) {
 	const handleChange = (event) => {
-		setAge(event.target.value);
+		changeDate(event.target.value);
+		handleGraphChange(currentBootcamper, event.target.value);
+		testDate(event.target.value);
 	};
-
+	const today = Date.now();
+	const oneDay = 86400000;
+	const formatDate = (date) => {
+		return date.toISOString().slice(0, 10);
+	};
 	return (
 		<FormControl sx={{ minWidth: 120 }}>
-			<Select value={age} onChange={handleChange} displayEmpty>
-				<MenuItem value="">Feeling</MenuItem>
-				<MenuItem value={10}>Yesterday</MenuItem>
-				<MenuItem value={20}>Last 3 days</MenuItem>
-				<MenuItem value={30}>Last Week</MenuItem>
-				<MenuItem value={40}>All</MenuItem>
+			<Select value={2} onChange={handleChange} displayEmpty>
+				<MenuItem value={2}>Feeling</MenuItem>
+				<MenuItem value={formatDate(new Date(today - oneDay))}>Since yesterday</MenuItem>
+				<MenuItem value={formatDate(new Date(today - oneDay * 3))}>Last 3 days</MenuItem>
+				<MenuItem value={formatDate(new Date(today - oneDay * 7))}>Last 7 days</MenuItem>
+				<MenuItem value={'2010-01-01'}>All</MenuItem>
 			</Select>
 		</FormControl>
 	);

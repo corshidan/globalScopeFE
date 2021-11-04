@@ -50,6 +50,7 @@ export default function BlogRecapPage() {
 		const diffTime = Math.abs(date2 - date1);
 		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 		const dateOfBootcamp = `Week ${Math.ceil(diffDays / 7)} day ${(diffTime % 7) + 1}`;
+		console.log(date2, date1);
 		setBootcampDate(dateOfBootcamp);
 	};
 	const getReflection = (date, id, e) => {
