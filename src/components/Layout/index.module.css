@@ -48,20 +48,15 @@
     100% 0%,
     100% 75%,
     75% 75%,
-    75% 100%,
+    54% 100%,
     50% 75%,
     0% 75%
   );
-  background-image: radial-gradient(
-    rgb(146, 227, 169),
-    rgb(117, 182, 135),
-    rgb(88, 136, 101)
-  );
-  width: 75px;
-  height: 75px;
-  bottom: 0;
-  right: 0;
-  animation: hideAnimation 0s ease-in 4s;
+  background-color: rgb(146, 227, 169);
+  width: 100px;
+  height: 175px;
+
+  animation: hideAnimation 0s ease-in 5s;
   animation-fill-mode: forwards;
 }
 

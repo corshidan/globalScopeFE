@@ -16,7 +16,7 @@ export default function Layout({ children }) {
       renderer: 'svg',
       // loop: true,
     })
-    anim.setSpeed(1)
+    anim.setSpeed(1.9)
     // anim.destroy()
   }, [])
 
@@ -33,7 +33,10 @@ export default function Layout({ children }) {
         </div>
         <div className='w-1/12   fixed bottom-0 right-0  ' ref={container}>
           <div className={css.dog}>
-            <p className={css.dog}>You're my bestfriend</p>
+            <p className={css.dog}>
+              Hi..I'm dog.. <br />
+              I'll keep you company whilst you reflect..
+            </p>
           </div>
         </div>
       </div>
