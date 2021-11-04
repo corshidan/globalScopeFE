@@ -57,7 +57,7 @@ export default function Dashboard() {
       </div>
       <div className='w-1/12   fixed bottom-0 right-0  ' ref={container}>
         <div className={css.dog}>
-          <p className={css.dog}>
+          <p className={css.text}>
             Hi..I'm dog.. <br />
             I'll keep you company whilst you reflect..
           </p>
