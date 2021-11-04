@@ -78,7 +78,7 @@ export default function StatisticsPage() {
               hideText={true}
             />
             <p>{value}%</p>
-            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl absolute  inset-x-12 -bottom-8 shadow-2xl shadow-inner opacity-90 '>
+            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl absolute  inset-x-center -bottom-8 shadow-2xl shadow-inner opacity-90 '>
               <p className='text-center font-medium'>Bootcamp Progress</p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function StatisticsPage() {
               src={`/images/emojis/${Math.round(`${feelings}`)}.png`}
               alt='emoji face'
             />
-            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-12 -bottom-8 shadow-2xl shadow-inner opacity-90    '>
+            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-center -bottom-8 shadow-2xl shadow-inner opacity-90    '>
               <p className='text-center font-medium'>Overall Mood</p>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function StatisticsPage() {
               ]}
             />
             <p>{Math.round(confidence)}</p>
-            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-12 -bottom-8 shadow-2xl shadow-inner opacity-90    '>
+            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-center -bottom-8 shadow-2xl shadow-inner opacity-90    '>
               <p className='text-center font-medium'>Overall Confidence</p>
             </div>
           </div>
