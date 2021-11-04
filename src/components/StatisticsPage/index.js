@@ -14,6 +14,14 @@ export default function StatisticsPage() {
   const [refDateThree, setRefDateThree] = useState(0);
   const [refDateFour, setRefDateFour] = useState(0);
   const [refDateFive, setRefDateFive] = useState(0);
+
+  const [emojiTallyOne, setEmojiTallyOne] = useState(0);
+  const [emojiTallyTwo, setEmojiTallyTwo] = useState(0);
+  const [emojiTallyThree, setEmojiTallyThree] = useState(0);
+  const [emojiTallyFour, setEmojiTallyFour] = useState(0);
+  const [emojiTallyFive, setEmojiTallyFive] = useState(0);
+  const [emojiTallySix, setEmojiTallySix] = useState(0);
+
   const user = useUser();
   useEffect(() => {
     fetch(`https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`)
@@ -28,7 +36,7 @@ export default function StatisticsPage() {
         const feeling = data.payload.map(
           (reflections) => reflections.overallfeeling
         );
-        //  console.log(feeling)
+         console.log(feeling)
 
 
         const emojiReducer = feeling.reduce((a, c) => a + c);
@@ -44,6 +52,8 @@ export default function StatisticsPage() {
         setConfidence(averageConfidence);
         // setHighlightedDays(dates)
 
+
+        // last 5 confidence ratings line chart 
         const recentFeelings = data.payload
           .map((reflections) => reflections.overallfeeling)
           .reverse();
@@ -54,6 +64,30 @@ export default function StatisticsPage() {
         setRefDateThree(recentFeelings[2]);
         setRefDateFour(recentFeelings[1]);
         setRefDateFive(recentFeelings[0]);
+
+          // emoji total
+          
+          
+          const createTally = items => {
+            const tally = {};
+            for (let i = 0; i < items.length; i++) {
+               if (!tally[items[i]]) {
+                  tally[items[i]] = 0;
+               }
+               tally[items[i]]++;
+            }
+            return tally
+         }
+         const tallyRes = createTally(feeling)
+         console.log(tallyRes[5])
+
+         setEmojiTallyOne(tallyRes[1])
+         setEmojiTallyTwo(tallyRes[2])
+         setEmojiTallyThree(tallyRes[3])
+         setEmojiTallyFour(tallyRes[4])
+         setEmojiTallyFive(tallyRes[5])
+         setEmojiTallySix(tallyRes[6])
+
       })
 
       .catch((err) => console.log(err));
@@ -172,7 +206,7 @@ export default function StatisticsPage() {
                   {
                     label: 'Overall mood',
                     fill: true,
-                    data: [10, 1, 10, 4, 2, 1],
+                    data: [`${emojiTallyOne}`, `${emojiTallyTwo}`, `${emojiTallyThree}`, `${emojiTallyFour}`, `${emojiTallyFive}`, `${emojiTallySix}`],
                     backgroundColor: [
                       'rgba(255, 99, 132, 0.5)',
                       'rgba(54, 162, 235, 0.5)',
@@ -201,8 +235,12 @@ export default function StatisticsPage() {
                 scales: {
                   yAxes: [
                     {
+                      position: "right",
                       ticks: {
-                        beginAtZero: true,
+                        max: 6,
+                        min: 1,
+                        stepSize: 1,
+                        
                       },
                     },
                   ],
@@ -219,7 +257,7 @@ export default function StatisticsPage() {
           <div className=" bg-gray-100 rounded-r-xl z-10 shadow-inner">
             <Line
               data={{
-                labels: ["Oldest", "", "", "", "Newest"],
+                labels: ["", "", "", "", "Most Recent"],
                 datasets: [
                   {
                     label: "Confidence level",
@@ -247,10 +285,10 @@ export default function StatisticsPage() {
               width={600}
               options={{
                 maintainAspectRatio: false,
-                scaleOverride : true,
+                // scaleOverride : true,
                 scales: {
                   
-                  y: {
+                  yAxes: {
                     ticks: {
                       beginAtZero: true,
                       type: "linear",
