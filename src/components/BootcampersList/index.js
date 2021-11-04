@@ -131,18 +131,18 @@ export default function BootcamperList({ allReflections, handleBootcamperChange 
 	return (
 		<TableContainer component={Paper}>
 			<Table sx={{ maxWidth: 600 }} aria-label="custom pagination table">
-				<TableRow className="bg-gray-100 text-gray-200" sx={{ height: 40, padding: 0 }}>
-					<TableCell component="th" style={{ width: 50 }} sx={{ padding: 0 }}>
+				<TableRow className="bg-gray-100 text-gray-200 font-bold" sx={{ height: 40, p: 0 }}>
+					<TableCell style={{ width: 50 }} sx={{ p: 0 }} align="center">
 						ID
 					</TableCell>
-					<TableCell component="th" sx={{ padding: 0 }}>
+					<TableCell sx={{ p: 0 }} align="center">
 						First Name
 					</TableCell>
-					<TableCell component="th" sx={{ padding: 0 }}>
+					<TableCell sx={{ p: 0 }} align="center">
 						Last Name
 					</TableCell>
-					<TableCell component="th" style={{ width: 120 }} sx={{ padding: 0 }}>
-						<AverageMoodTimePicker placeholder="Feeling" />
+					<TableCell sx={{ p: 0 }} align="center">
+						<AverageMoodTimePicker />
 					</TableCell>
 				</TableRow>
 				<TableBody>
@@ -154,16 +154,18 @@ export default function BootcamperList({ allReflections, handleBootcamperChange 
 							key={i}
 							onClick={(e) => handleBootcamperChange(e, row.id)}
 							className="hover:bg-green-100 cursor-pointer"
-							style={{ height: 33 }}
+							style={{ height: 25 }}
 						>
-							<TableCell sx={{ padding: 0 }}>{row.id}</TableCell>
-							<TableCell sx={{ padding: 0 }} style={{ width: 160 }}>
-								{row.firstname}
-							</TableCell>
-							<TableCell sx={{ padding: 0 }} style={{ width: 160 }}>
-								{row.lastname}
+							<TableCell style={{ padding: 0, marginLeft: '5px' }} align="center">
+								{row.id}
 							</TableCell>
 							<TableCell sx={{ padding: 0 }} style={{ width: 160 }} align="center">
+								{row.firstname}
+							</TableCell>
+							<TableCell sx={{ padding: 0 }} style={{ width: 110 }} align="center">
+								{row.lastname}
+							</TableCell>
+							<TableCell sx={{ padding: 0 }} style={{ width: 130 }} align="center">
 								{row.feel}
 							</TableCell>
 						</TableRow>
@@ -175,8 +177,8 @@ export default function BootcamperList({ allReflections, handleBootcamperChange 
 						</TableRow>
 					)}
 				</TableBody>
-				<TableFooter sx={{ padding: 0 }}>
-					<TableRow className="bg-gray-100" sx={{ padding: 0 }}>
+				<TableFooter>
+					<TableRow>
 						<TablePagination
 							rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
 							colSpan={3}
@@ -192,8 +194,7 @@ export default function BootcamperList({ allReflections, handleBootcamperChange 
 							onPageChange={handleChangePage}
 							onRowsPerPageChange={handleChangeRowsPerPage}
 							ActionsComponent={TablePaginationActions}
-							className="bg-gray-100"
-							sx={{ padding: 0 }}
+							sx={{ p: 0 }}
 						/>
 					</TableRow>
 				</TableFooter>

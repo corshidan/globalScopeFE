@@ -72,8 +72,8 @@ export default function AdminPage() {
 							</CSVLink>
 						</div>
 
-						<section className="flex flex-col items-start">
-							<div className="flex">
+						<section className="flex flex-col items-center ">
+							<div className="ml-2">
 								<BootcampersList
 									allReflections={allData}
 									handleBootcamperChange={handleBootcamperChange}
