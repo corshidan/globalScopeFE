@@ -5,7 +5,7 @@ import EmojiInput from '../EmojiInput';
 import { useState, useEffect } from 'react';
 import { useUser } from '../App/App.js';
 import { useHistory } from 'react-router-dom';
-import { getToday } from '../../libs/helperFunctions'
+import { getToday } from '../../libs/helperFunctions';
 
 export default function BlogInputPage() {
 	const user = useUser();
@@ -24,7 +24,7 @@ export default function BlogInputPage() {
 		const newReflection = {
 			bootcamperid: user.bootcamperid,
 			reflection: data.reflection,
-			accessible: data.accessible,
+			private: data.private,
 			topics: [
 				{ topic: data.firsttopic, rating: data.firstrating },
 				{ topic: data.secondtopic, rating: data.secondrating },
@@ -57,11 +57,11 @@ export default function BlogInputPage() {
 			.then((data) => {
 				const list = data.payload.reduce((acc, cur) => {
 					if (!acc.includes(cur.topic)) {
-						return [...acc, cur.topic]
+						return [...acc, cur.topic];
 					}
-					return acc
-				},[])
-				setTopicList(list)
+					return acc;
+				}, []);
+				setTopicList(list);
 			})
 			.catch((err) => console.log(err));
 	}, []);
@@ -253,7 +253,7 @@ export default function BlogInputPage() {
 						</div>
 						<datalist id="topics">
 							{topicList.map((topic) => {
-								return <option value={topic}></option>
+								return <option value={topic}></option>;
 							})}
 						</datalist>
 						{/* Confidence input */}
@@ -345,10 +345,10 @@ export default function BlogInputPage() {
 						<div className="flex justify-between border-2 p-2 mt-2">
 							<label className="">Private ?</label>
 							<input
-								name="accessible"
+								name="private"
 								type="checkbox"
 								className="toggle toggle-primary"
-								{...register('accessible')}
+								{...register('private')}
 							/>
 						</div>
 						{/* Overall Feeling input / Emojis */}
