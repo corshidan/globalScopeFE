@@ -7,16 +7,14 @@ import { useUser } from "../App/App.js";
 import GaugeChart from "react-gauge-chart";
 
 export default function StatisticsPage() {
+  // gauges
   const [confidence, setConfidence] = useState(1);
   const [feelings, setFeelings] = useState(1);
-  
+  // mood tracker
   const [refDate, setRefDate] = useState(1);
-  
+  //  emoji
   const [emojiTally, setEmojiTally] = useState(0);
   
-
-
-
   
   const user = useUser();
   useEffect(() => {
@@ -53,8 +51,8 @@ export default function StatisticsPage() {
         const recentFeelings = data.payload
           .map((reflections) => reflections.overallfeeling)
           .reverse();
-
-        console.log(recentFeelings[4]);
+      
+        // console.log(recentFeelings);
         setRefDate(recentFeelings);
         
           // emoji total
@@ -71,7 +69,7 @@ export default function StatisticsPage() {
             return tally
          }
          const tallyRes = createTally(feeling)
-         console.log(tallyRes[5])
+        //  console.log(tallyRes[5])
 
          setEmojiTally(tallyRes)
         
@@ -192,16 +190,16 @@ export default function StatisticsPage() {
                 labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
                 datasets: [
                   {
-                    label: 'Overall mood',
+                    label: 'Mood Breakdown',
                     fill: true,
                     data: [`${emojiTally[1]}`, `${emojiTally[2]}`, `${emojiTally[3]}`, `${emojiTally[4]}`, `${emojiTally[5]}`, `${emojiTally[6]}`],
                     backgroundColor: [
                       'rgba(255, 99, 132, 0.5)',
-                      'rgba(54, 162, 235, 0.5)',
+                      'rgba(255, 159, 64, 0.5)',
                       'rgba(255, 206, 86, 0.5)',
+                      'rgba(54, 162, 235, 0.5)',
                       'rgba(75, 192, 192, 0.5)',
                       'rgba(153, 102, 255, 0.5)',
-                      'rgba(255, 159, 64, 0.5)',
 
                     ],
 
@@ -238,15 +236,17 @@ export default function StatisticsPage() {
               }}
             />
           </div>
+          
 
           <div className=" bg-gray-100 rounded-r-xl z-10 shadow-inner">
             <Line
               data={{
-                labels: ["", "", "", "", "Most Recent"],
+                labels: ["", "", "", "", "Newest"],
                 datasets: [
                   {
-                    label: "Confidence level",
+                    label: "Recent Mood Tracker",
                     data: [
+                      
                       `${refDate[4]}`,
                       `${refDate[3]}`,
                       `${refDate[2]}`,
@@ -277,30 +277,30 @@ export default function StatisticsPage() {
                     ticks: {
                       beginAtZero: true,
                       type: "linear",
-                      min: 0,
+                      min: 1,
                       max: 6,
                       stepSize: 1,
                       offset: true,
-                      // callback: (value) => {
-                      //   if (value === 1) {
-                      //     return `😭`;
-                      //   }
-                      //   if (value === 2) {
-                      //     return `🙁`;
-                      //   }
-                      //   if (value === 3) {
-                      //     return `😐`;
-                      //   }
-                      //   if (value === 4) {
-                      //     return `🤔`;
-                      //   }
-                      //   if (value === 5) {
-                      //     return `😀`;
-                      //   }
-                      //   if (value === 6) {
-                      //     return `🤩`;
-                      //   }
-                      // },
+                      callback: (value) => {
+                        if (value === 1) {
+                          return `😭`;
+                        }
+                        if (value === 2) {
+                          return `🙁`;
+                        }
+                        if (value === 3) {
+                          return `😐`;
+                        }
+                        if (value === 4) {
+                          return `🤔`;
+                        }
+                        if (value === 5) {
+                          return `😀`;
+                        }
+                        if (value === 6) {
+                          return `🤩`;
+                        }
+                      },
                     },
                   },
                 },
