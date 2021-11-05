@@ -1,12 +1,47 @@
 .capital p::first-letter,
 li::first-letter {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 .capital input {
-	border: 1px solid rgba(148, 148, 148, 0.795);
-	box-shadow: 0px 2px 20px 1px rgba(167, 165, 165, 0.3);
-	border-radius: 6px;
-	text-align: center;
-	color: rgb(83, 83, 83);
-	width: 60%;
+  border: 1px solid rgba(148, 148, 148, 0.795);
+  box-shadow: 0px 2px 20px 1px rgba(167, 165, 165, 0.3);
+  border-radius: 6px;
+  text-align: center;
+  color: rgb(83, 83, 83);
+  width: 60%;
+}
+
+.dog {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    75% 100%,
+    50% 75%,
+    0% 75%
+  );
+  background-color: #401485;
+  border-radius: 5px;
+  width: 150px;
+  height: 75px;
+
+  position: relative;
+  right: 100px;
+  bottom: -30px;
+
+  animation: hideAnimation 0s ease-in 4s;
+  animation-fill-mode: forwards;
+  font-style: italic;
+}
+
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+  }
+}
+
+.text {
+  color: white;
+  text-align: center;
 }
