@@ -233,17 +233,14 @@ export default function StatisticsPage() {
                 maintainAspectRatio: false,
 
                 scales: {
-                  yAxes: [
+                  r: 
                     {
-                      position: "right",
+                      
                       ticks: {
-                        max: 6,
-                        min: 1,
-                        stepSize: 1,
-                        
+                        display: false
                       },
                     },
-                  ],
+                  
                 },
                 legend: {
                   labels: {
