@@ -1,83 +1,11 @@
-<<<<<<< HEAD
-import Layout from '../Layout';
-import Slider from '@mui/material/Slider';
-import { useForm } from 'react-hook-form';
-import EmojiInput from '../EmojiInput';
-import { useState, useEffect } from 'react';
-import { useUser } from '../App/App.js';
-import { useHistory } from 'react-router-dom';
-import { getToday } from '../../libs/helperFunctions';
-
-export default function BlogInputPage() {
-	const user = useUser();
-	const topicInputStyle = 'w-2/3 mr-1 border pl-2 bg-gray-100 rounded';
-	const topicRatingStyle = 'w-1/6 border bg-gray-100 rounded pr-1';
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
-	const [overallFeeling, setOverallFeeling] = useState(null);
-	const [topicList, setTopicList] = useState([]);
-	const history = useHistory();
-	const url = 'https://global-scope.herokuapp.com/reflections';
-	const onSubmit = (data) => {
-		const newReflection = {
-			bootcamperid: user.bootcamperid,
-			reflection: data.reflection,
-			private: data.private,
-			topics: [
-				{ topic: data.firsttopic, rating: data.firstrating },
-				{ topic: data.secondtopic, rating: data.secondrating },
-				{ topic: data.thirdtopic, rating: data.thirdrating },
-				{ topic: data.fourthtopic, rating: data.fourthrating },
-			],
-			confidence: data.confidence,
-			grateful: data.grateful,
-			improvements: data.improvements,
-			overallfeeling: overallFeeling ? overallFeeling : 4,
-		};
-		fetch(url, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(newReflection),
-		})
-			.then((res) => res.json())
-			.then((_) => history.replace('/dashboard'))
-			.catch((err) => console.log(err));
-	};
-	const handleEmoji = (digit) => {
-		setOverallFeeling(digit);
-	};
-
-	useEffect(() => {
-		fetch(`https://global-scope.herokuapp.com/topics?date=${getToday()}`)
-			.then((res) => res.json())
-			.then((data) => {
-				const list = data.payload.reduce((acc, cur) => {
-					if (!acc.includes(cur.topic)) {
-						return [...acc, cur.topic];
-					}
-					return acc;
-				}, []);
-				setTopicList(list);
-			})
-			.catch((err) => console.log(err));
-	}, []);
-=======
 import Layout from '../Layout'
 import Slider from '@mui/material/Slider'
 import { useForm } from 'react-hook-form'
 import EmojiInput from '../EmojiInput'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useUser } from '../App/App.js'
 import { useHistory } from 'react-router-dom'
 import { getToday } from '../../libs/helperFunctions'
-import css from './index.module.css'
-import lottie from 'lottie-web'
-import shortQuotes from '../shortQuotes'
 
 export default function BlogInputPage() {
   const user = useUser()
@@ -96,7 +24,7 @@ export default function BlogInputPage() {
     const newReflection = {
       bootcamperid: user.bootcamperid,
       reflection: data.reflection,
-      accessible: data.accessible,
+      private: data.private,
       topics: [
         { topic: data.firsttopic, rating: data.firstrating },
         { topic: data.secondtopic, rating: data.secondrating },
@@ -137,78 +65,7 @@ export default function BlogInputPage() {
       })
       .catch((err) => console.log(err))
   }, [])
->>>>>>> howdy
 
-  const container = useRef(null)
-
-  useEffect(() => {
-    const anim = lottie.loadAnimation({
-      container: container.current,
-      path: '/images/33645-happy-dog.json',
-      // autoplay: true,
-      renderer: 'svg',
-      // loop: true,
-    })
-    anim.setSpeed(1)
-    // anim.destroy()
-  }, [])
-
-  let quote = shortQuotes[Math.floor(Math.random() * shortQuotes.length)]
-
-<<<<<<< HEAD
-								<div className="flex flex-col">
-									<div>
-										<label htmlFor="topicFour"></label>
-										<input
-											id="topicFour"
-											name="fourthtopic"
-											list="topics"
-											placeholder="Wait, I nearly forgot..."
-											className={topicInputStyle}
-											{...register('fourthtopic', {
-												required: 'Topic is required',
-											})}
-										/>
-										<label htmlFor="ratingTopicFour"></label>
-										<input
-											type="number"
-											id="ratingTopicFour"
-											name="fourthrating"
-											min="1"
-											max="5"
-											className={topicRatingStyle}
-											{...register('fourthrating', {
-												required: 'Rating is required',
-											})}
-										></input>
-									</div>
-									<div>
-										{errors.fourthtopic && (
-											<p className="text-red-400 text-sm">
-												{errors.fourthtopic.message}
-											</p>
-										)}
-										{errors.fourthrating && (
-											<p className="text-red-400 text-sm">
-												{errors.fourthrating.message}
-											</p>
-										)}
-									</div>
-								</div>
-							</div>
-						</div>
-						<datalist id="topics">
-							{topicList.map((topic) => {
-								return <option value={topic}></option>;
-							})}
-						</datalist>
-						{/* Confidence input */}
-						<div className="flex flex-col border-2 p-2 mb-2">
-							<label htmlFor="confidence-range" className="mb-2">
-								How confident do you feel about what you've learned since your last
-								reflection?
-							</label>
-=======
   return (
     <Layout>
       <div
@@ -270,7 +127,6 @@ export default function BlogInputPage() {
                   </div>
                 </div>
                 {/* Topic two */}
->>>>>>> howdy
 
                 <div className='flex flex-col'>
                   <div>
@@ -429,18 +285,6 @@ export default function BlogInputPage() {
                 In 3 words, what are you grateful for today?
               </label>
 
-<<<<<<< HEAD
-						<div className="flex justify-between border-2 p-2 mt-2">
-							<label className="">Private ?</label>
-							<input
-								name="private"
-								type="checkbox"
-								className="toggle toggle-primary"
-								{...register('private')}
-							/>
-						</div>
-						{/* Overall Feeling input / Emojis */}
-=======
               <input
                 name='grateful'
                 className='input input-primary mb-2'
@@ -455,7 +299,6 @@ export default function BlogInputPage() {
               )}
             </div>
             {/* Improvements input */}
->>>>>>> howdy
 
             <div className='flex flex-col border-2 p-2 mb-2'>
               <label htmlFor='improvements' className='mb-2'>
@@ -507,10 +350,10 @@ export default function BlogInputPage() {
             <div className='flex justify-between border-2 p-2 mt-2'>
               <label className=''>Private ?</label>
               <input
-                name='accessible'
+                name='private'
                 type='checkbox'
                 className='toggle toggle-primary'
-                {...register('accessible')}
+                {...register('private')}
               />
             </div>
             {/* Overall Feeling input / Emojis */}
@@ -525,11 +368,6 @@ export default function BlogInputPage() {
             </div>
             <button className='btn btn-sm btn-accent m-4'>Post</button>
           </form>
-        </div>
-      </div>
-      <div className='w-1/12   fixed -bottom-8 -right-8  ' ref={container}>
-        <div className={css.dog}>
-          <p className={css.text}>{quote}</p>
         </div>
       </div>
     </Layout>
