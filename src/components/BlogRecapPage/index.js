@@ -7,6 +7,7 @@ import { getToday } from '../../libs/helperFunctions'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
 import 'react-day-picker/lib/style.css'
 import lottie from 'lottie-web'
+import shortQuotes from '../shortQuotes'
 
 export default function BlogRecapPage() {
   const container = useRef(null)
@@ -78,6 +79,9 @@ export default function BlogRecapPage() {
     anim.setSpeed(3)
     // anim.destroy()
   }, [])
+
+  let quote = shortQuotes[Math.floor(Math.random() * shortQuotes.length)]
+
   return (
     <Layout>
       <div
@@ -168,10 +172,7 @@ export default function BlogRecapPage() {
       </div>
       <div className='w-1/12   fixed -bottom-8 -right-8  ' ref={container}>
         <div className={css.dog}>
-          <p className={css.text}>
-            Wow.. <br />
-            You've learned loads!
-          </p>
+          <p className={css.text}>{quote}</p>
         </div>
       </div>
     </Layout>

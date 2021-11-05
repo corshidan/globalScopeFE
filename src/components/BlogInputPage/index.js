@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { getToday } from '../../libs/helperFunctions'
 import css from './index.module.css'
 import lottie from 'lottie-web'
+import shortQuotes from '../shortQuotes'
 
 export default function BlogInputPage() {
   const user = useUser()
@@ -81,6 +82,8 @@ export default function BlogInputPage() {
     anim.setSpeed(1)
     // anim.destroy()
   }, [])
+
+  let quote = shortQuotes[Math.floor(Math.random() * shortQuotes.length)]
 
   return (
     <Layout>
@@ -388,10 +391,7 @@ export default function BlogInputPage() {
       </div>
       <div className='w-1/12   fixed -bottom-8 -right-8  ' ref={container}>
         <div className={css.dog}>
-          <p className={css.text}>
-            You're doing <br />
-            GREAT..
-          </p>
+          <p className={css.text}>{quote}</p>
         </div>
       </div>
     </Layout>
