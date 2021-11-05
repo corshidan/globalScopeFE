@@ -2,12 +2,16 @@ import Layout from '../Layout'
 import Slider from '@mui/material/Slider'
 import { useForm } from 'react-hook-form'
 import EmojiInput from '../EmojiInput'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useUser } from '../App/App.js'
 import { useHistory } from 'react-router-dom'
 import { getToday } from '../../libs/helperFunctions'
+import lottie from 'lottie-web'
+import shortQuotes from '../shortQuotes'
+import css from './index.module.css'
 
 export default function BlogInputPage() {
+  const container = useRef(null)
   const user = useUser()
   const topicInputStyle = 'w-2/3 mr-1 border pl-2 bg-gray-100 rounded'
   const topicRatingStyle = 'w-1/6 border bg-gray-100 rounded pr-1'
@@ -50,6 +54,20 @@ export default function BlogInputPage() {
   const handleEmoji = (digit) => {
     setOverallFeeling(digit)
   }
+
+  useEffect(() => {
+    const anim = lottie.loadAnimation({
+      container: container.current,
+      path: '/images/33645-happy-dog.json',
+      // autoplay: true,
+      renderer: 'svg',
+      // loop: true,
+    })
+    anim.setSpeed(3)
+    // anim.destroy()
+  }, [])
+
+  let quote = shortQuotes[Math.floor(Math.random() * shortQuotes.length)]
 
   useEffect(() => {
     fetch(`https://global-scope.herokuapp.com/topics?date=${getToday()}`)
@@ -368,6 +386,11 @@ export default function BlogInputPage() {
             </div>
             <button className='btn btn-sm btn-accent m-4'>Post</button>
           </form>
+        </div>
+      </div>
+      <div className='w-1/12   fixed -bottom-8 -right-8  ' ref={container}>
+        <div className={css.dog}>
+          <p className={css.text}>{quote}</p>
         </div>
       </div>
     </Layout>
