@@ -33,10 +33,10 @@ export default function StatisticsPage() {
         //  console.log(feeling)
 
 
-        const emojiReducer = feeling.reduce((a, c) => a + c);
-        const averageFeeling = emojiReducer / feeling.length;
-        // console.log(averageFeeling)
-        setFeelings(averageFeeling);
+        // const emojiReducer = feeling.reduce((a, c) => a + c);
+        // const averageFeeling = emojiReducer / feeling.length;
+        // // console.log(averageFeeling)
+        // setFeelings(averageFeeling);
 
 
         const reducer = overallConfidence.reduce((a, c) => a + c);
@@ -51,9 +51,15 @@ export default function StatisticsPage() {
         const recentFeelings = data.payload
           .map((reflections) => reflections.overallfeeling)
           .reverse();
-      
-        // console.log(recentFeelings);
-        setRefDate(recentFeelings);
+          console.log(recentFeelings);
+          setRefDate(recentFeelings);
+
+        // avreage emoji gauge
+        const emojiLastFive = recentFeelings.slice(0, 5)
+        const averageEmoji = Math.round(emojiLastFive.reduce((a,c)=> a + c) / emojiLastFive.length)
+        console.log(emojiLastFive);      
+        console.log(averageEmoji);
+        setFeelings(averageEmoji);
         
           // emoji total
           
@@ -98,7 +104,36 @@ export default function StatisticsPage() {
     <Layout>
       <div className='py-4 px-2'>
         <div className='grid grid-cols-3 px-10 gap-10'>
-          <div className='flex flex-col  items-center mt-5 pt-6 pb-10 bg-gray-100  w-3/4 h-3/4 rounded-b-xl   mt-4 shadow-inner relative '>
+          <div className='flex flex-col  items-center mt-5 pt-6 pb-10 bg-gray-100  w-3/4 h-3/4 rounded-b-xl   mt-4 shadow-inner relative'>
+
+            {/* <ChakraProvider>
+            <CircularProgress value={100} size='125px' color='green'>
+              <CircularProgressLabel> 5</CircularProgressLabel>
+            </CircularProgress>
+          </ChakraProvider> */}
+            <GaugeChart
+
+
+              id='gauge-chart2'
+              nrOfLevels={6}
+              arcWidth={0.3}
+              percent={(Math.round(feelings) * 1.67 - 1) / 10}
+              colors={['rgba(255, 206, 86, 0.7)', 'rgba(255, 180, 0, 0.9)']}
+              style={{ width: '100%' }}
+              needleBaseColor={'#401485'}
+              needleColor={'rgba(153, 102, 255, 0.5)'}
+              hideText={true}
+            />
+            <img
+              className='h-1/6 '
+              src={`/images/emojis/${Math.round(`${feelings}`)}.png`}
+              alt='emoji face'
+            />
+            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-center -bottom-8 shadow-2xl shadow-inner opacity-90    '>
+              <p className='text-center font-medium'>Average Mood</p>
+            </div>
+          </div>
+          <div className='flex flex-col justify-center items-center pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mx-auto mt-4 shadow-inner relative '>
 
             {/* <ChakraProvider>
             <CircularProgress value={findDate()} size='125px' color='#401485'>
@@ -114,43 +149,14 @@ export default function StatisticsPage() {
               arcWidth={0.35}
               percent={progressPercentage}
               textColor={'#464A4F'}
-              style={{ width: '120%' }}
+              style={{ width: '100%' }}
               needleBaseColor={'#401485'}
               needleColor={'rgba(153, 102, 255, 0.5)'}
               hideText={true}
             />
-            <p>{value}%</p>
+            <p className='text-center font-medium'>{value}%</p>
             <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl absolute  inset-x-center -bottom-8 shadow-2xl shadow-inner opacity-90 '>
               <p className='text-center font-medium'>Bootcamp Progress</p>
-            </div>
-          </div>
-          <div className='flex flex-col justify-center items-center pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mx-auto mt-4 shadow-inner relative '>
-
-            {/* <ChakraProvider>
-            <CircularProgress value={100} size='125px' color='green'>
-              <CircularProgressLabel> 5</CircularProgressLabel>
-            </CircularProgress>
-          </ChakraProvider> */}
-            <GaugeChart
-
-
-              id='gauge-chart2'
-              nrOfLevels={6}
-              arcWidth={0.3}
-              percent={(Math.round(feelings) * 1.67 - 1) / 10}
-              colors={['rgba(255, 206, 86, 0.7)', 'rgba(255, 180, 0, 0.9)']}
-              style={{ width: '120%' }}
-              needleBaseColor={'#401485'}
-              needleColor={'rgba(153, 102, 255, 0.5)'}
-              hideText={true}
-            />
-            <img
-              className='h-1/6 '
-              src={`/images/emojis/${Math.round(`${feelings}`)}.png`}
-              alt='emoji face'
-            />
-            <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-center -bottom-8 shadow-2xl shadow-inner opacity-90    '>
-              <p className='text-center font-medium'>Overall Mood</p>
             </div>
           </div>
 
@@ -166,7 +172,7 @@ export default function StatisticsPage() {
               percent={(Math.round(confidence) * 2 - 1) / 10}
               nrOfLevels={5}
               arcWidth={0.3}
-              style={{ width: '120%' }}
+              style={{ width: '100%' }}
               needleBaseColor={'#401485'}
               needleColor={'rgba(153, 102, 255, 0.5)'}
               hideText={true}
@@ -176,7 +182,7 @@ export default function StatisticsPage() {
                 'rgba(20, 220, 20, 0.7)',
               ]}
             />
-            <p>{Math.round(confidence)}</p>
+            <p className='text-center font-medium'>{Math.round(confidence)}</p>
             <div className=' p-3 mt-20 w-2/3 bg-green-200 border-2  rounded-xl bg-gray-300 absolute  inset-x-center -bottom-8 shadow-2xl shadow-inner opacity-90    '>
               <p className='text-center font-medium'>Overall Confidence</p>
             </div>
