@@ -21,7 +21,7 @@ li::first-letter {
     50% 75%,
     0% 75%
   );
-  background-color: #92e3a9;
+  background-color: #401485;
   border-radius: 5px;
   width: 150px;
   height: 75px;
@@ -38,12 +38,10 @@ li::first-letter {
 @keyframes hideAnimation {
   to {
     visibility: hidden;
-    width: 0;
-    height: 0;
   }
 }
 
 .text {
-  color: black;
+  color: white;
   text-align: center;
 }
