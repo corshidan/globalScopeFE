@@ -166,7 +166,7 @@ export default function BlogRecapPage() {
           </div>
         </form>
       </div>
-      <div className='w-1/12   fixed bottom-0 right-0  ' ref={container}>
+      <div className='w-1/12   fixed -bottom-8 -right-8  ' ref={container}>
         <div className={css.dog}>
           <p className={css.text}>
             Wow.. <br />
