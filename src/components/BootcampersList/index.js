@@ -81,37 +81,42 @@ export default function BootcamperList({
 	allReflections,
 	handleGraphChange,
 	filterDate,
-	currentBootcamper,
 	changeDate,
 }) {
 	const [bootcampers, setBootcampers] = useState([]);
 	const [page, setPage] = React.useState(0);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
-	const [selectedDate, setSelectedDate] = React.useState(filterDate);
 
 	const calculateAverageFeeling = (id) => {
 		const averageFeeling = allReflections
 			.filter((item) => {
 				return (
-					item.bootcamperid === id && Date.parse(item.created) > Date.parse(selectedDate)
+					item.bootcamperid === id && Date.parse(item.created) > Date.parse(filterDate)
 				);
 			})
-			.map((item) => item.overallfeeling)
+			.map((item) => {
+				return item.overallfeeling;
+			})
 			.reduce((sum, item, index, arr) => {
 				if (index === arr.length - 1) {
+					// console.log('from reduce', sum, item, index, arr);
 					return (sum + item) / arr.length;
 				}
 				return item + sum;
 			}, 0);
+		if (id === 1) {
+			// console.log(averageFeeling, allReflections);
+		}
 		return averageFeeling;
 	};
 	const rows = bootcampers
 		.map((row, i) => {
+			const feeling = calculateAverageFeeling(row.bootcamperId);
 			return {
 				id: row.bootcamperId,
 				firstname: row.firstname,
 				lastname: row.lastname,
-				feel: calculateAverageFeeling(row.bootcamperId),
+				feel: feeling === 0 ? 'No data' : feeling.toFixed(1),
 			};
 		})
 		.sort((a, b) => (a.feel < b.feel ? -1 : 1));
@@ -126,8 +131,8 @@ export default function BootcamperList({
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
 	};
-	function handleClick(another) {
-		handleGraphChange(another, selectedDate);
+	function handleClick(newId, newName) {
+		handleGraphChange(newId, newName);
 	}
 	useEffect(() => {
 		fetch('https://global-scope.herokuapp.com/bootcampers?admin=true')
@@ -156,12 +161,7 @@ export default function BootcamperList({
 						Last Name
 					</TableCell>
 					<TableCell sx={{ p: 0 }} align="center">
-						<AverageMoodTimePicker
-							handleGraphChange={handleGraphChange}
-							currentBootcamper={currentBootcamper}
-							changeDate={changeDate}
-							testDate={setSelectedDate}
-						/>
+						<AverageMoodTimePicker changeDate={changeDate} />
 					</TableCell>
 				</TableRow>
 				<TableBody>
@@ -171,7 +171,7 @@ export default function BootcamperList({
 					).map((row, i) => (
 						<TableRow
 							key={i}
-							onClick={() => handleClick(row.id)}
+							onClick={() => handleClick(row.id, `${row.firstname} ${row.lastname}`)}
 							className={`${'hover:bg-purple-100 cursor-pointer '}${
 								i % 2 !== 0 ? 'bg-gray-100' : ''
 							}`}

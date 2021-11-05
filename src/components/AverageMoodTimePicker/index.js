@@ -4,16 +4,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './index.css';
 
-export default function AverageMoodTimePicker({
-	currentBootcamper,
-	handleGraphChange,
-	changeDate,
-	testDate,
-}) {
+export default function AverageMoodTimePicker({ changeDate }) {
 	const handleChange = (event) => {
 		changeDate(event.target.value);
-		handleGraphChange(currentBootcamper, event.target.value);
-		testDate(event.target.value);
 	};
 	const today = Date.now();
 	const oneDay = 86400000;

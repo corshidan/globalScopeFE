@@ -3,6 +3,7 @@ import Layout from '../Layout';
 import { CSVLink } from 'react-csv';
 import { useState, useEffect } from 'react';
 import BootcampersList from '../BootcampersList';
+import AdminChart from '../AdminChart';
 
 const columnNames = [
 	[
@@ -23,11 +24,11 @@ export default function AdminPage() {
 	const [cvsData, setCsvData] = useState(null);
 	const [allData, setAllData] = useState([]);
 	const [filterDate, setFilterDate] = useState('2010-01-01');
-	const [bootcamper, setBootcamper] = useState(0);
+	const [bootcamper, setBootcamper] = useState({ name: '', id: 0 });
 	const [selectedBootcamperData, setSelectedBootcamperData] = useState([]);
 
-	const handleBootcamperChange = (id) => {
-		setBootcamper(id);
+	const handleBootcamperChange = (id, name) => {
+		setBootcamper({ ...bootcamper, id: id, name: name });
 		updateDataForGraph(id);
 	};
 	useEffect(() => {
@@ -54,7 +55,7 @@ export default function AdminPage() {
 			})
 			.catch((err) => console.log(err));
 	}, []);
-	const updateDataForGraph = (id = bootcamper, date = filterDate) => {
+	const updateDataForGraph = (id = bootcamper.id, date = filterDate) => {
 		const filteredData = allData.filter((reflection) => {
 			return (
 				reflection.bootcamperid === id && Date.parse(reflection.created) >= Date.parse(date)
@@ -63,7 +64,7 @@ export default function AdminPage() {
 		setSelectedBootcamperData(filteredData);
 	};
 	useEffect(() => {
-		updateDataForGraph(bootcamper, filterDate);
+		updateDataForGraph(bootcamper.id, filterDate);
 	}, [filterDate, bootcamper]);
 	return (
 		<Layout>
@@ -85,21 +86,31 @@ export default function AdminPage() {
 									allReflections={allData}
 									handleGraphChange={handleBootcamperChange}
 									filterDate={filterDate}
-									currentBootcamper={bootcamper}
 									changeDate={setFilterDate}
 								/>
 							</div>
-							<p>
+							{/* <div>
 								{' '}
-								{selectedBootcamperData.map((item) => {
+								{selectedBootcamperData.map((item, i) => {
 									return (
-										<p>
+										<p key={i}>
 											{item.bootcamperid}-------
 											{item.created}
 										</p>
 									);
 								})}
-							</p>
+							</div> */}
+							<div className="flex flex-col justify-center align-center mt-4 w-2/3">
+								<div>
+									<p className="absolute ml-5 text-sm text-gray-500">
+										{bootcamper.name}
+										{/* <span> {filterDate}</span> */}
+									</p>
+								</div>
+								<div>
+									<AdminChart graphData={selectedBootcamperData} />
+								</div>
+							</div>
 						</section>
 					</>
 				)}

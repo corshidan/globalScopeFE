@@ -1,6 +1,6 @@
 import React from 'react';
 import Emoji from '../Emoji';
-const array = [
+const emojiOption = [
 	{ number: 1, alt: 'crying face emoji' },
 	{ number: 2, alt: 'sad face emoji' },
 	{ number: 3, alt: 'neutral face emoji' },
@@ -11,7 +11,7 @@ const array = [
 export default function EmojiInput({ feeling, emojiClick }) {
 	return (
 		<>
-			{array.map((item, index) => {
+			{emojiOption.map((item, index) => {
 				return (
 					<Emoji
 						key={index}
