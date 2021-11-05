@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import Layout from "../Layout";
 // import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 // import { ChakraProvider } from "@chakra-ui/react";
-import { PolarArea, Bar, Line } from "react-chartjs-2";
+import { PolarArea, Line } from "react-chartjs-2";
 import { useUser } from "../App/App.js";
 import GaugeChart from "react-gauge-chart";
 
 export default function StatisticsPage() {
+  // gauges
   const [confidence, setConfidence] = useState(1);
   const [feelings, setFeelings] = useState(1);
-  const [refDateOne, setRefDateOne] = useState(0);
-  const [refDateTwo, setRefDateTwo] = useState(0);
-  const [refDateThree, setRefDateThree] = useState(0);
-  const [refDateFour, setRefDateFour] = useState(0);
-  const [refDateFive, setRefDateFive] = useState(0);
+  // mood tracker
+  const [refDate, setRefDate] = useState(1);
+  //  emoji
+  const [emojiTally, setEmojiTally] = useState(0);
+  
+  
   const user = useUser();
   useEffect(() => {
     fetch(`https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`)
@@ -44,16 +46,34 @@ export default function StatisticsPage() {
         setConfidence(averageConfidence);
         // setHighlightedDays(dates)
 
+
+        // last 5 confidence ratings line chart 
         const recentFeelings = data.payload
           .map((reflections) => reflections.overallfeeling)
           .reverse();
+      
+        // console.log(recentFeelings);
+        setRefDate(recentFeelings);
+        
+          // emoji total
+          
+          
+          const createTally = items => {
+            const tally = {};
+            for (let i = 0; i < items.length; i++) {
+               if (!tally[items[i]]) {
+                  tally[items[i]] = 0;
+               }
+               tally[items[i]]++;
+            }
+            return tally
+         }
+         const tallyRes = createTally(feeling)
+        //  console.log(tallyRes[5])
 
-        console.log(recentFeelings[4]);
-        setRefDateOne(recentFeelings[4]);
-        setRefDateTwo(recentFeelings[3]);
-        setRefDateThree(recentFeelings[2]);
-        setRefDateFour(recentFeelings[1]);
-        setRefDateFive(recentFeelings[0]);
+         setEmojiTally(tallyRes)
+        
+
       })
 
       .catch((err) => console.log(err));
@@ -170,16 +190,16 @@ export default function StatisticsPage() {
                 labels: ['😭', '🙁', '😐', '🤔', '😀', '🤩 '],
                 datasets: [
                   {
-                    label: 'Overall mood',
+                    label: 'Mood Breakdown',
                     fill: true,
-                    data: [10, 1, 10, 4, 2, 1],
+                    data: [`${emojiTally[1]}`, `${emojiTally[2]}`, `${emojiTally[3]}`, `${emojiTally[4]}`, `${emojiTally[5]}`, `${emojiTally[6]}`],
                     backgroundColor: [
                       'rgba(255, 99, 132, 0.5)',
-                      'rgba(54, 162, 235, 0.5)',
+                      'rgba(255, 159, 64, 0.5)',
                       'rgba(255, 206, 86, 0.5)',
+                      'rgba(54, 162, 235, 0.5)',
                       'rgba(75, 192, 192, 0.5)',
                       'rgba(153, 102, 255, 0.5)',
-                      'rgba(255, 159, 64, 0.5)',
 
                     ],
 
@@ -199,13 +219,14 @@ export default function StatisticsPage() {
                 maintainAspectRatio: false,
 
                 scales: {
-                  yAxes: [
+                  r: 
                     {
+                      
                       ticks: {
-                        beginAtZero: true,
+                        display: false
                       },
                     },
-                  ],
+                  
                 },
                 legend: {
                   labels: {
@@ -215,20 +236,22 @@ export default function StatisticsPage() {
               }}
             />
           </div>
+          
 
           <div className=" bg-gray-100 rounded-r-xl z-10 shadow-inner">
             <Line
               data={{
-                labels: ["Oldest", "", "", "", "Newest"],
+                labels: ["", "", "", "", "Newest"],
                 datasets: [
                   {
-                    label: "Confidence level",
+                    label: "Recent Mood Tracker",
                     data: [
-                      `${refDateOne}`,
-                      `${refDateTwo}`,
-                      `${refDateThree}`,
-                      `${refDateFour}`,
-                      `${refDateFive}`,
+                      
+                      `${refDate[4]}`,
+                      `${refDate[3]}`,
+                      `${refDate[2]}`,
+                      `${refDate[1]}`,
+                      `${refDate[0]}`,
                     ],
                     backgroundColor: ["rgba(255, 159, 64, 0.5)"],
                     borderColor: ["white"],
@@ -247,14 +270,14 @@ export default function StatisticsPage() {
               width={600}
               options={{
                 maintainAspectRatio: false,
-                scaleOverride : true,
+                // scaleOverride : true,
                 scales: {
                   
                   y: {
                     ticks: {
                       beginAtZero: true,
                       type: "linear",
-                      min: 0,
+                      min: 1,
                       max: 6,
                       stepSize: 1,
                       offset: true,
@@ -283,7 +306,9 @@ export default function StatisticsPage() {
                 },
                 legend: {
                   labels: {
-                    fontSize: 50,
+                    font: {
+                      size: 10
+                    } ,
                   },
                 },
 
