@@ -4,7 +4,7 @@ import { CSVLink } from 'react-csv';
 import { useState, useEffect } from 'react';
 import BootcampersList from '../BootcampersList';
 import AdminChart from '../AdminChart';
-
+import { getPreviousDate } from '../../libs/helperFunctions';
 const columnNames = [
 	[
 		'first_name',
@@ -66,6 +66,12 @@ export default function AdminPage() {
 	useEffect(() => {
 		updateDataForGraph(bootcamper.id, filterDate);
 	}, [filterDate, bootcamper]);
+	const days = {
+		'2010-01-01': 'All reflections',
+		[getPreviousDate()]: 'Since yesterday',
+		[getPreviousDate(3)]: 'Last 3 days',
+		[getPreviousDate(7)]: 'Last 7 days',
+	};
 	return (
 		<Layout>
 			<div className=" flex flex-col justify-start p-2">
@@ -81,10 +87,10 @@ export default function AdminPage() {
 						</div>
 
 						<section className="flex flex-col items-center ">
-							<div className="ml-2">
+							<div className="flex flex-col ml-2">
 								<BootcampersList
 									allReflections={allData}
-									handleGraphChange={handleBootcamperChange}
+									changeBootcamper={handleBootcamperChange}
 									filterDate={filterDate}
 									changeDate={setFilterDate}
 								/>
@@ -92,19 +98,14 @@ export default function AdminPage() {
 							{/* <div>
 								{' '}
 								{selectedBootcamperData.map((item, i) => {
-									return (
-										<p key={i}>
-											{item.bootcamperid}-------
-											{item.created}
-										</p>
-									);
+									return <p key={i}>{JSON.stringify(item)}</p>;
 								})}
 							</div> */}
-							<div className="flex flex-col justify-center align-center mt-4 w-2/3">
+							<div className="flex flex-col justify-center align-center mt-6 w-2/3">
 								<div>
-									<p className="absolute ml-5 text-sm text-gray-500">
+									<p className=" ml-5 text-sm text-gray-500">
 										{bootcamper.name}
-										{/* <span> {filterDate}</span> */}
+										<span className="font-bold ml-2"> {days[filterDate]}</span>
 									</p>
 								</div>
 								<div>

@@ -79,7 +79,7 @@ TablePaginationActions.propTypes = {
 
 export default function BootcamperList({
 	allReflections,
-	handleGraphChange,
+	changeBootcamper,
 	filterDate,
 	changeDate,
 }) {
@@ -91,7 +91,7 @@ export default function BootcamperList({
 		const averageFeeling = allReflections
 			.filter((item) => {
 				return (
-					item.bootcamperid === id && Date.parse(item.created) > Date.parse(filterDate)
+					item.bootcamperid === id && Date.parse(item.created) >= Date.parse(filterDate)
 				);
 			})
 			.map((item) => {
@@ -99,13 +99,11 @@ export default function BootcamperList({
 			})
 			.reduce((sum, item, index, arr) => {
 				if (index === arr.length - 1) {
-					// console.log('from reduce', sum, item, index, arr);
 					return (sum + item) / arr.length;
 				}
 				return item + sum;
 			}, 0);
 		if (id === 1) {
-			// console.log(averageFeeling, allReflections);
 		}
 		return averageFeeling;
 	};
@@ -120,6 +118,7 @@ export default function BootcamperList({
 			};
 		})
 		.sort((a, b) => (a.feel < b.feel ? -1 : 1));
+
 	// Avoid a layout jump when reaching the last page with empty rows.
 	const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -132,105 +131,121 @@ export default function BootcamperList({
 		setPage(0);
 	};
 	function handleClick(newId, newName) {
-		handleGraphChange(newId, newName);
+		changeBootcamper(newId, newName);
 	}
 	useEffect(() => {
 		fetch('https://global-scope.herokuapp.com/bootcampers?admin=true')
 			.then((res) => res.json())
 			.then((result) => {
-				const test = result.payload.filter((bootcamper) =>
+				const bootcampersArray = result.payload.filter((bootcamper) =>
 					allReflections.some((reflection) => {
 						return reflection.bootcamperid === bootcamper.bootcamperId;
 					})
 				);
-				setBootcampers(test);
+				setBootcampers(bootcampersArray);
 			})
 			.catch((err) => console.log(err));
 	}, [allReflections]);
 	return (
-		<TableContainer component={Paper}>
-			<Table sx={{ maxWidth: 600 }} aria-label="custom pagination table">
-				<TableRow className="bg-gray-100 text-gray-200 font-bold" sx={{ height: 40, p: 0 }}>
-					<TableCell style={{ width: 50 }} sx={{ p: 0 }} align="center">
-						ID
-					</TableCell>
-					<TableCell sx={{ p: 0 }} align="center">
-						First Name
-					</TableCell>
-					<TableCell sx={{ p: 0 }} align="center">
-						Last Name
-					</TableCell>
-					<TableCell sx={{ p: 0 }} align="center">
-						<AverageMoodTimePicker changeDate={changeDate} />
-					</TableCell>
-				</TableRow>
-				<TableBody>
-					{(rowsPerPage > 0
-						? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-						: rows
-					).map((row, i) => (
-						<TableRow
-							key={i}
-							onClick={() => handleClick(row.id, `${row.firstname} ${row.lastname}`)}
-							className={`${'hover:bg-purple-100 cursor-pointer '}${
-								i % 2 !== 0 ? 'bg-gray-100' : ''
-							}`}
-							style={{ height: 25 }}
-						>
-							<TableCell style={{ padding: 0, marginLeft: '5px' }} align="center">
-								{row.id}
-							</TableCell>
-							<TableCell sx={{ padding: 0 }} style={{ width: 160 }} align="center">
-								{row.firstname}
-							</TableCell>
-							<TableCell sx={{ padding: 0 }} style={{ width: 110 }} align="center">
-								{row.lastname}
-							</TableCell>
-							<TableCell
-								sx={{ padding: 0 }}
-								style={{ width: 130 }}
-								align="center"
-								className={`${
-									row.feel <= 2.6
-										? 'bg-red-200 rounded-full'
-										: row.feel >= 4.2
-										? 'bg-green-200 opacity-80 rounded-full'
-										: ''
-								}`}
-							>
-								{row.feel}
-							</TableCell>
-						</TableRow>
-					))}
-
-					{emptyRows > 0 && (
-						<TableRow style={{ height: 53 * emptyRows }}>
-							<TableCell colSpan={6} />
-						</TableRow>
-					)}
-				</TableBody>
-				<TableFooter>
-					<TableRow>
-						<TablePagination
-							rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-							colSpan={3}
-							count={rows.length}
-							rowsPerPage={rowsPerPage}
-							page={page}
-							SelectProps={{
-								inputProps: {
-									'aria-label': 'rows per page',
-								},
-								native: true,
-							}}
-							onPageChange={handleChangePage}
-							onRowsPerPageChange={handleChangeRowsPerPage}
-							ActionsComponent={TablePaginationActions}
-							sx={{ p: 0 }}
-						/>
+		<>
+			<AverageMoodTimePicker changeDate={changeDate} />
+			<TableContainer component={Paper} className="">
+				<Table sx={{ maxWidth: 600 }} aria-label="custom pagination table">
+					<TableRow
+						className="bg-gray-100 text-gray-200 font-bold"
+						sx={{ height: 40, p: 0 }}
+					>
+						<TableCell style={{ width: 50 }} sx={{ p: 0 }} align="center">
+							ID
+						</TableCell>
+						<TableCell sx={{ p: 0 }} align="center">
+							First Name
+						</TableCell>
+						<TableCell sx={{ p: 0 }} align="center">
+							Last Name
+						</TableCell>
+						<TableCell sx={{ p: 0 }} align="center">
+							Feeling
+						</TableCell>
 					</TableRow>
-				</TableFooter>
-			</Table>
-		</TableContainer>
+					<TableBody>
+						{(rowsPerPage > 0
+							? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+							: rows
+						).map((row, i) => (
+							<TableRow
+								key={i}
+								onClick={() =>
+									handleClick(row.id, `${row.firstname} ${row.lastname}`)
+								}
+								className={`${'hover:bg-purple-100 cursor-pointer '}${
+									i % 2 !== 0 ? 'bg-gray-100' : ''
+								}`}
+								style={{ height: 25 }}
+							>
+								<TableCell style={{ padding: 0 }} align="center">
+									{row.id}
+								</TableCell>
+								<TableCell
+									sx={{ padding: 0 }}
+									style={{ width: 160 }}
+									align="center"
+								>
+									{row.firstname}
+								</TableCell>
+								<TableCell
+									sx={{ padding: 0 }}
+									style={{ width: 110 }}
+									align="center"
+								>
+									{row.lastname}
+								</TableCell>
+								<TableCell
+									sx={{ padding: 0 }}
+									style={{ width: 130 }}
+									align="center"
+									className={`${
+										row.feel <= 2.6
+											? 'bg-red-200 rounded-full'
+											: row.feel >= 4.2
+											? 'bg-green-200 opacity-80 rounded-full'
+											: ''
+									}`}
+								>
+									{row.feel}
+								</TableCell>
+							</TableRow>
+						))}
+
+						{emptyRows > 0 && (
+							<TableRow style={{ height: 53 * emptyRows }}>
+								<TableCell colSpan={6} />
+							</TableRow>
+						)}
+					</TableBody>
+					<TableFooter>
+						<TableRow>
+							<TablePagination
+								rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+								colSpan={3}
+								count={rows.length}
+								rowsPerPage={rowsPerPage}
+								page={page}
+								SelectProps={{
+									inputProps: {
+										'aria-label': 'rows per page',
+									},
+									native: true,
+								}}
+								onPageChange={handleChangePage}
+								onRowsPerPageChange={handleChangeRowsPerPage}
+								ActionsComponent={TablePaginationActions}
+								sx={{ p: 0 }}
+							/>
+						</TableRow>
+					</TableFooter>
+				</Table>
+			</TableContainer>
+		</>
 	);
 }

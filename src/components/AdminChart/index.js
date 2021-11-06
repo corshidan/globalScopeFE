@@ -8,6 +8,12 @@ const options = {
 			max: 7,
 			min: 0,
 		},
+		x: {
+			ticks: {
+				maxRotation: 60,
+				minRotation: 60,
+			},
+		},
 	},
 	maintainAspectRatio: false,
 	animations: {
@@ -30,13 +36,7 @@ export default function AdminChart({ graphData }) {
 	const feelingData = graphData.map((item) => item.overallfeeling);
 	// const labels = new Array(graphData.length);
 	const labels = graphData.map((item, i, arr) => {
-		if (i === 0) {
-			return 'Start';
-		}
-		if (i === arr.length - 1) {
-			return 'Today';
-		}
-		return '';
+		return item.created;
 	});
 	const data = {
 		labels: labels,
