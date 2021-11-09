@@ -112,7 +112,7 @@ export default function BlogInputPage() {
                       id='topicOne'
                       name='firsttopic'
                       list='topics'
-                      placeholder='The first topic was...'
+                      placeholder='Firstly...'
                       className={topicInputStyle}
                       {...register('firsttopic', {
                         required: 'Topic is required',
@@ -153,7 +153,7 @@ export default function BlogInputPage() {
                       id='topicTwo'
                       name='secondtopic'
                       list='topics'
-                      placeholder='And...'
+                      placeholder='Then...'
                       className={topicInputStyle}
                       {...register('secondtopic', {
                         required: 'Topic is required',
@@ -235,7 +235,7 @@ export default function BlogInputPage() {
                       id='topicFour'
                       name='fourthtopic'
                       list='topics'
-                      placeholder='Wait, I nearly forgot...'
+                      placeholder='And...'
                       className={topicInputStyle}
                       {...register('fourthtopic', {
                         required: 'Topic is required',
