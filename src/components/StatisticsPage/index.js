@@ -105,15 +105,7 @@ export default function StatisticsPage() {
       <div className='py-4 px-2'>
         <div className='grid grid-cols-3 px-10 gap-10'>
           <div className='flex flex-col  items-center mt-5 pt-6 pb-10 bg-gray-100  w-3/4 h-3/4 rounded-b-xl   mt-4 shadow-inner relative'>
-
-            {/* <ChakraProvider>
-            <CircularProgress value={100} size='125px' color='green'>
-              <CircularProgressLabel> 5</CircularProgressLabel>
-            </CircularProgress>
-          </ChakraProvider> */}
             <GaugeChart
-
-
               id='gauge-chart2'
               nrOfLevels={6}
               arcWidth={0.3}
@@ -133,16 +125,10 @@ export default function StatisticsPage() {
               <p className='text-center font-medium'>Average Mood</p>
             </div>
           </div>
-          <div className='flex flex-col justify-center items-center pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mx-auto mt-4 shadow-inner relative '>
+          <div className='flex flex-col  items-center pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mx-auto mt-5 shadow-inner relative '>
 
-            {/* <ChakraProvider>
-            <CircularProgress value={findDate()} size='125px' color='#401485'>
-              <CircularProgressLabel> {value}%</CircularProgressLabel>
-            </CircularProgress>
-          </ChakraProvider> */}
+            
             <GaugeChart
-
-
               id='gauge-chart3'
               nrOfLevels={20}
               colors={['rgba(153, 102, 255, 0.5)', 'rgba(20, 220, 20, 0.7)']}
@@ -160,13 +146,9 @@ export default function StatisticsPage() {
             </div>
           </div>
 
-          <div className='flex flex-col justify-self-end items-center  pt-6 pb-10 bg-gray-100 w-3/4 h-3/4 rounded-b-xl  mt-4 shadow-inner relative '>
+          <div className='flex flex-col  items-center mt-5 pt-6 pb-10 bg-gray-100  w-3/4 h-3/4 rounded-b-xl   mt-4 shadow-inner relative justify-self-end'>
 
-            {/* <ChakraProvider>
-            <CircularProgress value={25} size='125px' color='red'>
-              <CircularProgressLabel> 1.8%</CircularProgressLabel>
-            </CircularProgress>
-          </ChakraProvider> */}
+           
             <GaugeChart
               id='gauge-chart1'
               percent={(Math.round(confidence) * 2 - 1) / 10}
