@@ -30,7 +30,7 @@ li::first-letter {
   right: 100px;
   bottom: -30px;
 
-  animation: hideAnimation 0s ease-in 4s;
+  animation: hideAnimation 0s ease-in 6s;
   animation-fill-mode: forwards;
   font-style: italic;
 }

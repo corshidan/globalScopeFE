@@ -36,7 +36,7 @@ export default function Header() {
 				)}
 				<p className="text-xs">It's {date}</p>
 			</div>
-			<div className="flex  justify-center items-center w-1/3">
+			<div className="flex justify-center items-center w-1/3">
 				<p className="pr-2">Reflections completed</p>
 				<span className={css.test}>{numberOfReflections}</span>
 			</div>

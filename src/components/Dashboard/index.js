@@ -27,44 +27,46 @@ export default function Dashboard() {
       {/* <div className="grid grid-cols-2 p-10"> */}
       <div className='flex flex-col justify-center items-center mt-10'>
         <div className=' flex justify-around mb-5 w-1/2 '>
-          <div className="transition duration-500 ease-in-out transform hover:-translate hover:scale-105"><Card
-            image='/images/addToBlogImage.png'
-            // title='Add to Blog'
-            buttonLabel='Add to Blog'
-            path='/bloginputpage'
-          /></div>
-          <div className="transition duration-500 ease-in-out transform hover:-translate hover:scale-105"><Card
-            image='/images/seeYourStatsImage.png'
-            // title='See your Stats'
-            buttonLabel='See your Stats'
-            path='/statistics'
-          />
+          <div className='transition duration-500 ease-in-out transform hover:-translate hover:scale-105'>
+            <Card
+              image='/images/addToBlogImage.png'
+              // title='Add to Blog'
+              buttonLabel='Add to Blog'
+              path='/bloginputpage'
+            />
+          </div>
+          <div className='transition duration-500 ease-in-out transform hover:-translate hover:scale-105'>
+            <Card
+              image='/images/seeYourStatsImage.png'
+              // title='See your Stats'
+              buttonLabel='See your Stats'
+              path='/statistics'
+            />
           </div>
         </div>
         <div className='flex justify-around w-1/2'>
-        <div className="transition duration-500 ease-in-out transform hover:-translate hover:scale-105">
-        <Card
-            image='/images/recapBlogImage.png'
-            // title='Blog Recap'
-            buttonLabel='Blog Recap'
-            path='/blogrecappage'
-          />
+          <div className='transition duration-500 ease-in-out transform hover:-translate hover:scale-105'>
+            <Card
+              image='/images/recapBlogImage.png'
+              // title='Blog Recap'
+              buttonLabel='Blog Recap'
+              path='/blogrecappage'
+            />
           </div>
-          <div className="transition duration-500 ease-in-out transform hover:-translate hover:scale-105">
-
-          <Card
-            image='/images/lettersBro.png'
-            // title='Word Cloud'
-            buttonLabel='Word Cloud'
-            path='/cloud'
-          />
+          <div className='transition duration-500 ease-in-out transform hover:-translate hover:scale-105'>
+            <Card
+              image='/images/lettersBro.png'
+              // title='Word Cloud'
+              buttonLabel='Word Cloud'
+              path='/cloud'
+            />
           </div>
         </div>
       </div>
       <div className='w-1/12   fixed -bottom-8 -right-8  ' ref={container}>
         <div className={css.dog}>
           <p className={css.text}>
-            Hi..I'm dog.. <br />
+            Hi..I'm Bones.. <br />
             I'll keep you company whilst you reflect..
           </p>
         </div>
