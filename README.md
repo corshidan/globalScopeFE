@@ -49,9 +49,6 @@ Cloud hosted using Heroku and Netlify.
 <img src="./Screenshots/ReadMeScreenshots/loginPage.png" width="400" alt="login page"/>
 <img src="./Screenshots/ReadMeScreenshots/dashboard.png" width="400" alt="dashboard"/>
 </p>
----
-
-
 
 ---
 
