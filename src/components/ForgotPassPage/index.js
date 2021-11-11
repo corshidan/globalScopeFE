@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
-import LoginAlert from '../LoginAlert/index';
+// import LoginAlert from '../LoginAlert/index';
 import css from './index.module.css';
 
 export default function ForgotPassPage({ handleAuth }) {
