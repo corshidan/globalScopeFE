@@ -1,4 +1,4 @@
-<img align="right" width="200" src="./Screenshots/ReadMeScreenshots/globalScopeLogo.png"/>
+<img align="right" width="200" src="./Screenshots/ReadMeScreenshots/globalScopeLogo.png"/> 
 
 # Bootcamper Dashboard
 
