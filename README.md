@@ -1,5 +1,5 @@
 # Bootcamper Dashboard
-## Team GlobalScope final School of Code Project
+## Team GlobalScope Final School of Code Project
 November 2021 - 4 week project
 
 ---
