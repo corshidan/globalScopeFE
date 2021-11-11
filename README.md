@@ -53,7 +53,7 @@ Cloud hosted using Heroku and Netlify.
 
 3. You can then navigate to the “add to blog” page, either via the card or the link in the nav bar, where you can record the topics you covered that day, along with a confidence rating out of 5 for each topic. As bootcampers fill out the reflection form, the topics that they have chosen will be added to the dropdown list to help prompt the next bootcampers on what topics they have covered that day, but of course, you can add your own. You can add your overall confidence rating since the last time you reflected. You are then encouraged to record what you are grateful for, and anything that you wish to improve on, before adding any other general thoughts and finally rating your current mood. There is the option to make the reflection private so that coaches will not have access, so feel free to add private thoughts.
 
-The template that we have provided was designed with the feedback in mind that bootcampers would like to have more structure to inspire their reflections rather than starting from a blank page.
+    The template that we have provided was designed with the feedback in mind that bootcampers would like to have more structure to inspire their reflections rather than starting from a blank page.
 
 4. Navigating back to the dashboard, there is a card that allows you to review statistics about how you have recently rated your mood and confidence. The graph on the left shows your average mood, the progress bar in the middle shows how far through the bootcamp you are as a percentage, top right shows your overall confidence rating, and then the bottom graphs break the mood ratings down further.
 
