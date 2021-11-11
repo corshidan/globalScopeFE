@@ -45,31 +45,21 @@ Cloud hosted using Heroku and Netlify.
 
 ### How it looks:
 
-<p align="center">
+<p align="center" float="left">
 <img src="./Screenshots/ReadMeScreenshots/loginPage.png" width="400" alt="login page"/>
-</p>
-
----
-
-<p align="center">
 <img src="./Screenshots/ReadMeScreenshots/dashboard.png" width="400" alt="dashboard"/>
 </p>
 
 ---
 
-<p align="center">
+<p align="center" float="left">
 <img src="./Screenshots/ReadMeScreenshots/inputPage.jpg" width="400" alt="inputPage"/>
 </p>
 
 ---
 
-<p align="center">
+<p align="center" float="left">
 <img src="./Screenshots/ReadMeScreenshots/calendar.png" width="400" alt="calendar"/>
-</p>
-
----
-
-<p align="center">
 <img src="./Screenshots/ReadMeScreenshots/statsPage.png" width="400" alt="statsPage"/>
 </p>
 
@@ -77,11 +67,6 @@ Cloud hosted using Heroku and Netlify.
 
 <p align="center">
 <img src="./Screenshots/ReadMeScreenshots/wordCloud.png" width="400" alt="wordCloud"/>
-</p>
-
----
-
-<p align="center">
 <img src="./Screenshots/ReadMeScreenshots/adminPage.png" width="400" alt="adminPage"/>
 </p>
 
@@ -90,5 +75,5 @@ Cloud hosted using Heroku and Netlify.
 ## Meet the team
 
 <p align="center">
-<img src="./Screenshots/ReadMeScreenshots/globalScope.png" width="400" alt="pixelCharacters"/>
+<img src="./Screenshots/ReadMeScreenshots/globalScope.png" width="800" alt="pixelCharacters"/>
 </p>
