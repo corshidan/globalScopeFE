@@ -48,12 +48,12 @@ Cloud hosted using Heroku and Netlify.
 <p align="center">
 <img src="./Screenshots/ReadMeScreenshots/loginPage.png" width="400" alt="login page"/>
 </p>
-
----
-
 <p align="center">
 <img src="./Screenshots/ReadMeScreenshots/dashboard.png" width="400" alt="dashboard"/>
 </p>
+---
+
+
 
 ---
 
