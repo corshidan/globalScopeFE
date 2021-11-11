@@ -43,9 +43,9 @@ Cloud hosted using Heroku and Netlify.
 
 ---
 
-### How to use the app and the user's journey.
-
 <p align="right" float="left"><img width="200" src="./Screenshots/ReadMeScreenshots/dog.jpg"/></p>
+
+### How to use the app and the user's journey.
 
 ##### User story 1: Bootcamper
 
