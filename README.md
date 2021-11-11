@@ -8,6 +8,14 @@ November 2021 - 4 week project
 
 ---
 
+## Meet the team
+
+<p align="center">
+<img src="./Screenshots/ReadMeScreenshots/globalScope.png" width="800" alt="pixelCharacters"/>
+</p>
+
+---
+
 ### Problem Statement:
 "Bootcampers do not have a way to easily record their journey and document their experience through the bootcamp."
 
@@ -107,10 +115,3 @@ Cloud hosted using Heroku and Netlify.
 <img src="./Screenshots/ReadMeScreenshots/adminPage.png" width="400" alt="adminPage"/>
 </p>
 
----
-
-## Meet the team
-
-<p align="center">
-<img src="./Screenshots/ReadMeScreenshots/globalScope.png" width="800" alt="pixelCharacters"/>
-</p>
