@@ -43,7 +43,7 @@ Cloud hosted using Heroku and Netlify.
 
 ---
 
-<p align="right" float="left"><img width="200" src="./Screenshots/ReadMeScreenshots/dog.jpg"/></p>
+<img align="right" width="200" src="./Screenshots/ReadMeScreenshots/dog.jpg"/>
 
 ### How to use the app and the user's journey.
 
