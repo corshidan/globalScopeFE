@@ -45,6 +45,8 @@ Cloud hosted using Heroku and Netlify.
 
 ### How to use the app and the user's journey.
 
+<p align="right" float="left"><img width="200" src="./Screenshots/ReadMeScreenshots/dog.jpg"/></p>
+
 ##### User story 1: Bootcamper
 
 1. Following the link to the app you will be taken to a log-in page. For first time users, create an account by entering your name and email, how often you intend to reflect each week, your unique bootcamper ID, and when you started the bootcamp.
