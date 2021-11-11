@@ -1,7 +1,7 @@
-<p><img align="right" width="200" src="./Screenshots/ReadMeScreenshots/globalScopeLogo.png"/>
+<img align="right" width="200" src="./Screenshots/ReadMeScreenshots/globalScopeLogo.png"/>
 
 # Bootcamper Dashboard
-</p>
+
 
 ## Team GlobalScope Final School of Code Project
 November 2021 - 4 week project
