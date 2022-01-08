@@ -10,6 +10,7 @@ import {
 	faCalendarWeek,
 } from '@fortawesome/free-solid-svg-icons';
 import css from './index.module.css';
+
 export default function RegisterPage() {
 	const {
 		register,
@@ -19,9 +20,8 @@ export default function RegisterPage() {
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
 	const history = useHistory();
-	const url = 'https://global-scope.herokuapp.com/bootcampers';
+	const url = 'http://localhost:5000/bootcampers';
 	const onSubmit = (data) => {
-		console.log(JSON.stringify(data));
 		fetch(url, {
 			method: 'POST',
 			headers: {
@@ -153,31 +153,29 @@ export default function RegisterPage() {
 							)}
 						</div>
 
-            <div className='flex'>
-              <div className='flex'>
-                <span className=' rounded-l-lg w-14 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0 ml-2'>
-                  <FontAwesomeIcon icon={faCalendarWeek} />
-                </span>
-                {/* Start date input */}
-                <input
-                  type='date'
-                  className='h-10 border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-300 pl-4'
-                  placeholder='Start Date'
-                  defaultValue={today}
-                  name='startdate'
-                  {...register('startdate', {
-                    required: 'Start date is required',
-                    // valueAsDate: true,
-                  })}
-                />
-              </div>
-              {errors.startDate && (
-                <p className='text-red-400 text-sm'>
-                  {errors.startDate.message}
-                </p>
-              )}
-            </div>
-          </div>
+						<div className="flex">
+							<div className="flex">
+								<span className=" rounded-l-lg w-14 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0 ml-2">
+									<FontAwesomeIcon icon={faCalendarWeek} />
+								</span>
+								{/* Start date input */}
+								<input
+									type="date"
+									className="h-10 border border-gray-300 rounded-r-lg outline-none focus:ring-1 ring-blue-300 pl-4"
+									placeholder="Start Date"
+									defaultValue={today}
+									name="startdate"
+									{...register('startdate', {
+										required: 'Start date is required',
+										// valueAsDate: true,
+									})}
+								/>
+							</div>
+							{errors.startDate && (
+								<p className="text-red-400 text-sm">{errors.startDate.message}</p>
+							)}
+						</div>
+					</div>
 
 					<div className="mt-3 flex flex-row">
 						<span className=" rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0">

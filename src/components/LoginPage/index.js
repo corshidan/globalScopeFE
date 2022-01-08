@@ -17,7 +17,7 @@ export default function LoginPage({ handleAuth }) {
 		message: 'E-mail or password is invalid',
 	});
 	const history = useHistory();
-	const url = 'https://global-scope.herokuapp.com/login';
+	const url = 'http://localhost:5000/login';
 	const onSubmit = (data) => {
 		fetch(url, {
 			method: 'POST',
