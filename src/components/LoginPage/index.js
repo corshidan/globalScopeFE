@@ -62,6 +62,7 @@ export default function LoginPage({ handleAuth }) {
 				onSubmit={handleSubmit(onSubmit)}
 			>
 				<LoginAlert
+					class="XXXXX"
 					isOpen={loginError.state}
 					closeAlert={toggleError}
 					message={loginError.message}
@@ -77,6 +78,7 @@ export default function LoginPage({ handleAuth }) {
 
 							{/* E-mail input */}
 							<input
+								dataTestId="emailInput"
 								className="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-2"
 								type="email"
 								name="email"
@@ -96,6 +98,7 @@ export default function LoginPage({ handleAuth }) {
 
 							{/* Password input */}
 							<input
+								dataTestId="passwordInput"
 								type="password"
 								name="password"
 								className="h-10 border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-300 w-full pl-2"
@@ -123,6 +126,7 @@ export default function LoginPage({ handleAuth }) {
 
 						{/* <Link to="/dashboard" className=""> */}
 						<button
+							dataTestId="loginButton"
 							type="submit"
 							className="px-4 py-2 rounded bg-purple-500 text-white hover:bg-purple-700 my-4 w-full"
 						>
@@ -131,8 +135,10 @@ export default function LoginPage({ handleAuth }) {
 						{/* </Link> */}
 						<p className="text-gray-400 text-sm m-3">
 							Need an account?{' '}
-							<Link to="/register" className="">
-								<span className="text-purple-400 text-sm">Register</span>{' '}
+							<Link 
+							dataTestId="registerLink"
+							to="/register" className="">
+								<span id="registerLink" className="text-purple-400 text-sm">Register</span>{' '}
 							</Link>
 						</p>
 					</div>
