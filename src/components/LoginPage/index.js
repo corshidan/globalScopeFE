@@ -26,10 +26,12 @@ export default function LoginPage({ handleAuth }) {
 			},
 			body: JSON.stringify(data),
 		})
-			.then((res) => {
+			.then(async (res) => {
 				if (!res.ok) {
-					history.replace('/');
-					toggleError(true);
+					const response = await res.json();
+					const serverMessage = response.message;
+					// history.replace('/');
+					toggleError(true, serverMessage);
 					return;
 				} else {
 					return res.json();
@@ -49,8 +51,8 @@ export default function LoginPage({ handleAuth }) {
 			})
 			.catch((err) => console.log(err));
 	};
-	const toggleError = (isShowed) => {
-		setLoginError({ ...loginError, state: isShowed });
+	const toggleError = (isShowed, message = 'E-mail or password is invalid') => {
+		setLoginError({ ...loginError, state: isShowed, message: message });
 	};
 	return (
 		<div
@@ -135,10 +137,10 @@ export default function LoginPage({ handleAuth }) {
 						{/* </Link> */}
 						<p className="text-gray-400 text-sm m-3">
 							Need an account?{' '}
-							<Link 
-							dataTestId="registerLink"
-							to="/register" className="">
-								<span id="registerLink" className="text-purple-400 text-sm">Register</span>{' '}
+							<Link dataTestId="registerLink" to="/register" className="">
+								<span id="registerLink" className="text-purple-400 text-sm">
+									Register
+								</span>{' '}
 							</Link>
 						</p>
 					</div>

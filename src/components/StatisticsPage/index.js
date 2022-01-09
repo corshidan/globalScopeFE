@@ -20,24 +20,11 @@ export default function StatisticsPage() {
 		fetch(`https://global-scope.herokuapp.com/reflections/${user.bootcamperid}`)
 			.then((res) => res.json())
 			.then((data) => {
-				// console.log(data.payload[0].confidence)
 				const overallConfidence = data.payload.map((reflection) => reflection.confidence);
-				// console.log(overallConfidence)
-
 				const feeling = data.payload.map((reflections) => reflections.overallfeeling);
-				//  console.log(feeling)
-
-				// const emojiReducer = feeling.reduce((a, c) => a + c);
-				// const averageFeeling = emojiReducer / feeling.length;
-				// // console.log(averageFeeling)
-				// setFeelings(averageFeeling);
-
 				const reducer = overallConfidence.reduce((a, c) => a + c);
-				// console.log(reducer)
 				const averageConfidence = reducer / overallConfidence.length;
-				// console.log(averageConfidence)
 				setConfidence(averageConfidence);
-				// setHighlightedDays(dates)
 
 				// last 5 confidence ratings line chart
 				const recentFeelings = data.payload
@@ -85,8 +72,8 @@ export default function StatisticsPage() {
 
 		return progressBar;
 	};
-	let value = findDate();
-	let progressPercentage = findDate() / 100;
+	let value = findDate() > 100 ? 100 : findDate();
+	let progressPercentage = value / 100;
 
 	return (
 		<Layout>

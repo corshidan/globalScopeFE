@@ -20,7 +20,7 @@ export default function RegisterPage() {
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
 	const history = useHistory();
-	const url = 'http://localhost:5000/bootcampers';
+	const url = 'http://localhost:5000/auth/register';
 	const onSubmit = (data) => {
 		fetch(url, {
 			method: 'POST',
@@ -30,7 +30,10 @@ export default function RegisterPage() {
 			body: JSON.stringify(data),
 		})
 			.then((res) => res.json())
-			.then((data) => history.replace('/'))
+			.then((data) => {
+				console.log(data);
+				history.replace('/');
+			})
 			.catch((err) => console.log(err));
 	};
 	return (
