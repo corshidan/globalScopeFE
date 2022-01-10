@@ -30,9 +30,9 @@ function App() {
 		}
 	};
 
-	useEffect(() => {
-		checkAuthenticated();
-	}, []);
+	// useEffect(() => {
+	// 	checkAuthenticated();
+	// }, []);
 
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
@@ -51,7 +51,7 @@ function App() {
 						<BlogRecapPage />
 					</Route>
 					<Route path="/register">
-						<RegisterPage />
+						<RegisterPage setAuth={setAuth} />
 					</Route>
 					<Route path="/statistics">
 						<StatisticsPage />

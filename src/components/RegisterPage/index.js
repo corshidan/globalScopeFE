@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faCalendarAlt,
@@ -11,16 +11,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import css from './index.module.css';
 
-export default function RegisterPage() {
+export default function RegisterPage({ setAuth }) {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
 	const history = useHistory();
 	const url = 'http://localhost:5000/auth/register';
+
 	const onSubmit = (data) => {
 		fetch(url, {
 			method: 'POST',
@@ -31,11 +33,17 @@ export default function RegisterPage() {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
-				history.replace('/');
+				if (data.jwtToken) {
+					localStorage.setItem('token', data.jwtToken);
+					setAuth(true);
+				} else {
+					setAuth(false);
+				}
+				history.push('/');
 			})
 			.catch((err) => console.log(err));
 	};
+
 	return (
 		<div
 			className={`${'flex items-center justify-center h-screen  '}${css.back}`}

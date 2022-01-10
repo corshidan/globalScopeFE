@@ -17,7 +17,7 @@ export default function LoginPage({ handleAuth }) {
 		message: 'E-mail or password is invalid',
 	});
 	const history = useHistory();
-	const url = 'http://localhost:5000/login';
+	const url = 'http://localhost:5000/auth/login';
 	const onSubmit = (data) => {
 		fetch(url, {
 			method: 'POST',
@@ -29,25 +29,24 @@ export default function LoginPage({ handleAuth }) {
 			.then(async (res) => {
 				if (!res.ok) {
 					const response = await res.json();
-					const serverMessage = response.message;
-					// history.replace('/');
-					toggleError(true, serverMessage);
+					toggleError(true, response);
 					return;
 				} else {
 					return res.json();
 				}
 			})
 			.then((response) => {
-				if (response) {
-					const user =
-						response.payload[0].email === 'admin@soc.com'
-							? { ...response.payload[0], role: 'admin' }
-							: { ...response.payload[0], role: 'bootcamper' };
-					handleAuth(user);
-					user.role === 'bootcamper'
-						? history.replace('/dashboard')
-						: history.replace('/adminpage');
-				}
+				console.log(response);
+				// if (response) {
+				// 	const user =
+				// 		response.payload[0].email === 'admin@soc.com'
+				// 			? { ...response.payload[0], role: 'admin' }
+				// 			: { ...response.payload[0], role: 'bootcamper' };
+				// 	handleAuth(user);
+				// 	user.role === 'bootcamper'
+				// 		? history.replace('/dashboard')
+				// 		: history.replace('/adminpage');
+				// }
 			})
 			.catch((err) => console.log(err));
 	};
