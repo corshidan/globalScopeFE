@@ -55,24 +55,46 @@ function App() {
 							}
 						/>
 
-						<Route path="/bloginputpage">
-							<BlogInputPage />
-						</Route>
-						<Route path="/blogrecappage">
-							<BlogRecapPage />
-						</Route>
+						<Route
+							exact
+							path="/bloginputpage"
+							render={(props) =>
+								isAuthenticated ? <BlogInputPage /> : <Redirect to="/" />
+							}
+						/>
+
+						<Route
+							exact
+							path="/blogrecappage"
+							render={(props) =>
+								isAuthenticated ? <BlogRecapPage /> : <Redirect to="/" />
+							}
+						/>
+
 						<Route path="/register">
 							<RegisterPage setAuth={setAuth} />
 						</Route>
-						<Route path="/statistics">
-							<StatisticsPage />
-						</Route>
-						<Route path="/cloud">
-							<WordCloudPage />
-						</Route>
-						<Route path="/adminpage">
-							<AdminPage />
-						</Route>
+						<Route
+							exact
+							path="/statistics"
+							render={(props) =>
+								isAuthenticated ? <StatisticsPage /> : <Redirect to="/" />
+							}
+						/>
+						<Route
+							exact
+							path="/cloud"
+							render={(props) =>
+								isAuthenticated ? <WordCloudPage /> : <Redirect to="/" />
+							}
+						/>
+						<Route
+							exact
+							path="/adminpage"
+							render={(props) =>
+								isAuthenticated ? <AdminPage /> : <Redirect to="/" />
+							}
+						></Route>
 						<Route path="/forgotpassword">
 							<ForgotPassPage />
 						</Route>
@@ -100,7 +122,6 @@ export function useUser() {
 }
 export function useAuth() {
 	const setAuth = useContext(AuthContext);
-	console.log('line 94 APp');
 	return setAuth;
 }
 export default App;

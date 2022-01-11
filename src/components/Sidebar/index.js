@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation, useHistory, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faBinoculars,
@@ -13,9 +13,9 @@ import {
 import css from './sidebar.module.css';
 import { useUser, useAuth } from '../App/App.js';
 import lottie from 'lottie-web';
+
 export default function Sidebar() {
 	const container = useRef(null);
-	const history = useHistory();
 	const user = useUser();
 	const setAuth = useAuth();
 	const location = useLocation();
@@ -27,7 +27,7 @@ export default function Sidebar() {
 		try {
 			localStorage.removeItem('token');
 			setAuth(false);
-			console.log('line 30 sidebar');
+			<Redirect to="/" />;
 		} catch (err) {
 			console.error(err.message);
 		}
