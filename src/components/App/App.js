@@ -59,7 +59,7 @@ function App() {
 							exact
 							path="/bloginputpage"
 							render={(props) =>
-								isAuthenticated ? <BlogInputPage /> : <Redirect to="/" />
+								isAuthenticated ? <BlogInputPage {...props} /> : <Redirect to="/" />
 							}
 						/>
 
@@ -67,7 +67,7 @@ function App() {
 							exact
 							path="/blogrecappage"
 							render={(props) =>
-								isAuthenticated ? <BlogRecapPage /> : <Redirect to="/" />
+								isAuthenticated ? <BlogRecapPage {...props} /> : <Redirect to="/" />
 							}
 						/>
 
@@ -78,21 +78,25 @@ function App() {
 							exact
 							path="/statistics"
 							render={(props) =>
-								isAuthenticated ? <StatisticsPage /> : <Redirect to="/" />
+								isAuthenticated ? (
+									<StatisticsPage {...props} />
+								) : (
+									<Redirect to="/" />
+								)
 							}
 						/>
 						<Route
 							exact
 							path="/cloud"
 							render={(props) =>
-								isAuthenticated ? <WordCloudPage /> : <Redirect to="/" />
+								isAuthenticated ? <WordCloudPage {...props} /> : <Redirect to="/" />
 							}
 						/>
 						<Route
 							exact
 							path="/adminpage"
 							render={(props) =>
-								isAuthenticated ? <AdminPage /> : <Redirect to="/" />
+								isAuthenticated ? <AdminPage {...props} /> : <Redirect to="/" />
 							}
 						></Route>
 						<Route path="/forgotpassword">
