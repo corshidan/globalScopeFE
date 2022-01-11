@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey, faAt } from '@fortawesome/free-solid-svg-icons';
 import LoginAlert from '../LoginAlert/index';
 import css from './index.module.css';
 
-export default function LoginPage({ handleAuth, setAuth }) {
+export default function LoginPage({ setAuth }) {
 	const {
 		register,
 		handleSubmit,
@@ -16,7 +16,6 @@ export default function LoginPage({ handleAuth, setAuth }) {
 		state: false,
 		message: 'E-mail or password is invalid',
 	});
-	const history = useHistory();
 	const url = 'http://localhost:5000/auth/login';
 	const onSubmit = (data) => {
 		fetch(url, {
@@ -41,7 +40,6 @@ export default function LoginPage({ handleAuth, setAuth }) {
 					setAuth(true);
 				} else {
 					setAuth(false);
-					// history.replace('/dashboard');
 					<Redirect to="/dashboard" />;
 				}
 			})
