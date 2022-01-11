@@ -1,14 +1,38 @@
 import React, { useEffect, useRef } from 'react';
 import Layout from '../Layout';
 import Card from '../Card';
+import { useHistory } from 'react-router-dom';
 
 import lottie from 'lottie-web';
 import css from './index.module.css';
 
-// import { useUser } from '../App/App.js';
+import { useUser } from '../App/App.js';
 
-export default function Dashboard() {
+export default function Dashboard({ handleAuth }) {
 	const container = useRef(null);
+	const user = useUser();
+	const history = useHistory();
+	async function getBootcamperProfile() {
+		try {
+			fetch('http://localhost:5000/dashboard', {
+				method: 'POST',
+				headers: { jwtToken: localStorage.token },
+			})
+				.then((response) => response.json())
+				.then((response) => {
+					if (response.email === 'admin@soc.com') {
+						const adminUser = { ...response, role: 'admin' };
+						handleAuth(adminUser);
+					} else {
+						const bootcamper = { ...response, role: 'bootcamper' };
+						handleAuth(bootcamper);
+					}
+					if (user.role === 'admin') history.replace('/adminpage/');
+				});
+		} catch (error) {
+			console.error(error);
+		}
+	}
 
 	useEffect(() => {
 		const anim = lottie.loadAnimation({
@@ -18,7 +42,9 @@ export default function Dashboard() {
 		});
 		anim.setSpeed(2);
 	}, []);
-	// const user = useUser();
+	useEffect(() => {
+		getBootcamperProfile();
+	}, []);
 	return (
 		<Layout>
 			{/* <div className="grid grid-cols-2 p-10"> */}

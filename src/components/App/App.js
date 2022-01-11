@@ -12,6 +12,7 @@ import ForgotPassPage from '../ForgotPassPage';
 import AdminPage from '../AdminPage';
 
 const UserContext = createContext();
+const AuthContext = createContext();
 
 function App() {
 	const [user, setUser] = useState({});
@@ -20,7 +21,7 @@ function App() {
 		try {
 			const res = await fetch('http://localhost:5000/auth/verify', {
 				method: 'POST',
-				headers: { jwt_token: localStorage.token },
+				headers: { token: localStorage.token },
 			});
 
 			const parseRes = await res.json();
@@ -30,52 +31,76 @@ function App() {
 		}
 	};
 
-	// useEffect(() => {
-	// 	checkAuthenticated();
-	// }, []);
+	useEffect(() => {
+		checkAuthenticated();
+	}, []);
 
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
 	};
 	return (
-		<UserContext.Provider value={user}>
-			<Router>
-				<Switch>
-					<Route path="/dashboard">
-						<Dashboard />
-					</Route>
-					<Route path="/bloginputpage">
-						<BlogInputPage />
-					</Route>
-					<Route path="/blogrecappage">
-						<BlogRecapPage />
-					</Route>
-					<Route path="/register">
-						<RegisterPage setAuth={setAuth} />
-					</Route>
-					<Route path="/statistics">
-						<StatisticsPage />
-					</Route>
-					<Route path="/cloud">
-						<WordCloudPage />
-					</Route>
-					<Route path="/adminpage">
-						<AdminPage />
-					</Route>
-					<Route path="/forgotpassword">
-						<ForgotPassPage />
-					</Route>
-					<Route path="/">
-						<LoginPage handleAuth={setUser} setAuth={setAuth} />
-					</Route>
-				</Switch>
-			</Router>
-		</UserContext.Provider>
+		<AuthContext.Provider value={setAuth}>
+			<UserContext.Provider value={user}>
+				<Router>
+					<Switch>
+						<Route
+							exact
+							path="/dashboard"
+							render={(props) =>
+								isAuthenticated ? (
+									<Dashboard {...props} handleAuth={setUser} />
+								) : (
+									<Redirect to="/" />
+								)
+							}
+						/>
+
+						<Route path="/bloginputpage">
+							<BlogInputPage />
+						</Route>
+						<Route path="/blogrecappage">
+							<BlogRecapPage />
+						</Route>
+						<Route path="/register">
+							<RegisterPage setAuth={setAuth} />
+						</Route>
+						<Route path="/statistics">
+							<StatisticsPage />
+						</Route>
+						<Route path="/cloud">
+							<WordCloudPage />
+						</Route>
+						<Route path="/adminpage">
+							<AdminPage />
+						</Route>
+						<Route path="/forgotpassword">
+							<ForgotPassPage />
+						</Route>
+						<Route
+							exact
+							path="/"
+							render={(props) =>
+								!isAuthenticated ? (
+									<LoginPage {...props} handleAuth={setUser} setAuth={setAuth} />
+								) : (
+									<Dashboard {...props} handleAuth={setUser} />
+								)
+							}
+						></Route>
+					</Switch>
+				</Router>
+			</UserContext.Provider>
+		</AuthContext.Provider>
 	);
 }
 
 export function useUser() {
 	const test = useContext(UserContext);
 	return test;
+}
+export function useAuth() {
+	const setAuth = useContext(AuthContext);
+	console.log('line 94 APp');
+	return setAuth;
 }
 export default App;

@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey, faAt } from '@fortawesome/free-solid-svg-icons';
 import LoginAlert from '../LoginAlert/index';
 import css from './index.module.css';
 
-export default function LoginPage({ handleAuth }) {
+export default function LoginPage({ handleAuth, setAuth }) {
 	const {
 		register,
 		handleSubmit,
@@ -36,17 +36,14 @@ export default function LoginPage({ handleAuth }) {
 				}
 			})
 			.then((response) => {
-				console.log(response);
-				// if (response) {
-				// 	const user =
-				// 		response.payload[0].email === 'admin@soc.com'
-				// 			? { ...response.payload[0], role: 'admin' }
-				// 			: { ...response.payload[0], role: 'bootcamper' };
-				// 	handleAuth(user);
-				// 	user.role === 'bootcamper'
-				// 		? history.replace('/dashboard')
-				// 		: history.replace('/adminpage');
-				// }
+				if (response.jwtToken) {
+					localStorage.setItem('token', response.jwtToken);
+					setAuth(true);
+				} else {
+					setAuth(false);
+					// history.replace('/dashboard');
+					<Redirect to="/dashboard" />;
+				}
 			})
 			.catch((err) => console.log(err));
 	};
