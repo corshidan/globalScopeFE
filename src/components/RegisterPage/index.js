@@ -21,7 +21,7 @@ export default function RegisterPage({ setAuth }) {
 	const date = new Date();
 	const today = date.toISOString().slice(0, 10);
 	const history = useHistory();
-	const url = 'http://localhost:5000/auth/register';
+	const url = 'https://global-scope.herokuapp.com/auth/register';
 
 	const onSubmit = (data) => {
 		fetch(url, {

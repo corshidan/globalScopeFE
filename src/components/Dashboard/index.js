@@ -14,7 +14,7 @@ export default function Dashboard({ handleAuth }) {
 	const history = useHistory();
 	async function getBootcamperProfile() {
 		try {
-			fetch('http://localhost:5000/dashboard', {
+			fetch('https://global-scope.herokuapp.com/dashboard', {
 				method: 'POST',
 				headers: { jwtToken: localStorage.token },
 			})
